@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-07-27 Sat 15:04 -->
+<!-- 2019-07-28 Sun 16:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compression and the ising model</title>
@@ -34,9 +34,7 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<script src="/skewer"></script>
-<link type="text/css" href="css/base.css" rel="stylesheet">
-<link type="text/css" href="css/skeleton.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 </div>
 <div id="content">
 <h1 class="title">Compression and the ising model</h1>
@@ -47,10 +45,13 @@
 <p>
 Recently as I was doing some reading<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on applying information
 theory to detect phase transitions in non-equilibrium systems. What
-does non-equilibrium mean? well I won't tell you, sorry. But what I
-will tell you is that this stuff is really neat and easy to
-apply. Information theory sounds really scary and I don't know much
-about it, but what I do know about is some good old-fashioned
+does non-equilibrium mean? well it's a long story.
+</p>
+
+<p>
+This stuff is really neat and easy
+to apply. Information theory sounds really scary and I don't know
+much about it, but what I do know about is some good old-fashioned
 compression algorithms. (lossless) compression can be thought of as
 the act of reducing the size of something while holding the same
 "information". When looking at order-disorder phase transitions, you
@@ -59,19 +60,19 @@ may already see where we're heading.
 
 <p>
 As a fun way to learn a little bit of javascript, today I spent some
-time looking at (the legendary) Schroeder's web-based physics
-simulations you can find <a href="https://physics.weber.edu/schroeder/software/">at his website</a>. As you might have guessed
-already (dang you're on a roll), I looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model</a>.
+time looking at Schroeder's web-based physics simulations you can
+find <a href="https://physics.weber.edu/schroeder/software/">here</a>. As you might have guessed already (dang you're on a
+roll), I looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model simulation</a>.
 </p>
 </div>
 
 <div id="outline-container-org1fa4216" class="outline-3">
-<h3 id="org1fa4216"><span class="todo TODO">TODO</span> Information</h3>
+<h3 id="org1fa4216">Information</h3>
 <div class="outline-text-3" id="text-org1fa4216">
 <p>
 I guess we'll talk a little about information content first. If
 you've taken a thermo or stat-mech class, you've probably
-(hopefully (please god i hope you did)) see some mathematical
+(hopefully (please god i hope you did)) seen some mathematical
 definition of entropy. It comes in a bunch of different looking
 equivalent forms, but the one I'll give to you here is
 </p>
@@ -84,21 +85,21 @@ equivalent forms, but the one I'll give to you here is
 where p<sub>i</sub> is the probability of finding the system in state \(i\).
 dang isn't that a good-looking equation. There's a lot of content
 in why each part of the expression is chosen. Sometimes the entropy
-is explained as how "disordered" a system is. This equation says
+is explained to be how "disordered" a system is. This equation says
 something more specific. If we choose a different base for the
 logarithm (say, 2), then the sum is actually long-hand for
 \(E[-\log\,p_{i}]\), the expectation value of the negative
 log-probability. This gives us something to work with
-conceptually. Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving us
-the expected number of <span class="underline">bits</span> that we would need to encode the
+conceptually. Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving
+us the expected number of <span class="underline">bits</span> that we would need to encode the
 frequencies of states for our system. So it's giving us a sort of
 "best guess" on the amount of information needed to completely
-describe our system in all of its glory. Or something like that,
-I'm new to this too.
+describe our system in all of its probabilistic glory. Or something
+like that, I'm new to this too.
 </p>
 
 <p>
-The Shannon entropy is exactly analagous:
+The Shannon entropy might look familiar:
 </p>
 
 <p>
@@ -107,8 +108,8 @@ The Shannon entropy is exactly analagous:
 
 <p>
 where \(X\) is some random variable I guess. The same analysis above
-holds here, we're just not caring about units (more or less) or the second law of
-thermodynamics anymore.
+holds here, we're just not caring about units (more or less) or the
+second law of thermodynamics anymore.
 </p>
 </div>
 
@@ -116,7 +117,7 @@ thermodynamics anymore.
 <h4 id="orgeba3429">What's the justification for the entropy here? where's my free energy and its derivatives? &gt;:(</h4>
 <div class="outline-text-4" id="text-orgeba3429">
 <p>
-i'll explain this in the future probably just hold tight pls. 
+i'll explain this in the future probably just hold tight pls.
 </p>
 </div>
 </div>
@@ -130,13 +131,13 @@ Now what exactly is the <a href="https://en.wikipedia.org/wiki/Ising_model">isin
 College<sup>tm</sup> you'll note that some of the finite-sized simulations
 look a bit like a game of life model, but more chaotic depending on
 the temperature. Just like in GoL, there are two possible states
-that a "cell" could be in. In the case of the ising mode lthe
-states, or alphabet, are \(\mathcal{A} = \{-1, 1\}\). A state of size
-N chosen from this alphabet we'll denote \(\mathcal{S}_{N} \equiv \{s^{1},
-   \cdots, s^{N}\}\).  These represent the states "spin up" and "spin down",
-representing the magnetic dipole moments of the atomic spins. As
-for the dynamics, we get most of the picture just by looking at the
-corresponding Hamiltonian function:
+that a cell could be in. In the case of the ising model the states,
+or alphabet, are \(\mathcal{A} = \{-1, 1\}\). A state of size \(N\)
+chosen from this alphabet we'll denote \(\mathcal{S}_{N} \equiv \{s^{1},
+   \cdots, s^{N}\}\).  These states represent "spin up" and "spin down", the
+magnetic dipole moments of the atomic spins. As for the dynamics,
+we get most of the picture just by looking at the Hamiltonian
+function:
 </p>
 
 <p>
@@ -144,35 +145,41 @@ corresponding Hamiltonian function:
 </p>
 
 <p>
-Breaking this down, we can see that the first term represents the
+Here I denoted the neighbors of cell \(i\) as \(N(i)\). Couldn't think
+of any better notation, so we'll deal with it for now.  Breaking
+this down, we can see that the first term represents the
 interaction between two cells that are neighbors, and the second
-term represents a uniform magnetic field imposed on the
-system. Here I denoted the neighbors of cell \(i\) as
-\(N(i)\). Couldn't think of any better notation, so we'll deal with
-it for now.
+term represents the bias given by a uniform magnetic field imposed
+on the system. This bias will skew the magnetics towards a certain spin.
 </p>
 
 <p>
-Since we're really cool, we're going to drop the second term since
+We have all the power, so we're going to drop the second term since
 we don't care about a bias towards one spin or another (although
 I'm more of a spin-up kinda guy myself, but I'll leave that for
 another day). But then where do the dynamics come in? Well hold
-your horses for pete's sake. The probability of a specific
+your horses my god. The probability of a specific
 configuration being chosen is given by the classic Boltzmann
-distribution
+distribution:
 </p>
 
 <p>
-<b>TODO</b> make this equation more readable
 \[ P_{T}(\mathcal{S}) = \frac{e^{\frac{-H(\mathcal{S})}{k_B T}}}{Z_{T}} \]
 </p>
 
 <p>
-So here we get to understand the dynamics a bit. We'll look at the
-edge cases at \(T=1\) because I reserve the right to choose my
-temperatures. If every cell is spin-up <span class="underline">or</span> spin-down, thenthe energy
-simply \(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and
-every cell has four neighbors, then we get something like \(H =
+Looking at this now, people who know a bit of machine learning
+might notice this is a softmax function on the exponent in the
+numerator (\(Z_T\) is a normalizing constant given by the partition
+function).
+</p>
+
+<p>
+Let's try to pin down the dynamics. We'll look at the edge cases at
+\(T=1\) because I reserve the right to choose my temperatures. If
+every cell is spin-up <span class="underline">or</span> spin-down, thenvthe energy simply
+\(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and every
+cell has four neighbors, then we get something like \(H =
    -4NJ\). Here, the corresponding probability of that low energy state
 to occur is at a maximum. Then in the extreme where every neighbor
 of a cell is the the opposing magnetization, \(H = 4NJ\) and its
@@ -184,10 +191,8 @@ locally uniformly magnetized.
 <p>
 But as we vary \(T\), we would expect the system to be more
 disordered as the probability distribution slowly smooths out. The
-temperature acts as a balancing agent to the energy, where we may
-expect things to become completely "disordered" past a certain
-point. Or something like that. We still haven't talked about
-simulating something like this.
+temperature acts as a balancing agent to the energy. Or something
+like that. 
 </p>
 
 <p>
@@ -195,13 +200,16 @@ So how would we simulate something like this? Well, being the
 statistical mechanicians we are, we're going to look at a system of
 magnetized atoms as being in a state of thermal equilibrium. Then,
 given a system state \(\mathcal{S}\), we flip a <span class="underline">only one</span> atom from
-one magnetic state to another. Well how do we choose this atom? We
-put our computer scientist hat on and say "well, nothing Monte
-Carlo simulations can't solve," which is a fancy way for saying
-brute-force choose from a probability distribution. So we say,
-given our state \(\mathcal{S}\) and a single atom flip resulting in
-the state \(\mathcal{S}'\), we choose \(\mathcal{S}'\) with probability
-given by \(P_{T}(S')\). At least that would be my guess.
+one magnetic state to another to remain in thermal equilibrium
+(quasi-static transition between states, reversible, words you may
+have heard before. all good if not). Well how do we choose
+this atom? We put on our computer scientist hat and say "well,
+nothing Monte Carlo simulations can't solve," which is a fancy way
+of saying brute-force choose from a probability distribution. So
+we say, given our state \(\mathcal{S}\) and a single atom flip
+resulting in the state \(\mathcal{S}'\), we choose \(\mathcal{S}'\)
+with probability given by \(P_{T}(S')\). At least that would be my
+guess.
 </p>
 </div>
 </div>
@@ -227,8 +235,8 @@ useful as a pedagogical tool, rather than having to download some
 
 <p>
 But we're going to one-up PhET and instead of downloading the
-simulation, we'll just download every frame of the simulation. We're
-brilliant!
+simulation, we'll just download every frame of the simulation. Take
+that!
 </p>
 
 <p>
@@ -323,20 +331,20 @@ but it gets the job done.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp" id="org46b9f58"><span style="color: #56B5C2;">(</span><span style="color: #DC672C;">defun</span> <span style="color: #56B5C2; font-weight: bold;">traverse-temperatures</span> <span style="color: #EAEAFE;">(</span>temp-list output<span style="color: #EAEAFE;">)</span>
   <span style="color: #705B5F;">;; </span><span style="color: #705B5F;">Traverse through the temperature directories to find out the</span>
-  <span style="color: #705B5F;">;; </span><span style="color: #705B5F;">average file size obtained.</span>
+  <span style="color: #705B5F;">;; </span><span style="color: #705B5F;">average file size obtained. Tail recursive!</span>
   <span style="color: #EAEAFE;">(</span><span style="color: #DC672C;">if</span> <span style="color: #DC672C;">(</span>= <span style="color: #C7AE9D;">(</span>length temp-list<span style="color: #C7AE9D;">)</span> 0<span style="color: #DC672C;">)</span>
       output
-      <span style="color: #DC672C;">(</span><span style="color: #DC672C;">let*</span> <span style="color: #C7AE9D;">(</span><span style="color: #DF6B75;">(</span>dirname <span style="color: #D19965;">(</span>car temp-list<span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
-             <span style="color: #DF6B75;">(</span>temp-string <span style="color: #D19965;">(</span>first <span style="color: #56B5C2;">(</span>last <span style="color: #EAEAFE;">(</span>split-string dirname <span style="color: #E4BF7A;">"/"</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
-             <span style="color: #DF6B75;">(</span>temp-value <span style="color: #D19965;">(</span>substring temp-string 1 <span style="color: #56B5C2;">(</span>length temp-string<span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
-             <span style="color: #DF6B75;">(</span>filesizes <span style="color: #D19965;">(</span>mapcar #'<span style="color: #56B5C2;">(</span>lambda<span style="color: #EAEAFE;">(</span>x<span style="color: #EAEAFE;">)</span>
-                                    <span style="color: #EAEAFE;">(</span>file-attribute-size <span style="color: #DC672C;">(</span>file-attributes x<span style="color: #DC672C;">)</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span>
-                                <span style="color: #56B5C2;">(</span>directory-files dirname t <span style="color: #E4BF7A;">".*png"</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span><span style="color: #C7AE9D;">)</span>
-        <span style="color: #C7AE9D;">(</span>traverse-temperatures <span style="color: #DF6B75;">(</span>cdr temp-list<span style="color: #DF6B75;">)</span>
-                               <span style="color: #DF6B75;">(</span>concat output
-                                       <span style="color: #D19965;">(</span>format <span style="color: #E4BF7A;">"|%s |%d|\n"</span>
-                                               <span style="color: #56B5C2;">(</span>replace-regexp-in-string <span style="color: #E4BF7A;">"p"</span> <span style="color: #E4BF7A;">"."</span> temp-value<span style="color: #56B5C2;">)</span>
-                                               <span style="color: #56B5C2;">(</span>/ <span style="color: #EAEAFE;">(</span>reduce #'+ filesizes<span style="color: #EAEAFE;">)</span> <span style="color: #EAEAFE;">(</span>length filesizes<span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span><span style="color: #C7AE9D;">)</span><span style="color: #DC672C;">)</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span>
+    <span style="color: #DC672C;">(</span><span style="color: #DC672C;">let*</span> <span style="color: #C7AE9D;">(</span><span style="color: #DF6B75;">(</span>dirname <span style="color: #D19965;">(</span>car temp-list<span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
+           <span style="color: #DF6B75;">(</span>temp-string <span style="color: #D19965;">(</span>first <span style="color: #56B5C2;">(</span>last <span style="color: #EAEAFE;">(</span>split-string dirname <span style="color: #E4BF7A;">"/"</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
+           <span style="color: #DF6B75;">(</span>temp-value <span style="color: #D19965;">(</span>substring temp-string 1 <span style="color: #56B5C2;">(</span>length temp-string<span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span>
+           <span style="color: #DF6B75;">(</span>filesizes <span style="color: #D19965;">(</span>mapcar #'<span style="color: #56B5C2;">(</span>lambda<span style="color: #EAEAFE;">(</span>x<span style="color: #EAEAFE;">)</span>
+                                  <span style="color: #EAEAFE;">(</span>file-attribute-size <span style="color: #DC672C;">(</span>file-attributes x<span style="color: #DC672C;">)</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span>
+                              <span style="color: #56B5C2;">(</span>directory-files dirname t <span style="color: #E4BF7A;">".*png"</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span><span style="color: #C7AE9D;">)</span>
+      <span style="color: #C7AE9D;">(</span>traverse-temperatures <span style="color: #DF6B75;">(</span>cdr temp-list<span style="color: #DF6B75;">)</span>
+                             <span style="color: #DF6B75;">(</span>concat output
+                                     <span style="color: #D19965;">(</span>format <span style="color: #E4BF7A;">"|%s |%d|\n"</span>
+                                             <span style="color: #56B5C2;">(</span>replace-regexp-in-string <span style="color: #E4BF7A;">"p"</span> <span style="color: #E4BF7A;">"."</span> temp-value<span style="color: #56B5C2;">)</span>
+                                             <span style="color: #56B5C2;">(</span>/ <span style="color: #EAEAFE;">(</span>reduce #'+ filesizes<span style="color: #EAEAFE;">)</span> <span style="color: #EAEAFE;">(</span>length filesizes<span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span><span style="color: #D19965;">)</span><span style="color: #DF6B75;">)</span><span style="color: #C7AE9D;">)</span><span style="color: #DC672C;">)</span><span style="color: #EAEAFE;">)</span><span style="color: #56B5C2;">)</span>
 
 <span style="color: #56B5C2;">(</span>traverse-temperatures <span style="color: #EAEAFE;">(</span>directory-files <span style="color: #E4BF7A;">"~/sum19/ising/Temps/uniform_init"</span> t <span style="color: #E4BF7A;">"T.*"</span><span style="color: #EAEAFE;">)</span>
                        <span style="color: #E4BF7A;">"#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n"</span><span style="color: #56B5C2;">)</span>
@@ -348,7 +356,7 @@ but it gets the job done.
 Now all we have to do is plot the data that we grabbed from system
 statistics. To do this, we feed the above table into the amazing
 <code>gnuplot</code> and make a simple graph of points in a region of interest
-(T∈[0,5]). 
+(T∈[0,5]).
 </p>
 
 <p>
@@ -390,6 +398,17 @@ I'm lazy.
 </div>
 </div>
 
+<div id="outline-container-org1b53885" class="outline-2">
+<h2 id="org1b53885">Anything more? Always!</h2>
+<div class="outline-text-2" id="text-org1b53885">
+<p>
+So that's great and all but it could be faster, and I need an excuse
+to use Julia.
+</p>
+</div>
+</div>
+
+
 <div id="outline-container-orgadefaa6" class="outline-2">
 <h2 id="orgadefaa6">FAQs that haven't been asked yet</h2>
 <div class="outline-text-2" id="text-orgadefaa6">
@@ -414,7 +433,7 @@ the system. Even for non-equilibrium systems! Amazing! (See <sup><a id="fnr.1.10
 <h3 id="org895989d">why lisp</h3>
 <div class="outline-text-3" id="text-org895989d">
 <p>
-i reserve the right to withhold a response to this.
+i reserve the right to withhold a response to this
 </p>
 </div>
 </div>
@@ -425,7 +444,7 @@ i reserve the right to withhold a response to this.
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
 An amazing paper by Dov Levine and his group on the usage of
-information entropy to detect order-disorder phase transitions: <a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031">https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031</a>
+information entropy to detect order-disorder phase transitions: <a href="https://journals.aps.org/prx/abstract/10.1103/">https://journals.aps.org/prx/abstract/10.1103/</a>
 </p></div></div>
 
 
