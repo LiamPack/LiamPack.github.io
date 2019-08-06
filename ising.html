@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-06 Tue 18:53 -->
+<!-- 2019-08-06 Tue 19:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compression and the ising model</title>
@@ -141,7 +141,7 @@ function:
 </p>
 
 <p>
-\[ H(\mathcal{S}_{N}) = -(J\sum_{i,N(i)}n^{i}n^{N(i)} + \mu\sum_{i}Bn_{i}).\]
+\[ H(\mathcal{S}_{N}) = -(J\sum_{i,N(i)}s^i s^{N(i)}+ \mu\sum_{i}Bs^{i}_{}_{}).\]
 </p>
 
 <p>
@@ -150,7 +150,8 @@ of any better notation, so we'll deal with it for now.  Breaking
 this down, we can see that the first term represents the
 interaction between two cells that are neighbors, and the second
 term represents the bias given by a uniform magnetic field imposed
-on the system. This bias will skew the magnetics towards a certain spin.
+on the system. This bias will skew the magnetics towards a certain
+spin.
 </p>
 
 <p>
@@ -158,9 +159,8 @@ We have all the power, so we're going to drop the second term since
 we don't care about a bias towards one spin or another (although
 I'm more of a spin-up kinda guy myself, but I'll leave that for
 another day). But then where do the dynamics come in? Well hold
-your horses my god. The probability of a specific
-configuration being chosen is given by the classic Boltzmann
-distribution:
+your horses. The probability of a specific configuration being
+chosen is given by the classic Boltzmann distribution:
 </p>
 
 <p>
@@ -169,23 +169,22 @@ distribution:
 
 <p>
 Looking at this now, people who know a bit of machine learning
-might notice this is a softmax function on the exponent in the
-numerator (\(Z_T\) is a normalizing constant given by the partition
-function).
+might notice this is a softmax function (\(Z_T\) is a normalizing
+constant given by the partition function). Not sure the
+significance of this since I'm not fluent in ML or physics so let
+me know if there is one. Otherwise, i'm calling it neat.
 </p>
 
 <p>
-Let's try to pin down the dynamics. We'll look at the edge cases at
-\(T=1\) because I reserve the right to choose my temperatures. If
-every cell is spin-up <span class="underline">or</span> spin-down, thenvthe energy simply
-\(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and every
-cell has four neighbors, then we get something like \(H =
-   -4NJ\). Here, the corresponding probability of that low energy state
-to occur is at a maximum. Then in the extreme where every neighbor
-of a cell is the the opposing magnetization, \(H = 4NJ\) and its
-corresponding probability is at a minimum. So by continuity or
-something, the system will favor confiugrations that are at least
-locally uniformly magnetized.
+Let's try to pin down the dynamics. If every cell is spin-up <span class="underline">or</span>
+spin-down, thenvthe energy simply \(-J\sum_{i,N(i)}1\). If we apply
+periodic boundary conditions and every cell has four neighbors,
+then we get something like \(H = -4NJ\). Here, the corresponding
+probability of that low energy state to occur is at a maximum. Then
+in the extreme where every neighbor of a cell is the the opposing
+magnetization, \(H = 4NJ\) and its corresponding probability is at a
+minimum. So by continuity or something, the system will favor
+confiugrations that are at least locally uniformly magnetized.
 </p>
 
 <p>
