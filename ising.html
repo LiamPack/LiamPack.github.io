@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-06 Tue 01:26 -->
+<!-- 2019-08-06 Tue 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compression and the ising model</title>
@@ -406,11 +406,42 @@ So that's great and all but it could be faster, and I need an excuse
 to get back to <code>C</code>.
 </p>
 
+<p>
+But how will we make nice looking videos and graphics with <code>C</code>? I'm
+glad you asked thank you. There are these amazing file formats known
+as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file formats</a>. A stream of these can be converted by a
+good video encoder (like <code>x264</code>) to an mp4 which you can view to your
+own pleasure. You can find the code <span class="underline">here</span>.
+</p>
+
+<p>
+Usage:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">./ising | x264 --fps 60 -o video.mp4 /dev/stdin
+</pre>
+</div>
+
+<p>
+If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code>ffmpeg</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">ffmpeg   -i video.mp4   -r 30   -vf <span style="color: #999999;">scale</span>=512:-1   -ss 00:00:01 -to 00:00:04 video.gif
+</pre>
+</div>
+
 
 <div class="figure">
 <p><img src="img/video.gif" alt="video.gif" />
 </p>
+<p><span class="figure-number">Figure 2: </span>N=500, 1k sweeps at T=2.2691 (close to critical point)</p>
 </div>
+
+<p>
+It's bigger faster better stronger. Might do some correlation length
+analysis with this code sometime in the future. tune in I guess
+</p>
 </div>
 </div>
 
