@@ -3,25 +3,22 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-26 Mon 00:21 -->
+<!-- 2019-08-27 Tue 12:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Liam Packer" />
-<link rel="alternate" type="appliation/rss+xml"
-                href="http://bastibe.de/rss.xml"
-                title="RSS feed for bastibe.de">
+
           <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin' rel='stylesheet' type='text/css'>
           <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
-          <link href= "static/style.css" rel="stylesheet" type="text/css" />
           <title>LPac's Pages</title>
           <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
           <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
 </head>
 <body>
 <div id="preamble" class="status">
-<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<link rel="stylesheet" type="text/css" href="css/org.css"/>
             <div class="header">
               <div class="title"><a href="/">LPac's Pages</a></div>
               <div class="sitelinks">
@@ -30,21 +27,53 @@
           </div>
 </div>
 <div id="content">
-<div id="outline-container-org7839d01" class="outline-2">
-<h2 id="org7839d01">welcome to the site</h2>
-<div class="outline-text-2" id="text-org7839d01">
+<div id="outline-container-orga80175d" class="outline-2">
+<h2 id="orga80175d">About</h2>
+<div class="outline-text-2" id="text-orga80175d">
 <p>
-hey i'm liam and i do things at swarthmore college like math and
-physics and sometimes cs. thanks for dropping by 
+hey I'm Liam and I'm a math/physics student who likes cs
+too. hoping you enjoy any content you find here. 
 </p>
 </div>
 </div>
 <div id="outline-container-org37abca9" class="outline-2">
 <h2 id="org37abca9">Recent Posts</h2>
 <div class="outline-text-2" id="text-org37abca9">
-<ul class="org-ul">
-<li><a href="ising.html">ising model and information entropy</a></li>
-</ul>
+</div>
+<div id="outline-container-org0ca6401" class="outline-3">
+<h3 id="org0ca6401"><a href="ising.html">ising model and information entropy</a></h3>
+<div class="outline-text-3" id="text-org0ca6401">
+<p>
+&#x2026;
+  But how will we make nice looking videos and graphics with <code>C</code>? I'm
+  glad you asked thank you. There are these amazing file formats known
+  as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file formats</a>. A stream of these can be piped to a
+  good video encoder (like <code>x264</code>) to an mp4 which you can view to your
+  own pleasure. You can find the code <a href="https://github.com/Lucrio/c_ising">here</a>.
+</p>
+
+<p>
+Usage:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">   ./ising | x264 --fps 60 -o video.mp4 /dev/stdin
+</pre>
+</div>
+
+<p>
+If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code>ffmpeg</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">   ffmpeg   -i video.mp4   -r 30   -vf <span style="color: #BA36A5;">scale</span>=512:-1   -ss 00:00:01 -to 00:00:04 video.gif
+</pre>
+</div>
+
+<p>
+  <img src="img/video.gif" alt="video.gif" />
+<a href="ising.html">&#x2026;</a>
+</p>
+</div>
 </div>
 </div>
 </div>
