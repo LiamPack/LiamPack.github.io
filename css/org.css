@@ -1,645 +1,559 @@
-@import "normalize.css";
-@import "htmlize.css";
-
-$sans: Helvetica, sans-serif;
-$serif: Georgia, serif;
-$monospace: Lucida Console, monospace;
-$code-size: 80%;
-$smaller: 90%;
-$max-width: 710px;
-
-body {
-    width: 95%;
-    margin: 2% auto;
-    font-size: 14px;
-    line-height: 1.4em;
-    font-family: $serif;
-    color: #333;
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/static/css/notes.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* use normalize.css instead of reset
+   http://stackoverflow.com/a/8357635/114833 */
+/* @import "compass/reset"; */
+@import "https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Source+Code+Pro|Source+Sans+Pro:700,700i";
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html,
+button,
+input,
+select,
+textarea {
+  color: #484C66;
 }
 
-@media screen and (min-width: 600px) {
-    body {
-        font-size: 18px;
-    }
+html {
+  font-size: 90%;
+  line-height: 1.4;
 }
 
-@media screen and (min-width: 910px) {
-    body {
-        width: 900px;
-    }
-}
-
-::selection {
-    background: #D6EDFF;
-}
-
-p {
-    margin: 1em auto;
-}
-
-ol,ul {
-    margin: 0 auto;
-}
-
-dl {
-    margin: 0 auto;
-}
-
-.header {
-    text-align: justify;
-    font-size: 24px;
-    line-height: 40px;
-    font-weight: 200;
-    box-shadow: 0px 2px 2px grey;
-    background:  ;
-    color: #eee;
-    border: solid 3px transparent;
-    border-bottom-color: #ffff;
-    text-align: center;
-}
-
-.sitelinks {
-    font-size: 12pt;
-    line-height: 30px;
-    color: #888; 
-}
-
-.title {
-    text-align: center;
-    margin: 0.8em auto;
-    color: black;
-}
-
-.subtitle {
-    text-align: center;
-    font-size: 1.1em;
-    line-height: 1.4;
-    font-weight: bold;
-    margin: 1em auto;
-}
-
-.abstract {
-    margin: auto;
-    width: 80%;
-    font-style: italic;
-}
-
-.abstract p:last-of-type:before {
-    content: "    ";
-    white-space: pre;
-}
-
-.status {
-    font-size: $smaller;
-    margin: 2em auto;
-}
-
-[class^="section-number-"] {
-    margin-right: .5em;
-}
-
-[id^="orgheadline"] {
-    clear: both;
-}
-
-#footnotes {
-    font-size: $smaller;
-}
-
-.footpara {
-    display: inline;
-    margin: .2em auto;
-}
-
-.footdef {
-    margin-bottom: 1em;
-}
-
-.footdef sup {
-    padding-right: .5em;
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
-    color: #527d9a;
-    text-decoration: none;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -hp-pre-wrap;
+  word-wrap: break-word;
+  text-decoration: none;
 }
-
 a:hover {
-    color: #003355;
-    border-bottom: 1px dotted;
+  color: #EA4C89;
 }
 
-figure {
-    padding: 0px;
-    margin: 1em auto;
-    text-align: center;
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #EA4C89;
+  color: #FFF;
+  text-shadow: none;
 }
 
-img {
-    max-width: 100%;
-    vertical-align: middle;
+::selection {
+  background: #EA4C89;
+  color: #FFF;
+  text-shadow: none;
 }
 
-.MathJax_Display {
-    margin: 0!important;
-    width: $smaller!important;
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px dashed #CCC;
+  margin: 1em 0;
+  padding: 0;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    color: #A5573E;
-    line-height: 1em;
-    font-family: $sans;
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle;
 }
 
-h1,h2,h3 {
-    line-height: 1.4em;
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
-h4,h5,h6 {
-    font-size: 1em;
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
 }
 
-@media screen and (min-width: 600px) {
-    h1 {
-        font-size: 2em;
-    }
-    h2 {
-        font-size: 1.5em;
-    }
-    h3 {
-        font-size: 1.3em;
-    }
-    h1,h2,h3 {
-        line-height: 1.4em;
-    }
-    h4,h5,h6 {
-        font-size: 1.1em;
-    }
-}
-
-dt {
-    font-weight: bold;
-}
-
-/* table */
-
-table {
-    margin: 1em auto;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-    border-collapse: collapse;
-}
-
-thead {
-    border-bottom: 2px solid;
-}
-
-table td + td, table th + th {
-    border-left: 1px solid gray;
-}
-
-table tr {
-    border-top: 1px solid lightgray;
-}
-
-td,th {
-    padding: 0.3em 0.6em;
-    vertical-align: middle;
-}
-
-caption.t-above {
-    caption-side: top;
-}
-
-caption.t-bottom {
-    caption-side: bottom;
-}
-
-caption {
-    margin-bottom: 0.3em;
-}
-
-figcaption {
-    margin-top: 0.3em;
-}
-
-th.org-right {
-    text-align: center;
-}
-
-th.org-left {
-    text-align: center;
-}
-
-th.org-center {
-    text-align: center;
-}
-
-td.org-right {
-    text-align: right;
-}
-
-td.org-left {
-    text-align: left;
-}
-
-td.org-center {
-    text-align: center;
-}
-
-blockquote {
-    margin: 1em 2em;
-    padding-left: 1em;
-    border-left: 3px solid #ccc;
-}
-
-kbd {
-    background-color: #f7f7f7;
-    font-size: $code-size;
-    margin: 0 .1em;
-    padding: .1em .6em;
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.todo,
+.done,
+.tag {
+  font-family: "Source Pro", Monaco, "Courier New", monospace;
+  padding: 0 0.3em;
+  background-color: #EEE;
+  border: 1px solid #CCC;
 }
 
 .todo {
-    background-color: red;
-    color: white;
-    padding: .1em 0.3em;
-    border-radius: 3px;
-    background-clip: padding-box;
-    font-size: $code-size;
-    font-family: $monospace;
-    line-height: 1;
+  color: #DD4433;
 }
 
 .done {
-    background-color: green;
-    color: white;
-    padding: .1em 0.3em;
-    border-radius: 3px;
-    background-clip: padding-box;
-    font-size: $code-size;
-    font-family: $monospace;
-    line-height: 1;
-}
-
-.priority {
-    color: orange;
-    font-family: $monospace;
-}
-
-/* Because tag span is set to float.  This is more like a hacking.  Maybe we
-   need a cleaner solution. */
-#table-of-contents li {
-    clear: both;
+  color: #44934B;
 }
 
 .tag {
-    font-family: $monospace;
-    font-size: 0.7em;
-    font-weight: normal;
-}
-
-.tag span {
-    padding: 0.3em 0.3em;
-    float: right;
-    margin-right: .5em;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    background-clip: padding-box;
-    color: #333;
-    background-color: #eee;
-    line-height: 1;
+  font-size: 80%;
+  font-weight: normal;
+  margin: 0 0.3em;
+  display: none;
 }
 
 .timestamp {
-    color: #bebebe;
-    font-size: $smaller;
+  color: #BEBEBE;
 }
 
 .timestamp-kwd {
-    color: #5f9ea0;
+  color: #5F9EA0;
 }
 
-.org-right {
-    margin-left: auto;
-    margin-right: 0px;
-    text-align: right;
+.right {
+  margin-left: auto;
+  margin-right: 0px;
+  text-align: right;
 }
 
-.org-left {
-    margin-left: 0px;
-    margin-right: auto;
-    text-align: left;
+.left {
+  margin-left: 0px;
+  margin-right: auto;
+  text-align: left;
 }
 
-.org-center {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-#postamble p, #preamble p {
-    font-size: $smaller;
-    margin: .2em;
+#postamble p,
+#preamble p {
+  font-size: 90%;
+  margin: .2em;
 }
 
-p.verse {
-    margin-left: 3%;
+pre,
+code {
+  font-family: "Source Pro", Monaco, "Courier New", monospace;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }
 
-:not(pre) > code {
-    padding: 2px 5px;
-    margin: auto 1px;
-    border: 1px solid #DDD;
-    border-radius: 3px;
-    background-clip: padding-box;
-    color: #333;
-    font-size: $code-size;
+pre {
+  font-size: 90%;
+  padding: 8pt;
+  overflow: auto;
+  white-space: pre;
+  word-wrap: normal;
 }
 
-.org-src-container {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    font-family: $monospace;
-    font-size: $code-size;
-    margin: 1em auto;
-    padding: 0.1em 0.5em;
-    position: relative;
+pre.src {
+  position: relative;
+}
+pre.src:before {
+  display: none;
+  position: absolute;
+  background-color: #FFF;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 4px;
+  border: 1px solid #CCC;
 }
 
-.org-src-container>pre {
-    overflow: auto;
+pre.src-sh:before {
+  content: "Shell Script";
 }
 
-.org-src-container>pre:before {
-    display: block;
-    position: absolute;
-    background-color: #b3b3b3;
-    top: 0;
-    right: 0;
-    padding: 0 0.5em;
-    border-bottom-left-radius: 8px;
-    border: 0;
-    color: white;
-    font-size: $code-size;
+pre.src-bash:before {
+  content: "Bash Script";
 }
 
-/* from http://demo.thi.ng/org-spec/ */
-
-.org-src-container>pre.src-sh:before {
-    content: 'sh';
-}
-.org-src-container>pre.src-bash:before {
-    content: 'bash';
-}
-.org-src-container>pre.src-emacs-lisp:before {
-    content: 'Emacs Lisp';
-}
-.org-src-container>pre.src-R:before {
-    content: 'R';
-}
-.org-src-container>pre.src-org:before {
-    content: 'Org';
-}
-.org-src-container>pre.src-cpp:before {
-    content: 'C++';
-}
-.org-src-container>pre.src-c:before {
-    content: 'C';
-}
-.org-src-container>pre.src-html:before {
-    content: 'HTML'
-}
-.org-src-container>pre.src-js:before {
-    content: 'Javascript'
-}
-.org-src-container>pre.src-javascript:before {
-    content: 'Javascript'
+pre.src-emacs-lisp:before {
+  content: "Emacs Lisp";
 }
 
-// More languages from http://orgmode.org/worg/org-contrib/babel/languages.html
+pre.src-R:before {
+  content: "R";
+}
 
-.org-src-container>pre.src-abc:before {
-    content: 'ABC';
+pre.src-perl:before {
+  content: "Perl";
 }
-.org-src-container>pre.src-asymptote:before {
-    content: 'Asymptote';
+
+pre.src-java:before {
+  content: "Java";
 }
-.org-src-container>pre.src-awk:before {
-    content: 'Awk';
+
+pre.src-sql:before {
+  content: "SQL";
 }
-.org-src-container>pre.src-C:before {
-    content: 'C';
+
+pre.src-c:before {
+  content: "C";
 }
-.org-src-container>pre.src-calc:before {
-    content: 'Calc';
+
+pre.src-cpp:before {
+  content: "C++";
 }
-.org-src-container>pre.src-clojure:before {
-    content: 'Clojure';
+
+pre.src-html:before {
+  content: "HTML";
 }
-.org-src-container>pre.src-comint:before {
-    content: 'comint';
+
+table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
 }
-.org-src-container>pre.src-css:before {
-    content: 'CSS';
+
+caption.t-above {
+  caption-side: top;
 }
-.org-src-container>pre.src-D:before {
-    content: 'D';
+
+caption.t-bottom {
+  caption-side: bottom;
 }
-.org-src-container>pre.src-ditaa:before {
-    content: 'Ditaa';
+
+td, th {
+  vertical-align: top;
+  border: 1px solid #CCC;
+  padding: 0.5em;
 }
-.org-src-container>pre.src-dot:before {
-    content: 'Dot';
+
+th.right {
+  text-align: center;
 }
-.org-src-container>pre.src-ebnf:before {
-    content: 'ebnf';
+
+th.left {
+  text-align: center;
 }
-.org-src-container>pre.src-forth:before {
-    content: 'Forth';
+
+th.center {
+  text-align: center;
 }
-.org-src-container>pre.src-F90:before {
-    content: 'Fortran';
+
+td.right {
+  text-align: right;
 }
-.org-src-container>pre.src-gnuplot:before {
-    content: 'Gnuplot';
+
+td.left {
+  text-align: left;
 }
-.org-src-container>pre.src-haskell:before {
-    content: 'Haskell';
+
+td.center {
+  text-align: center;
 }
-.org-src-container>pre.src-io:before {
-    content: 'Io';
+
+dt {
+  font-weight: bold;
 }
-.org-src-container>pre.src-java:before {
-    content: 'Java';
+
+#footnotes {
+  border-top: 5px solid #EA4C89;
+  margin-bottom: 5em;
 }
-.org-src-container>pre.src-latex:before {
-    content: 'LaTeX';
+#footnotes h2 {
+  display: none;
 }
-.org-src-container>pre.src-ledger:before {
-    content: 'Ledger';
+
+#text-footnotes {
+  margin-top: 1em;
 }
-.org-src-container>pre.src-ly:before {
-    content: 'Lilypond';
+
+.footpara:nth-child(2) {
+  display: inline;
 }
-.org-src-container>pre.src-lisp:before {
-    content: 'Lisp';
+
+.footpara {
+  display: block;
 }
-.org-src-container>pre.src-makefile:before {
-    content: 'Make';
+
+.footdef sup:before {
+  content: "[";
 }
-.org-src-container>pre.src-matlab:before {
-    content: 'Matlab';
+.footdef sup:after {
+  content: "]";
 }
-.org-src-container>pre.src-max:before {
-    content: 'Maxima';
+.footdef p {
+  display: inline;
 }
-.org-src-container>pre.src-mscgen:before {
-    content: 'Mscgen';
+
+figure {
+  margin: 0;
 }
-.org-src-container>pre.src-Caml:before {
-    content: 'Objective';
+figure img {
+  max-width: 100%;
 }
-.org-src-container>pre.src-octave:before {
-    content: 'Octave';
-}
-.org-src-container>pre.src-org:before {
-    content: 'Org';
-}
-.org-src-container>pre.src-perl:before {
-    content: 'Perl';
-}
-.org-src-container>pre.src-picolisp:before {
-    content: 'Picolisp';
-}
-.org-src-container>pre.src-plantuml:before {
-    content: 'PlantUML';
-}
-.org-src-container>pre.src-python:before {
-    content: 'Python';
-}
-.org-src-container>pre.src-ruby:before {
-    content: 'Ruby';
-}
-.org-src-container>pre.src-sass:before {
-    content: 'Sass';
-}
-.org-src-container>pre.src-scala:before {
-    content: 'Scala';
-}
-.org-src-container>pre.src-scheme:before {
-    content: 'Scheme';
-}
-.org-src-container>pre.src-screen:before {
-    content: 'Screen';
-}
-.org-src-container>pre.src-sed:before {
-    content: 'Sed';
-}
-.org-src-container>pre.src-shell:before {
-    content: 'shell';
-}
-.org-src-container>pre.src-shen:before {
-    content: 'Shen';
-}
-.org-src-container>pre.src-sql:before {
-    content: 'SQL';
-}
-.org-src-container>pre.src-sqlite:before {
-    content: 'SQLite';
-}
-.org-src-container>pre.src-stan:before {
-    content: 'Stan';
-}
-.org-src-container>pre.src-vala:before {
-    content: 'Vala';
-}
-.org-src-container>pre.src-axiom:before {
-    content: 'Axiom';
-}
-.org-src-container>pre.src-browser:before {
-    content: 'HTML';
-}
-.org-src-container>pre.src-cypher:before {
-    content: 'Neo4j';
-}
-.org-src-container>pre.src-elixir:before {
-    content: 'Elixir';
-}
-.org-src-container>pre.src-request:before {
-    content: 'http';
-}
-.org-src-container>pre.src-ipython:before {
-    content: 'iPython';
-}
-.org-src-container>pre.src-kotlin:before {
-    content: 'Kotlin';
-}
-.org-src-container>pre.src-Flavored Erlang  lfe:before {
-    content: 'Lisp';
-}
-.org-src-container>pre.src-mongo:before {
-    content: 'MongoDB';
-}
-.org-src-container>pre.src-prolog:before {
-    content: 'Prolog';
-}
-.org-src-container>pre.src-rec:before {
-    content: 'rec';
-}
-.org-src-container>pre.src-ML  sml:before {
-    content: 'Standard';
-}
-.org-src-container>pre.src-Translate  translate:before {
-    content: 'Google';
-}
-.org-src-container>pre.src-typescript:before {
-    content: 'Typescript';
-}
-.org-src-container>pre.src-rust:before {
-    content: 'Rust';
+
+figcaption {
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 .inlinetask {
-    background: #ffffcc;
-    border: 2px solid gray;
-    margin: 10px;
-    padding: 10px;
+  padding: 10px;
+  border: 2px solid gray;
+  margin: 10px;
+  background: #ffffcc;
 }
 
 #org-div-home-and-up {
-    font-size: 70%;
-    text-align: right;
-    white-space: nowrap;
+  text-align: right;
+  font-size: 70%;
+  white-space: nowrap;
+}
+
+textarea {
+  overflow-x: auto;
 }
 
 .linenr {
-    font-size: $smaller;
+  font-size: smaller;
 }
 
 .code-highlighted {
-    background-color: #ffff00;
+  background-color: #ffff00;
 }
 
-#bibliography {
-    font-size: $smaller;
+.org-info-js_info-navigation {
+  border-style: none;
 }
 
-#bibliography table {
-    width: 100%;
+#org-info-js_console-label {
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
-.creator {
+.org-info-js_search-highlight {
+  background-color: #ffff00;
+  color: #000000;
+  font-weight: bold;
+}
+
+p.verse,
+blockquote {
+  margin: 0;
+  padding: 0;
+  padding-left: 3%;
+  border-left: 5px solid #EA4C89;
+}
+
+body {
+  font-family: Lora, Palatino, Georgia, serif;
+  width: 92%;
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #FFF;
+}
+
+h2 {
+  line-height: 1.62em;
+}
+
+.title {
+  margin: 0 0 2em 0;
+  line-height: 2em;
+  border-bottom: 5px solid #EA4C89;
+  text-align: center;
+}
+
+#postamble {
+  font-size: 80%;
+  line-height: 1.4em;
+  text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #222;
+}
+
+.outline-2 {
+  margin-bottom: 4em;
+}
+.outline-2 h2 {
+  border-bottom: 1px solid #CCC;
+}
+
+.outline-text-2 code, pre {
+  background-color: #EEE;
+}
+
+#table-of-contents {
+  display: none;
+  margin-left: 0.5em;
+}
+
+#text-table-of-contents ul {
+  padding-left: 1.8em;
+}
+#text-table-of-contents li {
+  list-style-type: circle;
+  margin: 0.4em 0;
+}
+#text-table-of-contents ul ul {
+  margin: 0;
+}
+#text-table-of-contents li li {
+  font-weight: normal;
+  font-size: 90%;
+  margin: 0;
+}
+
+#content {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    /* border: 1px solid #999; */
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  #table-of-contents {
     display: block;
+    width: initial;
+    border: none;
+  }
+  #table-of-contents a {
+    text-decoration: none;
+  }
 }
+/* large screen */
+@media screen and (min-width: 40rem) {
+  html {
+    font-size: 100%;
+  }
 
-@media screen and (min-width: 600px) {
-    .creator {
-        display: inline;
-        float: right;
-    }
+  #table-of-contents {
+    display: block;
+    padding: 1em;
+    width: 32%;
+    min-width: 18em;
+    float: right;
+    background-color: #EEE;
+    position: relative;
+    /* required by z-index */
+    z-index: 5000;
+    border: 1px solid #CCC;
+  }
+
+  .tag {
+    display: initial;
+  }
 }
