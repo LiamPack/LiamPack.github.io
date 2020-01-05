@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-08-27 Tue 19:00 -->
+<!-- 2020-01-04 Sat 20:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compression and the ising model</title>
@@ -48,74 +48,84 @@
 <div id="content">
 <h1 class="title">Compression and the ising model</h1>
 <p>
+<i>status: in-progress</i>
+</p>
+
+<p>
 <i>first draft: Jul 10th, 2019</i>
 </p>
 
 <p>
-<i>recent update: Aug 27th, 2019</i>
-</p>
-
-<p>
-<i>estimated read time: that's on you</i>
+<i>recent update: Dec 4th, 2020</i>
 </p>
 
 <div id="outline-container-org2b07163" class="outline-2">
-<h2 id="org2b07163">some background if you need it</h2>
+<h2 id="org2b07163"><span class="todo "></span> some background if you need it</h2>
 <div class="outline-text-2" id="text-org2b07163">
 <p>
-Recently as I was doing some reading<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on applying information
-theory to detect phase transitions in non-equilibrium systems. What
-does non-equilibrium mean? well it's a long story.
+Recently as I was doing some reading<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on applying information theory to
+detect phase transitions in non-equilibrium systems. What does non-equilibrium
+mean? Well it's a long story, but the "essence" of equilibrium is that that
+energy only fluctuates locally. And I'm going to leave it at that. What does
+information theory mean? That's a big question<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> so I'll act like you
+never said that.
 </p>
 
 <p>
-This stuff is really neat and easy
-to apply. Information theory sounds really scary and I don't know
-much about it, but what I do know about is some good old-fashioned
-compression algorithms. (lossless) compression can be thought of as
-the act of reducing the size of something while holding the same
-"information". When looking at order-disorder phase transitions, you
-may already see where we're heading.
+So what's the deal with information in non-equilibrium systems? In equilibrium
+systems we have all the validity in the world to say there exists a free
+energy and phase transitions happen at critical points in the derivatives of
+the free energy. But we don't have that for, say, an athermal system! So the
+hypothesis is that there are other information measures that can be used other
+than (statmech-sense) entropy \(S=k_B \ln W\). Mr. Levine and company used a more
+information-theoretic approach and still found amazing results!
 </p>
 
 <p>
-As a fun way to learn a little bit of javascript, today I spent some
-time looking at Schroeder's web-based physics simulations you can
-find <a href="https://physics.weber.edu/schroeder/software/">here</a>. As you might have guessed already (dang you're on a
-roll), I looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model simulation</a>.
+As a fun way to learn a little bit of javascript, I spent some time looking at
+Schroeder's web-based physics simulations you can find <a href="https://physics.weber.edu/schroeder/software/">here</a>. As you might have
+guessed already (dang you're on a roll), I looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model
+simulation</a>. It's straightforward to implement this myself (read on!) but
+sometimes you just gotta mess around a bit.
 </p>
 </div>
 
 <div id="outline-container-org1fa4216" class="outline-3">
-<h3 id="org1fa4216">Information</h3>
+<h3 id="org1fa4216"><span class="todo "></span> Information</h3>
 <div class="outline-text-3" id="text-org1fa4216">
 <p>
-I guess we'll talk a little about information content first. If
-you've taken a thermo or stat-mech class, you've probably
-(hopefully (please god i hope you did)) seen some mathematical
-definition of entropy. It comes in a bunch of different looking
-equivalent forms, but the one I'll give to you here is
+I guess we'll talk a little about information content first. If you've taken
+a course in thermodynamics or statistical mechanics, you've probably
+(hopefully (please)) seen some mathematical definition of entropy. It comes
+in a bunch of different looking equivalent forms, but the one I'll give to
+you here is
 </p>
 
 <p>
-\[ S(T) = -k_{B} \sum_{i} p_{i} \ln\, p_{i} \]
+\[ S(X) = -k_{B} \sum_{i} p_{i} \ln\, p_{i} \]
 </p>
 
 <p>
-where p<sub>i</sub> is the probability of finding the system in state \(i\).
-dang isn't that a good-looking equation. There's a lot of content
-in why each part of the expression is chosen. Sometimes the entropy
-is explained to be how "disordered" a system is. This equation says
-something more specific. If we choose a different base for the
-logarithm (say, 2), then the sum is actually long-hand for
-\(E[-\log\,p_{i}]\), the expectation value of the negative
-log-probability. This gives us something to work with
-conceptually. Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving
-us the expected number of <span class="underline">bits</span> that we would need to encode the
-frequencies of states for our system. So it's giving us a sort of
-"best guess" on the amount of information needed to completely
-describe our system in all of its probabilistic glory. Or something
-like that, I'm new to this too.
+where \(p_i\) is the probability of finding the system in state a \(i\). If you're
+in thermal equilibrium, \(p_i\) follows a boltzmann distribution in energies
+\(E_i\) with a "free" parameter \(T\). The advantage of using this form will be
+soon-evident.
+</p>
+
+<p>
+Anyway, dang isn't that a good-looking equation. There's a lot of content in
+why each part of the expression is chosen. Sometimes the entropy is explained
+to be how "disordered" a system is, which I don't quite like (e.g it's not
+clear water-oil phase separation is the result of "disorder"). This equation
+says something more specific. If we choose a different base for the logarithm
+(say, base \(2\)), then the sum is actually long-hand for \(E[-\log\,p_{i}]\), the
+expectation value of the negative log-probability. This gives us something to
+work with conceptually. Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving
+us the expected number of <span class="underline">bits</span> that we would need to encode the frequencies
+of states for our system. So it's giving us a sort of "best guess" on the
+amount of information needed to completely describe our system in all of its
+probabilistic glory. Or something like that, I'm new to this representation
+of \(S\) too.
 </p>
 
 <p>
@@ -123,64 +133,58 @@ The Shannon entropy might look familiar:
 </p>
 
 <p>
-\[H(X) = \sum_{i} p_{i} \log\, p_{i}\]
+\[H(X_i) = \sum_{i} p_{i} \log\, p_{i}\]
 </p>
 
 <p>
-where \(X\) is some random variable I guess. The same analysis above
-holds here, we're just not caring about units (more or less) or the
-second law of thermodynamics anymore.
+where \(p_i\) is the probability of being in a state \(x_i\) available to \(X\). As
+the stereotypical example, let's say \(X\) is the number of heads you can get
+on a single coin flip: then \(X\) can take on the values \(x_0 = 0\) and \(x_1 = 1\)
+with equal probability. The same analysis above holds here, we're just not
+caring about units (more or less) or the second law of thermodynamics anymore
+(scary, I know).
 </p>
-</div>
-
-<div id="outline-container-orgeba3429" class="outline-4">
-<h4 id="orgeba3429">What's the justification for the entropy here? where's my free energy and its derivatives? &gt;:(</h4>
-<div class="outline-text-4" id="text-orgeba3429">
-<p>
-i'll explain this in the future probably just hold tight pls.
-</p>
-</div>
 </div>
 </div>
 
 <div id="outline-container-orgabf9bcb" class="outline-3">
-<h3 id="orgabf9bcb">statmech game of life (better known as the ising model)</h3>
+<h3 id="orgabf9bcb"><span class="todo "></span> statmech game of life (better known as the ising model)</h3>
 <div class="outline-text-3" id="text-orgabf9bcb">
 <p>
-Now what exactly is the <a href="https://en.wikipedia.org/wiki/Ising_model">ising model</a>? If you took CS31 at Swarthmore
-College<sup>tm</sup> you'll note that some of the finite-sized simulations
-look a bit like a game of life model, but more chaotic depending on
-the temperature. Just like in GoL, there are two possible states
-that a cell could be in. In the case of the ising model the states,
-or alphabet, are \(\mathcal{A} = \{-1, 1\}\). A state of size \(N\)
-chosen from this alphabet we'll denote \(\mathcal{S}_{N} \equiv \{s^{1},
-   \cdots, s^{N}\}\).  These states represent "spin up" and "spin down", the
-magnetic dipole moments of the atomic spins. As for the dynamics,
-we get most of the picture just by looking at the Hamiltonian
-function:
+Now what exactly is the <a href="https://en.wikipedia.org/wiki/Ising_model">ising model</a>? If you took CS31 at Swarthmore College<sup>tm</sup>
+you'll note that some of the finite-sized simulations look a bit like a game
+of life model, but more chaotic depending on the temperature. Just like in
+GoL, there are two possible states that a cell could be in. In the case of
+the ising model, the possible states can be encoded as \(\mathcal{A} = \{-1,
+   1\}\). A state of size \(N\) chosen from this alphabet we'll denote
+\(\mathcal{S}_{N} \equiv \{s^{1}, \cdots, s^{N}\}\) where \(s^i \in \mathcal{A}\). These states represent "spin up"
+and "spin down", which physically corresponds to the magnetic dipole moments
+of the atomic spin of some atom. As for the dynamics, we get most of the
+picture just by looking at the Hamiltonian for a given state:
 </p>
 
 <p>
-<code>\[ H(\mathcal{S}_{N}) = -\left(J\sum_{i,N(i)}s^i s^{N(i)}+ \mu\sum_{i}Bs^{i}\right).\]</code>
+\[H(\mathcal{S}_N) = -J\sum_{i, N(i)} s^i s^{N(i)} - \mu \sum_i B s^i. \]
 </p>
 
 <p>
-Here I denoted the neighbors of cell \(i\) as \(N(i)\). Couldn't think
-of any better notation, so we'll deal with it for now.  Breaking
-this down, we can see that the first term represents the
-interaction between two cells that are neighbors, and the second
-term represents the bias given by a uniform magnetic field imposed
-on the system. This bias will skew the magnetics towards a certain
-spin.
+Here I denoted the neighbors of cell \(i\) as \(N(i)\). Couldn't think of any
+better notation, so we'll deal with it. Breaking this down, we can see that
+the first term represents the interaction between two cells that are
+neighbors and the second term represents the bias given by a uniform magnetic
+field imposed on the system. This bias will skew the magnetics towards a
+certain spin direction. The bias is akin to giving an intercept to a straight
+line: the character of the line is the same but, instead of having it run
+through the origin, it runs through a different intercept value.
 </p>
 
 <p>
-We have all the power, so we're going to drop the second term since
-we don't care about a bias towards one spin or another (although
-I'm more of a spin-up kinda guy myself, but I'll leave that for
-another day). But then where do the dynamics come in? Well hold
-your horses. The probability of a specific configuration being
-chosen is given by the classic Boltzmann distribution:
+We have all the power, so we're going to drop the second term since we don't
+care about a bias towards one spin or another. Or at least I'm not, maybe you
+are. Feel free to voice your concerns. Okay okay but what aobut dynamics?
+Well hold your horses. Since we're in thermal equilibrium, the probability of
+a specific configuration being chosen is given by the classic Boltzmann
+distribution:
 </p>
 
 <p>
@@ -188,23 +192,22 @@ chosen is given by the classic Boltzmann distribution:
 </p>
 
 <p>
-Looking at this now, people who know a bit of machine learning
-might notice this is a softmax function (\(Z_T\) is a normalizing
-constant given by the partition function). Not sure the
-significance of this since I'm not fluent in ML or physics so let
-me know if there is one. Otherwise, i'm calling it neat.
+(Looking at this now, people who know a bit of machine learning might notice
+this is a softmax function (\(Z_T\) is a normalizing constant given by the
+partition function). Not sure the significance of this since I'm not fluent
+in ML right now. Otherwise, i'm calling it neat that math/cs stole from
+nature.)
 </p>
 
 <p>
-Let's try to pin down the dynamics. If every cell is spin-up <span class="underline">or</span>
-spin-down, thenvthe energy simply \(-J\sum_{i,N(i)}1\). If we apply
-periodic boundary conditions and every cell has four neighbors,
-then we get something like \(H = -4NJ\). Here, the corresponding
-probability of that low energy state to occur is at a maximum. Then
-in the extreme where every neighbor of a cell is the the opposing
-magnetization, \(H = 4NJ\) and its corresponding probability is at a
-minimum. So by continuity or something, the system will favor
-confiugrations that are at least locally uniformly magnetized.
+Let's check some asymptotics first: If every cell is the same spin, then the
+energy simply \(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and
+allow every cell to have four neighbors, then we get something like \(H =
+   -4NJ\). This is a probability-maximum according to \(P_T\), so this is a pretty
+likely state, all things considered. Then in the extreme where every neighbor
+of a cell is the <i>opposing</i> magnetization, \(H = 4NJ\) and its corresponding
+probability is at a minimum. So by continuity or something, the system will
+favor confiugrations that are at least locally uniformly magnetized.
 </p>
 
 <p>
@@ -215,41 +218,41 @@ like that.
 </p>
 
 <p>
-So how would we simulate something like this? Well, being the
-statistical mechanicians we are, we're going to look at a system of
-magnetized atoms as being in a state of thermal equilibrium. Then,
-given a system state \(\mathcal{S}\), we flip a <span class="underline">only one</span> atom from
-one magnetic state to another to remain in thermal equilibrium
-(quasi-static transition between states, reversible, words you may
-have heard before. all good if not). Well how do we choose
-this atom? We put on our computer scientist hat and say "well,
-nothing Monte Carlo simulations can't solve," which is a fancy way
-of saying brute-force choose from a probability distribution. So
-we say, given our state \(\mathcal{S}\) and a single atom flip
-resulting in the state \(\mathcal{S}'\), we choose \(\mathcal{S}'\)
-with probability given by \(P_{T}(S')\). At least that would be my
-guess.
+So how would we simulate something like this? Well, being the statistical
+mechanicians we are we're well prepared for this: for the not final time,
+we're in thermal equilibrium! This means that energy transfer is short-ranged
+and localized. Then, given a system state \(\mathcal{S}\), we're justified in
+flipping <i>only one</i> atom from one magnetic state (quasi-static transition
+between states, reversible, words that mean something to some people). How do
+we choose this atom? We put on our computer scientist hat and say "well,
+nothing Monte Carlo simulations can't solve," which is an annoyingly fancy
+way of saying randomly choose from a probability distribution. So we say,
+given our state \(\mathcal{S}\), flipping atom \(i\) results in the new state
+\(\mathcal{S_i}'\). We choose a new state \(\mathcal{S_i}'\) with probability given
+by \(P_{T}(S_i')\). Not bad on paper!
 </p>
 </div>
 </div>
 </div>
 
 <div id="outline-container-org6f48ba7" class="outline-2">
-<h2 id="org6f48ba7">ok ok i get it but i do cs not physics</h2>
+<h2 id="org6f48ba7"><span class="todo "></span> ok ok i get it but i do cs not physics</h2>
 <div class="outline-text-2" id="text-org6f48ba7">
+<p>
+So this is just nonsense that I was doing on a slow day over the summer.
+</p>
 </div>
 <div id="outline-container-orgd276706" class="outline-3">
-<h3 id="orgd276706">grabbing some of those magnets</h3>
+<h3 id="orgd276706"><span class="todo "></span> grabbing some of those magnets</h3>
 <div class="outline-text-3" id="text-orgd276706">
 <p>
-Okay with that over, we can talk about Schroeder's simulation. If
-you do a little bit of snooping in the source, you'll find the
-javascript <code>src</code> block that implements this simulation procedure. It's
-pretty fast! As you may have read from the preface of the
-simulation, he made this as a proof-of-concept, the concept being
-that javascript driven web-simulations can be fast enough to be
-useful as a pedagogical tool, rather than having to download some
-<code>jar</code> file from PhET.
+Okay with that over, we can talk about Schroeder's simulation. If you do a
+little bit of snooping in the source, you'll find the javascript <code>src</code> block
+that implements this simulation procedure. It's pretty fast, considering its
+js! As you may have read from the preface of the simulation, he made this as
+a proof-of-concept, the concept being that javascript driven web-simulations
+can be fast enough to be useful as a pedagogical tool (compared to
+downloading some old <code>jar</code> file from PhET).
 </p>
 
 <p>
@@ -263,7 +266,7 @@ First we need to take snap-shots of the images that the <code>&lt;canvas&gt;</co
 element is displaying on the web page. To do this, we can use the
 function <code>toDataURL</code> given by the <code>canvas</code> element and have that hold
 the image data. Then, we create a new hyperlink element <code>&lt;a&gt;</code> and
-click on it. Wrap it up in a function and we have our guy. This will
+"click" on it. Wrap it up in a function and we have our guy. This will
 prompt many, many (many) download requests, so don't forget to mark
 "Remember this option" or whatever your computer calls it.
 </p>
@@ -310,22 +313,20 @@ the "remember for next time" box. For your own safety.
 </div>
 
 <p>
-You can make some other modifications, such as randomizing the
-temperature to be within a range (e.g. for [1.8,3] assign <code>T =
-   1.8+Math.random()*1.2</code>). Don't forget to round if you want. I'm not
-ur parent
+You can make some other modifications, such as randomizing the temperature to
+be within a range (e.g. for \([1.8,3]\) assign <code>T = 1.8+Math.random()*1.2</code>).
+Don't forget to round if you want. I'm not ur parent
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgf3d003f" class="outline-3">
-<h3 id="orgf3d003f">dealing with all the files</h3>
+<h3 id="orgf3d003f"><span class="todo "></span> dealing with all the files</h3>
 <div class="outline-text-3" id="text-orgf3d003f">
 <p>
-All the files downloaded were given a name in the format
-<code>T$(temp)_ising$(i)</code>. Therefore all we need is to make a directory
-with name <code>T$(temp)</code> and we'll be all sorted to make some graphs I
-guess.
+All the files downloaded were given a name in the format <code>T$(temp)_ising$(i)</code>.
+Now all we need is to make a directory with name <code>T$(temp)</code> and we'll be
+all sorted to make some graphs I guess.
 </p>
 
 <div class="org-src-container">
@@ -375,7 +376,7 @@ but it gets the job done.
 Now all we have to do is plot the data that we grabbed from system
 statistics. To do this, we feed the above table into the amazing
 <code>gnuplot</code> and make a simple graph of points in a region of interest
-(T∈[0,5]).
+(\(T∈[0,5]\)).
 </p>
 
 <p>
@@ -391,16 +392,6 @@ configuration. Then qualitatively, we may expect the critical point
 to be the inflection point of information content. Who knows.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-gnuplot" id="org1c78ac4"><span style="color: #D0372D;">set</span> <span style="color: #6434A3;">title</span> <span style="color: #008000;">"Temperature vs. filesize of 2D Ising Model (100x100)"</span>
-<span style="color: #D0372D;">set</span> xlabel <span style="color: #008000;">"T"</span>
-<span style="color: #D0372D;">set</span> ylabel <span style="color: #008000;">"Average Compressed File size (KB)"</span>
-<span style="color: #D0372D;">set</span> xrange [<span style="color: #D0372D;">0:5</span>]
-
-<span style="color: #0000FF;">plot</span> data u 1:2 <span style="color: #6434A3;">with</span> <span style="color: #006699;">points</span>
-</pre>
-</div>
-
 
 <div class="figure">
 <p><img src="TvsS.png" alt="TvsS.png" />
@@ -408,29 +399,30 @@ to be the inflection point of information content. Who knows.
 </div>
 
 <p>
-So that's cool, we can probe the critical points of some order
-parameter by looking at the changes in entropy between different
-values of that order parameter. We can probably do even better. But
-I'm lazy.
+So that's cool, we can probe the critical points of some order parameter (in
+this case, an approximation of information entropy). It turns out<sup>tm</sup> that this
+<i>is</i> the critical point of the Ising model where a phase transition occurs. My
+advisor for the summer (not for this project (thanks Amy)) told me it had
+something to do with fractals and self-similarity, so that sounds hard.
 </p>
 </div>
 </div>
 </div>
 
 <div id="outline-container-org91578ae" class="outline-2">
-<h2 id="org91578ae">anything more? well sure</h2>
+<h2 id="org91578ae"><span class="todo "></span> anything more? well sure</h2>
 <div class="outline-text-2" id="text-org91578ae">
 <p>
-So that's great and all but it could be faster, and I need an excuse
+So that's great and all but it could be faster and less hack-y, and I need an excuse
 to get back to <code>C</code>.
 </p>
 
 <p>
-But how will we make nice looking videos and graphics with <code>C</code>? I'm
-glad you asked thank you. There are these amazing file formats known
-as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file formats</a>. A stream of these can be piped to a
-good video encoder (like <code>x264</code>) to an mp4 which you can view to your
-own pleasure. You can find the code <a href="https://github.com/Lucrio/c_ising">here</a>.
+But how will we make nice looking videos and graphics with <code>C</code>? I'm glad you
+asked thank you. There are these amazing file formats known as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file
+formats</a>. A stream of these can be piped to a good video encoder (like <code>x264</code>) to
+an mp4 which you can view to your own pleasure. You can find the code <a href="https://github.com/Lucrio/c_ising">on
+github</a> (nothing to write home about, short at around ~\(90\) lines).
 </p>
 
 <p>
@@ -446,9 +438,14 @@ If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">ffmpeg   -i video.mp4   -r 30   -vf <span style="color: #BA36A5;">scale</span>=512:-1   -ss 00:00:01 -to 00:00:04 video.gif
+<pre class="src src-bash">ffmpeg -i video.mp4 -r 30 -vf <span style="color: #BA36A5;">scale</span>=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
 </pre>
 </div>
+
+<p>
+So the following is really just an implementation of Schroeder's algorithm in
+<code>C</code>.
+</p>
 
 
 <div class="figure">
@@ -459,17 +456,17 @@ If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code
 
 <p>
 It's bigger faster better stronger. Might do some correlation length
-analysis with this code sometime in the future. tune in I guess
+analysis with this code sometime in the future. tune in for more shenaingans I guess.
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgadefaa6" class="outline-2">
-<h2 id="orgadefaa6">FAQs that haven't been asked yet</h2>
+<h2 id="orgadefaa6"><span class="todo "></span> FAQs that haven't been asked yet</h2>
 <div class="outline-text-2" id="text-orgadefaa6">
 </div>
 <div id="outline-container-org1f7542f" class="outline-3">
-<h3 id="org1f7542f">why do this when u already have an analytic expression for entropy</h3>
+<h3 id="org1f7542f"><span class="todo "></span> why do this when u already have an analytic expression for entropy</h3>
 <div class="outline-text-3" id="text-org1f7542f">
 <p>
 well first of all its cool and that's all the explanation i need.
@@ -485,7 +482,7 @@ the system. Even for non-equilibrium systems! Amazing! (See <sup><a id="fnr.1.10
 </div>
 
 <div id="outline-container-org895989d" class="outline-3">
-<h3 id="org895989d">why lisp</h3>
+<h3 id="org895989d"><span class="todo "></span> why lisp</h3>
 <div class="outline-text-3" id="text-org895989d">
 <p>
 i reserve the right to withhold a response to this
@@ -493,559 +490,20 @@ i reserve the right to withhold a response to this
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6f5f0f8" class="outline-2">
-<h2 id="org6f5f0f8">Table results exports</h2>
-<div class="outline-text-2" id="text-org6f5f0f8">
-<table id="org920afd6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">T</th>
-<th scope="col" class="org-right">filesize</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">0.04</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.18</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.27</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.34</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.55</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.56</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.58</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.61</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.65</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.74</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.8</td>
-<td class="org-right">2297</td>
-</tr>
-
-<tr>
-<td class="org-right">0.89</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">0.96</td>
-<td class="org-right">2210</td>
-</tr>
-
-<tr>
-<td class="org-right">1.16</td>
-<td class="org-right">2428</td>
-</tr>
-
-<tr>
-<td class="org-right">1.19</td>
-<td class="org-right">2547</td>
-</tr>
-
-<tr>
-<td class="org-right">1.3</td>
-<td class="org-right">2849</td>
-</tr>
-
-<tr>
-<td class="org-right">1.34</td>
-<td class="org-right">2875</td>
-</tr>
-
-<tr>
-<td class="org-right">1.44</td>
-<td class="org-right">3092</td>
-</tr>
-
-<tr>
-<td class="org-right">1.48</td>
-<td class="org-right">3165</td>
-</tr>
-
-<tr>
-<td class="org-right">1.49</td>
-<td class="org-right">3594</td>
-</tr>
-
-<tr>
-<td class="org-right">1.53</td>
-<td class="org-right">3426</td>
-</tr>
-
-<tr>
-<td class="org-right">1.56</td>
-<td class="org-right">3880</td>
-</tr>
-
-<tr>
-<td class="org-right">1.68</td>
-<td class="org-right">4184</td>
-</tr>
-
-<tr>
-<td class="org-right">1.74</td>
-<td class="org-right">4416</td>
-</tr>
-
-<tr>
-<td class="org-right">1.78</td>
-<td class="org-right">4754</td>
-</tr>
-
-<tr>
-<td class="org-right">1.91</td>
-<td class="org-right">5634</td>
-</tr>
-
-<tr>
-<td class="org-right">1.94</td>
-<td class="org-right">6383</td>
-</tr>
-
-<tr>
-<td class="org-right">2</td>
-<td class="org-right">6734</td>
-</tr>
-
-<tr>
-<td class="org-right">2.03</td>
-<td class="org-right">7211</td>
-</tr>
-
-<tr>
-<td class="org-right">2.04</td>
-<td class="org-right">7285</td>
-</tr>
-
-<tr>
-<td class="org-right">2.05</td>
-<td class="org-right">7150</td>
-</tr>
-
-<tr>
-<td class="org-right">2.06</td>
-<td class="org-right">7665</td>
-</tr>
-
-<tr>
-<td class="org-right">2.07</td>
-<td class="org-right">7412</td>
-</tr>
-
-<tr>
-<td class="org-right">2.08</td>
-<td class="org-right">7160</td>
-</tr>
-
-<tr>
-<td class="org-right">2.13</td>
-<td class="org-right">8343</td>
-</tr>
-
-<tr>
-<td class="org-right">2.14</td>
-<td class="org-right">8870</td>
-</tr>
-
-<tr>
-<td class="org-right">2.17</td>
-<td class="org-right">8890</td>
-</tr>
-
-<tr>
-<td class="org-right">2.2</td>
-<td class="org-right">9735</td>
-</tr>
-
-<tr>
-<td class="org-right">2.21</td>
-<td class="org-right">9758</td>
-</tr>
-
-<tr>
-<td class="org-right">2.22</td>
-<td class="org-right">9695</td>
-</tr>
-
-<tr>
-<td class="org-right">2.26</td>
-<td class="org-right">9833</td>
-</tr>
-
-<tr>
-<td class="org-right">2.29</td>
-<td class="org-right">10732</td>
-</tr>
-
-<tr>
-<td class="org-right">2.3</td>
-<td class="org-right">10618</td>
-</tr>
-
-<tr>
-<td class="org-right">2.31</td>
-<td class="org-right">10829</td>
-</tr>
-
-<tr>
-<td class="org-right">2.32</td>
-<td class="org-right">10686</td>
-</tr>
-
-<tr>
-<td class="org-right">2.36</td>
-<td class="org-right">10603</td>
-</tr>
-
-<tr>
-<td class="org-right">2.39</td>
-<td class="org-right">12043</td>
-</tr>
-
-<tr>
-<td class="org-right">2.44</td>
-<td class="org-right">12744</td>
-</tr>
-
-<tr>
-<td class="org-right">2.46</td>
-<td class="org-right">12820</td>
-</tr>
-
-<tr>
-<td class="org-right">2.48</td>
-<td class="org-right">12890</td>
-</tr>
-
-<tr>
-<td class="org-right">2.5</td>
-<td class="org-right">12979</td>
-</tr>
-
-<tr>
-<td class="org-right">2.51</td>
-<td class="org-right">12685</td>
-</tr>
-
-<tr>
-<td class="org-right">2.52</td>
-<td class="org-right">13141</td>
-</tr>
-
-<tr>
-<td class="org-right">2.56</td>
-<td class="org-right">13940</td>
-</tr>
-
-<tr>
-<td class="org-right">2.57</td>
-<td class="org-right">14140</td>
-</tr>
-
-<tr>
-<td class="org-right">2.63</td>
-<td class="org-right">15012</td>
-</tr>
-
-<tr>
-<td class="org-right">2.67</td>
-<td class="org-right">15346</td>
-</tr>
-
-<tr>
-<td class="org-right">2.69</td>
-<td class="org-right">15227</td>
-</tr>
-
-<tr>
-<td class="org-right">2.7</td>
-<td class="org-right">15374</td>
-</tr>
-
-<tr>
-<td class="org-right">2.73</td>
-<td class="org-right">15123</td>
-</tr>
-
-<tr>
-<td class="org-right">2.75</td>
-<td class="org-right">15757</td>
-</tr>
-
-<tr>
-<td class="org-right">2.76</td>
-<td class="org-right">16435</td>
-</tr>
-
-<tr>
-<td class="org-right">2.78</td>
-<td class="org-right">16023</td>
-</tr>
-
-<tr>
-<td class="org-right">2.8</td>
-<td class="org-right">16347</td>
-</tr>
-
-<tr>
-<td class="org-right">2.82</td>
-<td class="org-right">15924</td>
-</tr>
-
-<tr>
-<td class="org-right">2.84</td>
-<td class="org-right">16574</td>
-</tr>
-
-<tr>
-<td class="org-right">2.85</td>
-<td class="org-right">17052</td>
-</tr>
-
-<tr>
-<td class="org-right">2.86</td>
-<td class="org-right">15757</td>
-</tr>
-
-<tr>
-<td class="org-right">2.92</td>
-<td class="org-right">16936</td>
-</tr>
-
-<tr>
-<td class="org-right">2.93</td>
-<td class="org-right">17072</td>
-</tr>
-
-<tr>
-<td class="org-right">2.94</td>
-<td class="org-right">17202</td>
-</tr>
-
-<tr>
-<td class="org-right">2.95</td>
-<td class="org-right">17479</td>
-</tr>
-
-<tr>
-<td class="org-right">2.96</td>
-<td class="org-right">16937</td>
-</tr>
-
-<tr>
-<td class="org-right">2.97</td>
-<td class="org-right">17588</td>
-</tr>
-
-<tr>
-<td class="org-right">2.98</td>
-<td class="org-right">17561</td>
-</tr>
-
-<tr>
-<td class="org-right">2.99</td>
-<td class="org-right">17521</td>
-</tr>
-
-<tr>
-<td class="org-right">3.02</td>
-<td class="org-right">17431</td>
-</tr>
-
-<tr>
-<td class="org-right">3.09</td>
-<td class="org-right">17978</td>
-</tr>
-
-<tr>
-<td class="org-right">3.15</td>
-<td class="org-right">17855</td>
-</tr>
-
-<tr>
-<td class="org-right">3.24</td>
-<td class="org-right">18348</td>
-</tr>
-
-<tr>
-<td class="org-right">3.38</td>
-<td class="org-right">18680</td>
-</tr>
-
-<tr>
-<td class="org-right">3.41</td>
-<td class="org-right">18578</td>
-</tr>
-
-<tr>
-<td class="org-right">3.47</td>
-<td class="org-right">18816</td>
-</tr>
-
-<tr>
-<td class="org-right">3.5</td>
-<td class="org-right">18669</td>
-</tr>
-
-<tr>
-<td class="org-right">3.71</td>
-<td class="org-right">18806</td>
-</tr>
-
-<tr>
-<td class="org-right">3.72</td>
-<td class="org-right">18644</td>
-</tr>
-
-<tr>
-<td class="org-right">3.92</td>
-<td class="org-right">19063</td>
-</tr>
-
-<tr>
-<td class="org-right">3.99</td>
-<td class="org-right">18848</td>
-</tr>
-
-<tr>
-<td class="org-right">4</td>
-<td class="org-right">18851</td>
-</tr>
-
-<tr>
-<td class="org-right">4.01</td>
-<td class="org-right">19034</td>
-</tr>
-
-<tr>
-<td class="org-right">4.02</td>
-<td class="org-right">18957</td>
-</tr>
-
-<tr>
-<td class="org-right">4.1</td>
-<td class="org-right">19068</td>
-</tr>
-
-<tr>
-<td class="org-right">4.15</td>
-<td class="org-right">19049</td>
-</tr>
-
-<tr>
-<td class="org-right">4.22</td>
-<td class="org-right">19054</td>
-</tr>
-
-<tr>
-<td class="org-right">4.3</td>
-<td class="org-right">19028</td>
-</tr>
-
-<tr>
-<td class="org-right">4.35</td>
-<td class="org-right">19116</td>
-</tr>
-
-<tr>
-<td class="org-right">4.39</td>
-<td class="org-right">18920</td>
-</tr>
-
-<tr>
-<td class="org-right">4.4</td>
-<td class="org-right">19173</td>
-</tr>
-
-<tr>
-<td class="org-right">4.46</td>
-<td class="org-right">19073</td>
-</tr>
-
-<tr>
-<td class="org-right">4.49</td>
-<td class="org-right">19237</td>
-</tr>
-
-<tr>
-<td class="org-right">4.5</td>
-<td class="org-right">19144</td>
-</tr>
-
-<tr>
-<td class="org-right">4.6</td>
-<td class="org-right">19096</td>
-</tr>
-
-<tr>
-<td class="org-right">4.67</td>
-<td class="org-right">19296</td>
-</tr>
-
-<tr>
-<td class="org-right">4.98</td>
-<td class="org-right">19437</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-haha
-</p>
-</div>
-</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-An amazing paper by Dov Levine and his group on the usage of
-information entropy to detect order-disorder phase transitions: <a href="https://journals.aps.org/prx/abstract/10.1103/">https://journals.aps.org/prx/abstract/10.1103/</a>
+An amazing paper by Dov Levine and his group on the usage of information
+entropy to detect order-disorder phase transitions:
+<a href="https://journals.aps.org/prx/abstract/10.1103/">https://journals.aps.org/prx/abstract/10.1103/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Shannon and some communication theory, the as-far-as-i-know popularizer
+of information theory:
+<a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication</a>.
 </p></div></div>
 
 
