@@ -1,322 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<!-- 2020-11-07 Sat 15:35 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Compression and the ising model</title>
-<meta name="generator" content="Org mode" />
+  <head>
+    <!-- 2020-11-07 Sat 15:37 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compression and the ising model</title>
+    <meta name="generator" content="Org mode" />
 
-          <title>LPac's Pages</title>
-          <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+    <title>LPac's Pages</title>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       displayAlign: "center",
+       displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
-</head>
-<body>
-<div id="preamble" class="status">
-<link rel="stylesheet" type="text/css" href="css/org.css"/>
-           <link rel="stylesheet" type="text/css" href="../css/org.css"/>
-            <div class="header">
-              <div class="title"><a href="/">LPac's Pages</a></div>
-              <div class="sitelinks">
-                  <a href="/">home</a>  | <a href="http://github.com/lucrio">Github</a> | <a href="archive.html">Other posts</a>
-              </div>
-          </div>
-</div>
-<div id="content">
-<h1 class="title">Compression and the ising model</h1>
-<p>
-<i>status: in-progress</i>
-</p>
+       "HTML-CSS": { scale: 100,
+                     linebreaks: { automatic: "false" },
+                     webFont: "TeX"
+       },
+       SVG: {scale: 100,
+             linebreaks: { automatic: "false" },
+             font: "TeX"},
+       NativeMML: {scale: 100},
+       TeX: { equationNumbers: {autoNumber: "AMS"},
+              MultLineWidth: "85%",
+              TagSide: "right",
+              TagIndent: ".8em"
+       }
+     });
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+  </head>
+  <body>
+    <div id="preamble" class="status">
+      <link rel="stylesheet" type="text/css" href="css/org.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/org.css"/>
+      <div class="header">
+        <div class="title"><a href="/">LPac's Pages</a></div>
+        <div class="sitelinks">
+          <a href="/">home</a>  | <a href="http://github.com/liampack">Github</a> | <a href="archive.html">Other posts</a>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <h1 class="title">Compression and the ising model</h1>
+      <p>
+	<i>status: in-progress</i>
+      </p>
 
-<p>
-<i>first draft: Jul 10th, 2019</i>
-</p>
+      <p>
+	<i>first draft: Jul 10th, 2019</i>
+      </p>
 
-<p>
-<i>recent update: Nov 7, 2020</i>
-</p>
+      <p>
+	<i>recent update: Nov 7, 2020</i>
+      </p>
 
-<div id="outline-container-orgfab5ae1" class="outline-2">
-<h2 id="orgfab5ae1">some background if you need it</h2>
-<div class="outline-text-2" id="text-orgfab5ae1">
-<p>
-Recently (2019) as I was doing some reading<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on applying
-information-theoretic approaches to the detection of phase
-transitions in non-equilibrium systems. What does non-equilibrium
-mean? In this case, we're talking about <i>thermal</i> equilibrium, since
-this is <i>the</i> hypothesis required to apply the usual methods of
-thermodynamics to solve for bulk properties of a system (Heat
-capacity, internal energy, entropy, &#x2026;). Without this hypothesis,
-we can't apply our main statmech tools (maximization of entropy,
-microstates equally likely) in deriving relevant quantities.
-</p>
+      <div id="outline-container-orgfab5ae1" class="outline-2">
+	<h2 id="orgfab5ae1">some background if you need it</h2>
+	<div class="outline-text-2" id="text-orgfab5ae1">
+	  <p>
+	    Recently (2019) as I was doing some reading<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on applying
+	    information-theoretic approaches to the detection of phase
+	    transitions in non-equilibrium systems. What does non-equilibrium
+	    mean? In this case, we're talking about <i>thermal</i> equilibrium, since
+	    this is <i>the</i> hypothesis required to apply the usual methods of
+	    thermodynamics to solve for bulk properties of a system (Heat
+	    capacity, internal energy, entropy, &#x2026;). Without this hypothesis,
+	    we can't apply our main statmech tools (maximization of entropy,
+	    microstates equally likely) in deriving relevant quantities.
+	  </p>
 
-<p>
-So what's the deal with information in non-equilibrium systems? In equilibrium
-systems we have all the agency in the world to apply thermodynamics and probe
-phase transitions of the system. But we don't necessarily have these tools
-for an athermal system! But this doesn't mean that there isn't information
-hiding in the system, in general we can still make counting arguments about
-the distribution of states in a system even if thermal equilibrium isn't
-there. What we are "counting" is going to be what saves the day, and this is
-where some information theory comes into play. We can use a (non
-thermodynamic) entorpy to probe the system \(S = \sum p_i \ln p_i\). Mr. Levine and
-company used an information-theoretic approach to the ising model and found
-some amazing results!
-</p>
+	  <p>
+	    So what's the deal with information in non-equilibrium systems? In equilibrium
+	    systems we have all the agency in the world to apply thermodynamics and probe
+	    phase transitions of the system. But we don't necessarily have these tools
+	    for an athermal system! But this doesn't mean that there isn't information
+	    hiding in the system, in general we can still make counting arguments about
+	    the distribution of states in a system even if thermal equilibrium isn't
+	    there. What we are "counting" is going to be what saves the day, and this is
+	    where some information theory comes into play. We can use a (non
+	    thermodynamic) entorpy to probe the system \(S = \sum p_i \ln p_i\). Mr. Levine and
+	    company used an information-theoretic approach to the ising model and found
+	    some amazing results!
+	  </p>
 
-<p>
-As a fun way to learn a little bit of javascript, I spent some time
-looking at Schroeder's web-based physics simulations you can find
-<a href="https://physics.weber.edu/schroeder/software/">here</a>. As you might have guessed already (good guess, not bad), I
-looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model simulation</a>. It's straightforward to
-implement this myself (read on!) but sometimes you just gotta mess
-around a bit.
-</p>
-</div>
-<div id="outline-container-org99745a2" class="outline-3">
-<h3 id="org99745a2">Information</h3>
-<div class="outline-text-3" id="text-org99745a2">
-<p>
-We'll talk a little about information content first. If you've taken
-a course in thermodynamics or statistical mechanics, you've probably
-(hopefully (please)) seen some mathematical definition of entropy. It comes
-in a bunch of different looking equivalent forms, but the one I'll give to
-you here is
-</p>
+	  <p>
+	    As a fun way to learn a little bit of javascript, I spent some time
+	    looking at Schroeder's web-based physics simulations you can find
+	    <a href="https://physics.weber.edu/schroeder/software/">here</a>. As you might have guessed already (good guess, not bad), I
+	    looked at <a href="https://physics.weber.edu/schroeder/software/demos/IsingModel.html">his ising model simulation</a>. It's straightforward to
+	    implement this myself (read on!) but sometimes you just gotta mess
+	    around a bit.
+	  </p>
+	</div>
+	<div id="outline-container-org99745a2" class="outline-3">
+	  <h3 id="org99745a2">Information</h3>
+	  <div class="outline-text-3" id="text-org99745a2">
+	    <p>
+	      We'll talk a little about information content first. If you've taken
+	      a course in thermodynamics or statistical mechanics, you've probably
+	      (hopefully (please)) seen some mathematical definition of entropy. It comes
+	      in a bunch of different looking equivalent forms, but the one I'll give to
+	      you here is
+	    </p>
 
-<p>
-\[ S(X) = -k_{B} \sum_{i} p_{i} \ln\, p_{i} \]
-</p>
+	    <p>
+	      \[ S(X) = -k_{B} \sum_{i} p_{i} \ln\, p_{i} \]
+	    </p>
 
-<p>
-where \(p_i\) is the probability of finding the system in state a \(i\) and \(k_B\)
-is a scaling factor in units of \(Joules/Kelvin\) so make the \(SI\) unit system
-consistent. If you're in thermal equilibrium, \(p_i\) follows a boltzmann
-distribution in energies \(E_i\), a one-parameter family over \(T\). The advantage
-of using this form will be soon-evident.
-</p>
+	    <p>
+	      where \(p_i\) is the probability of finding the system in state a \(i\) and \(k_B\)
+	      is a scaling factor in units of \(Joules/Kelvin\) so make the \(SI\) unit system
+	      consistent. If you're in thermal equilibrium, \(p_i\) follows a boltzmann
+	      distribution in energies \(E_i\), a one-parameter family over \(T\). The advantage
+	      of using this form will be soon-evident.
+	    </p>
 
-<p>
-Either way, dang isn't that a good-looking equation. There's a lot of content in
-why each part of the expression is chosen. Sometimes the entropy is explained
-to be how "disordered" a system is, which I don't quite like (e.g it's not
-clear water-oil phase separation is the result of "disorder"). This equation
-says something more specific.
-</p>
+	    <p>
+	      Either way, dang isn't that a good-looking equation. There's a lot of content in
+	      why each part of the expression is chosen. Sometimes the entropy is explained
+	      to be how "disordered" a system is, which I don't quite like (e.g it's not
+	      clear water-oil phase separation is the result of "disorder"). This equation
+	      says something more specific.
+	    </p>
 
-<p>
-First of all, this quantity is never negative (saved by the \(-\) sign out
-front) since \(0 \leq p_i \leq 1\) for all \(i\), making \(\ln p_i < 0\).
-</p>
+	    <p>
+	      First of all, this quantity is never negative (saved by the \(-\) sign out
+	      front) since \(0 \leq p_i \leq 1\) for all \(i\), making \(\ln p_i < 0\).
+	    </p>
 
-<p>
-If we choose a different base for the logarithm (say, base \(2\)), then the sum
-is actually long-hand for \(E[-\log\,p_{i}]\), the expectation value of the
-negative log-probability. Lets riff on this.
-</p>
+	    <p>
+	      If we choose a different base for the logarithm (say, base \(2\)), then the sum
+	      is actually long-hand for \(E[-\log\,p_{i}]\), the expectation value of the
+	      negative log-probability. Lets riff on this.
+	    </p>
 
-<p>
-Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving us the expected number
-of <span class="underline">bits</span> that we would need to encode the frequencies of states for our
-system. So it's giving us a "best guess" on the amount of information needed
-to completely describe our system in all of its probabilistic glory. This
-also tells us how much "wasted" space there is in the system
-</p>
+	    <p>
+	      Since \(0 \leq p_{i} \leq 1\), in log base 2, this is giving us the expected number
+	      of <span class="underline">bits</span> that we would need to encode the frequencies of states for our
+	      system. So it's giving us a "best guess" on the amount of information needed
+	      to completely describe our system in all of its probabilistic glory. This
+	      also tells us how much "wasted" space there is in the system
+	    </p>
 
-<p>
-The Shannon entropy is going to look familiar. If \(X\) can take on the values
-\(\{x_1,x_2, \cdots, x_n\}\):
-</p>
+	    <p>
+	      The Shannon entropy is going to look familiar. If \(X\) can take on the values
+	      \(\{x_1,x_2, \cdots, x_n\}\):
+	    </p>
 
-<p>
-\[H(X) = \sum_{i} p(x_i) \log\, p(x_i)\]
-</p>
+	    <p>
+	      \[H(X) = \sum_{i} p(x_i) \log\, p(x_i)\]
+	    </p>
 
-<p>
-where \(p(x_i)\) is the probability of the event \(X=x_i\) occuring. As
-the stereotypical example, let's say \(X\) can take on the value
-\(heads\) or \(tails\) with equal probability. The same analysis above
-holds here, we're just not caring about units (more or less) or the
-second law of thermodynamics anymore (scary, I know).
-</p>
+	    <p>
+	      where \(p(x_i)\) is the probability of the event \(X=x_i\) occuring. As
+	      the stereotypical example, let's say \(X\) can take on the value
+	      \(heads\) or \(tails\) with equal probability. The same analysis above
+	      holds here, we're just not caring about units (more or less) or the
+	      second law of thermodynamics anymore (scary, I know).
+	    </p>
 
-<p>
-Note that you need to know <i>a prior</i> the probability distribution
-\(p(\cdot)\) over the set of possible states of the system. In thermal
-equilibrium, we can approximate this distribution to incredible
-accuracy due to the regularity of the underlying mechanics of such
-a system. Without thermal equilibrium, we have no way of knowing,
-in general, \(p(\cdot)\) a prior! what a pain! We'll see how encodings
-come to the rescue on this issue later.
-</p>
-</div>
-</div>
+	    <p>
+	      Note that you need to know <i>a prior</i> the probability distribution
+	      \(p(\cdot)\) over the set of possible states of the system. In thermal
+	      equilibrium, we can approximate this distribution to incredible
+	      accuracy due to the regularity of the underlying mechanics of such
+	      a system. Without thermal equilibrium, we have no way of knowing,
+	      in general, \(p(\cdot)\) a prior! what a pain! We'll see how encodings
+	      come to the rescue on this issue later.
+	    </p>
+	  </div>
+	</div>
 
-<div id="outline-container-org5057b69" class="outline-3">
-<h3 id="org5057b69">statmech game of life (better known as the ising model)</h3>
-<div class="outline-text-3" id="text-org5057b69">
-<p>
-Now what exactly is the <a href="https://en.wikipedia.org/wiki/Ising_model">ising model</a>? If you took CS31 at Swarthmore
-College<sup>tm</sup> you'll note that some of the finite-sized simulations
-look a bit like a game of life model, but are in general more
-chaotic-looking depending on the temperature. Just like in GoL,
-we're given a discrete grid of dimensions \(N \times M\), where each cell
-of the grid \(c[i,j]\) can take on two possible values. In the case
-of the ising model, we'll take the state space to be \(\mathcal{A} =
-   \{-1, 1\}\). These states represent "spin up" and "spin down"
-respectively, which corresponds physically to the magnetic dipole
-moments of the atomic spin of an atom (a good model for simulating
-the magnetics of some hot metals). We'll denote a microstate of
-length \(n\) chosen from this alphabet as \(\mathcal{S}_{n}\equiv \{s^{1},
-   \cdots, s^{n}\}\), where \(s^i \in \mathcal{A}\).  As for the dynamics, we get
-the whole picture just by looking at the Hamiltonian for a given
-state:
-</p>
+	<div id="outline-container-org5057b69" class="outline-3">
+	  <h3 id="org5057b69">statmech game of life (better known as the ising model)</h3>
+	  <div class="outline-text-3" id="text-org5057b69">
+	    <p>
+	      Now what exactly is the <a href="https://en.wikipedia.org/wiki/Ising_model">ising model</a>? If you took CS31 at Swarthmore
+	      College<sup>tm</sup> you'll note that some of the finite-sized simulations
+	      look a bit like a game of life model, but are in general more
+	      chaotic-looking depending on the temperature. Just like in GoL,
+	      we're given a discrete grid of dimensions \(N \times M\), where each cell
+	      of the grid \(c[i,j]\) can take on two possible values. In the case
+	      of the ising model, we'll take the state space to be \(\mathcal{A} =
+	      \{-1, 1\}\). These states represent "spin up" and "spin down"
+	      respectively, which corresponds physically to the magnetic dipole
+	      moments of the atomic spin of an atom (a good model for simulating
+	      the magnetics of some hot metals). We'll denote a microstate of
+	      length \(n\) chosen from this alphabet as \(\mathcal{S}_{n}\equiv \{s^{1},
+	      \cdots, s^{n}\}\), where \(s^i \in \mathcal{A}\).  As for the dynamics, we get
+	      the whole picture just by looking at the Hamiltonian for a given
+	      state:
+	    </p>
 
-<p>
-\[H(\mathcal{S}_N) = -J\sum_{i, N(i)} s^i s^{N(i)} - \mu \sum_i B s^i. \]
-</p>
+	    <p>
+	      \[H(\mathcal{S}_N) = -J\sum_{i, N(i)} s^i s^{N(i)} - \mu \sum_i B s^i. \]
+	    </p>
 
-<p>
-Here I denoted the neighbors of cell \(i\) as \(N(i)\). Couldn't think of any
-better notation, so we'll deal with it.
-</p>
+	    <p>
+	      Here I denoted the neighbors of cell \(i\) as \(N(i)\). Couldn't think of any
+	      better notation, so we'll deal with it.
+	    </p>
 
-<p>
-Breaking this down, we can see that the first term represents the
-interaction between two cells that are neighbors and the second
-term represents the bias given by a uniform magnetic field imposed
-by the environment. This bias will skew the net magnetics towards
-one of the spin directions (this bias is akin to giving an
-intercept to a straight line).
-</p>
+	    <p>
+	      Breaking this down, we can see that the first term represents the
+	      interaction between two cells that are neighbors and the second
+	      term represents the bias given by a uniform magnetic field imposed
+	      by the environment. This bias will skew the net magnetics towards
+	      one of the spin directions (this bias is akin to giving an
+	      intercept to a straight line).
+	    </p>
 
-<p>
-So since we have all the power, we're going to drop the second
-term! You can keep it if you want. Feel free to voice your
-concerns. So, but what about the dynamics? Well hold your
-horses. Since we're in thermal equilibrium, the probability of a
-specific configuration being chosen is given by the classic
-Boltzmann distribution, which factors in the energy of any
-particular microstate (\(\mathcal{S}_{n}\) from before):
-</p>
+	    <p>
+	      So since we have all the power, we're going to drop the second
+	      term! You can keep it if you want. Feel free to voice your
+	      concerns. So, but what about the dynamics? Well hold your
+	      horses. Since we're in thermal equilibrium, the probability of a
+	      specific configuration being chosen is given by the classic
+	      Boltzmann distribution, which factors in the energy of any
+	      particular microstate (\(\mathcal{S}_{n}\) from before):
+	    </p>
 
-<p>
-\[ P_{T}(\mathcal{S}_{n}) = \frac{e^{\frac{-H(\mathcal{S}_{n})}{k_B T}}}{Z_{T}} \]
-</p>
+	    <p>
+	      \[ P_{T}(\mathcal{S}_{n}) = \frac{e^{\frac{-H(\mathcal{S}_{n})}{k_B T}}}{Z_{T}} \]
+	    </p>
 
-<p>
-Let's check some asymptotics first: If every cell is the same spin, then the
-energy simply \(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and
-allow every cell to have four neighbors, then we get something like \(H =
-   -4NJ\). This is a probability-maximum according to \(P_T\), so this is a pretty
-likely state, all things considered. Then in the extreme where every neighbor
-of a cell is the <i>opposing</i> magnetization, \(H = 4NJ\) and its corresponding
-probability is at a minimum. So by continuity or something, the system will
-favor confiugrations that are at least locally uniformly magnetized.
-</p>
+	    <p>
+	      Let's check some asymptotics first: If every cell is the same spin, then the
+	      energy simply \(-J\sum_{i,N(i)}1\). If we apply periodic boundary conditions and
+	      allow every cell to have four neighbors, then we get something like \(H =
+	      -4NJ\). This is a probability-maximum according to \(P_T\), so this is a pretty
+	      likely state, all things considered. Then in the extreme where every neighbor
+	      of a cell is the <i>opposing</i> magnetization, \(H = 4NJ\) and its corresponding
+	      probability is at a minimum. So by continuity or something, the system will
+	      favor confiugrations that are at least locally uniformly magnetized.
+	    </p>
 
-<p>
-But as we vary \(T\), we would expect the system to be more
-disordered as the probability distribution smooths out due to the
-exponential argument tending towards \(0\) (and therefore
-\(P_{\infty}(\mathcal{S}_{n}) \rightarrow 1/(\# total\,\,\,
-   microstates)\)). Something to keep in mind!
-</p>
+	    <p>
+	      But as we vary \(T\), we would expect the system to be more
+	      disordered as the probability distribution smooths out due to the
+	      exponential argument tending towards \(0\) (and therefore
+	      \(P_{\infty}(\mathcal{S}_{n}) \rightarrow 1/(\# total\,\,\,
+	      microstates)\)). Something to keep in mind!
+	    </p>
 
-<p>
-So how would we simulate something like this? Well, being the
-statistical mechanicians we are we're well prepared for this: for
-the not final time, we're in thermal equilibrium! This means that
-energy transfer is short-ranged and localized. Then, given a system
-state \(\mathcal{S}_{n}\), we're justified in flipping <i>only one</i> atom
-from one magnetic state (quasi-static transition between states,
-reversible, words that mean something to some people). How do we
-choose this atom? We put on our computer scientist hat and say
-"well, nothing Monte Carlo simulations can't solve," which is an
-annoying way of saying "randomly choose values from a probability
-distribution one at a time". So we say, given our state
-\(\mathcal{S}_{n}\), flipping atom \(i\) results in the new state
-\(\mathcal{S}'_{n}\). We choose a new state \(\mathcal{S}'_{n}\) with
-probability given by \(P_{T}(\mathcal{S}'_{n})\). Not so bad on paper!
-</p>
-</div>
-</div>
-</div>
+	    <p>
+	      So how would we simulate something like this? Well, being the
+	      statistical mechanicians we are we're well prepared for this: for
+	      the not final time, we're in thermal equilibrium! This means that
+	      energy transfer is short-ranged and localized. Then, given a system
+	      state \(\mathcal{S}_{n}\), we're justified in flipping <i>only one</i> atom
+	      from one magnetic state (quasi-static transition between states,
+	      reversible, words that mean something to some people). How do we
+	      choose this atom? We put on our computer scientist hat and say
+	      "well, nothing Monte Carlo simulations can't solve," which is an
+	      annoying way of saying "randomly choose values from a probability
+	      distribution one at a time". So we say, given our state
+	      \(\mathcal{S}_{n}\), flipping atom \(i\) results in the new state
+	      \(\mathcal{S}'_{n}\). We choose a new state \(\mathcal{S}'_{n}\) with
+	      probability given by \(P_{T}(\mathcal{S}'_{n})\). Not so bad on paper!
+	    </p>
+	  </div>
+	</div>
+      </div>
 
-<div id="outline-container-org373dcb8" class="outline-2">
-<h2 id="org373dcb8">ok ok i get it gimme the cs</h2>
-<div class="outline-text-2" id="text-org373dcb8">
-<p>
-So this is just nonsense that I was doing on a slow day over the summer.
-</p>
-</div>
+      <div id="outline-container-org373dcb8" class="outline-2">
+	<h2 id="org373dcb8">ok ok i get it gimme the cs</h2>
+	<div class="outline-text-2" id="text-org373dcb8">
+	  <p>
+	    So this is just nonsense that I was doing on a slow day over the summer.
+	  </p>
+	</div>
 
-<div id="outline-container-orge8f8b2a" class="outline-3">
-<h3 id="orge8f8b2a">grabbing some of those magnets</h3>
-<div class="outline-text-3" id="text-orge8f8b2a">
-<p>
-Okay with that over, we can talk about Schroeder's simulation. If
-you do a little bit of snooping in the source, you'll find the
-javascript <code>src</code> block that implements this simulation
-procedure. It's pretty fast, considering its javascript! As you may
-have read from the preface of the simulation, he made this as a
-proof-of-concept, the concept being that javascript driven
-web-simulations can be fast enough to be useful as a pedagogical
-tool (compared to downloading some old <code>jar</code> file from PhET).
-</p>
+	<div id="outline-container-orge8f8b2a" class="outline-3">
+	  <h3 id="orge8f8b2a">grabbing some of those magnets</h3>
+	  <div class="outline-text-3" id="text-orge8f8b2a">
+	    <p>
+	      Okay with that over, we can talk about Schroeder's simulation. If
+	      you do a little bit of snooping in the source, you'll find the
+	      javascript <code>src</code> block that implements this simulation
+	      procedure. It's pretty fast, considering its javascript! As you may
+	      have read from the preface of the simulation, he made this as a
+	      proof-of-concept, the concept being that javascript driven
+	      web-simulations can be fast enough to be useful as a pedagogical
+	      tool (compared to downloading some old <code>jar</code> file from PhET).
+	    </p>
 
-<p>
-But we're going to one-up PhET and instead of downloading the
-simulation, we'll just download every frame of the simulation. Take
-that!
-</p>
+	    <p>
+	      But we're going to one-up PhET and instead of downloading the
+	      simulation, we'll just download every frame of the simulation. Take
+	      that!
+	    </p>
 
-<p>
-First we need to take snap-shots of the images that the <code>&lt;canvas&gt;</code>
-element is displaying on the web page. To do this, we can use the
-function <code>toDataURL</code> given by the <code>canvas</code> element and have that hold
-the image data. Then, we create a new hyperlink element <code>&lt;a&gt;</code> and
-"click" on it. Wrap it up in a function and we have our guy. This will
-prompt many, many (many) download requests, so don't forget to mark
-"Remember this option" or whatever your computer calls it.
-</p>
+	    <p>
+	      First we need to take snap-shots of the images that the <code>&lt;canvas&gt;</code>
+	      element is displaying on the web page. To do this, we can use the
+	      function <code>toDataURL</code> given by the <code>canvas</code> element and have that hold
+	      the image data. Then, we create a new hyperlink element <code>&lt;a&gt;</code> and
+	      "click" on it. Wrap it up in a function and we have our guy. This will
+	      prompt many, many (many) download requests, so don't forget to mark
+	      "Remember this option" or whatever your computer calls it.
+	    </p>
 
-<div class="org-src-container">
-<pre class="src src-javascript" id="orga45e488"><span style="color: #a8a8a8;">/* </span><span style="color: #a8a8a8;">Download a single img</span><span style="color: #a8a8a8;"> */</span>
-<span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">download</span>(<span style="color: #00d3d0;">T</span>,<span style="color: #00d3d0;">i</span>) {
-    <span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">link</span> = document.createElement(<span style="color: #79a8ff;">"a"</span>);
+	    <div class="org-src-container">
+	      <pre class="src src-javascript" id="orga45e488"><span style="color: #a8a8a8;">/* </span><span style="color: #a8a8a8;">Download a single img</span><span style="color: #a8a8a8;"> */</span>
+		<span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">download</span>(<span style="color: #00d3d0;">T</span>,<span style="color: #00d3d0;">i</span>) {
+		<span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">link</span> = document.createElement(<span style="color: #79a8ff;">"a"</span>);
     link.href = canvas.toDataURL(<span style="color: #79a8ff;">"image/png"</span>);
     link.download =  <span style="color: #79a8ff;">"T"</span>+ T.toString().replace(<span style="color: #79a8ff;">/\./</span>g, <span style="color: #79a8ff;">'p'</span>) + <span style="color: #79a8ff;">"/"</span> + <span style="color: #79a8ff;">"ising"</span> + i + <span style="color: #79a8ff;">".png"</span>;
     link.style.display = <span style="color: #79a8ff;">"none"</span>;
-    <span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">evt</span> = <span style="color: #b6a0ff;">new</span> <span style="color: #f78fe7;">MouseEvent</span>(<span style="color: #79a8ff;">"click"</span>, {
-        <span style="color: #79a8ff;">"view"</span>: window,
-        <span style="color: #79a8ff;">"bubbles"</span>: <span style="color: #00bcff;">true</span>,
-        <span style="color: #79a8ff;">"cancelable"</span>: <span style="color: #00bcff;">true</span>
+		<span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">evt</span> = <span style="color: #b6a0ff;">new</span> <span style="color: #f78fe7;">MouseEvent</span>(<span style="color: #79a8ff;">"click"</span>, {
+		<span style="color: #79a8ff;">"view"</span>: window,
+		<span style="color: #79a8ff;">"bubbles"</span>: <span style="color: #00bcff;">true</span>,
+		<span style="color: #79a8ff;">"cancelable"</span>: <span style="color: #00bcff;">true</span>
     });
 
     document.body.appendChild(link);
@@ -324,221 +324,221 @@ prompt many, many (many) download requests, so don't forget to mark
     document.body.removeChild(link);
     console.log(<span style="color: #79a8ff;">"Downloading..."</span>);
 }
-</pre>
-</div>
+	      </pre>
+	    </div>
 
-<p>
-Then, we download the <code>png</code> file image for this iteration step. Now,
-I don't know about you, but my browser is going to be very upset
-with the number of images being downloaded. So don't forget to check
-the "remember for next time" box. For your own safety.
-</p>
+	    <p>
+	      Then, we download the <code>png</code> file image for this iteration step. Now,
+	      I don't know about you, but my browser is going to be very upset
+	      with the number of images being downloaded. So don't forget to check
+	      the "remember for next time" box. For your own safety.
+	    </p>
 
-<div class="org-src-container">
-<pre class="src src-javascript" id="org15fc306"><span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">simulate</span>() {
-    <span style="color: #b6a0ff;">if</span> (running) {
-        <span style="color: #a8a8a8;">// </span><span style="color: #a8a8a8;">Execute a bunch of Monte Carlo steps:</span>
+	    <div class="org-src-container">
+	      <pre class="src src-javascript" id="org15fc306"><span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">simulate</span>() {
+		<span style="color: #b6a0ff;">if</span> (running) {
+		<span style="color: #a8a8a8;">// </span><span style="color: #a8a8a8;">Execute a bunch of Monte Carlo steps:</span>
 
         ...
             download(T,i);
         ...
     }
 }
-</pre>
-</div>
+	      </pre>
+	    </div>
 
-<p>
-You can make some other modifications, such as randomizing the temperature to
-be within a range (e.g. for \([1.8,3]\) assign <code>T = 1.8+Math.random()*1.2</code>).
-Don't forget to round if you want. I'm not ur parent
-</p>
-</div>
-</div>
+	    <p>
+	      You can make some other modifications, such as randomizing the temperature to
+	      be within a range (e.g. for \([1.8,3]\) assign <code>T = 1.8+Math.random()*1.2</code>).
+	      Don't forget to round if you want. I'm not ur parent
+	    </p>
+	  </div>
+	</div>
 
-<div id="outline-container-orgb192683" class="outline-3">
-<h3 id="orgb192683">dealing with all the files</h3>
-<div class="outline-text-3" id="text-orgb192683">
-<p>
-All the files downloaded were given a name in the format <code>T$(temp)_ising$(i)</code>.
-Now all we need is to make a directory with name <code>T$(temp)</code> and we'll be
-all sorted to make some graphs probably.
-</p>
+	<div id="outline-container-orgb192683" class="outline-3">
+	  <h3 id="orgb192683">dealing with all the files</h3>
+	  <div class="outline-text-3" id="text-orgb192683">
+	    <p>
+	      All the files downloaded were given a name in the format <code>T$(temp)_ising$(i)</code>.
+	      Now all we need is to make a directory with name <code>T$(temp)</code> and we'll be
+	      all sorted to make some graphs probably.
+	    </p>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org1c30fe9"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">let</span> <span style="color: #b6a0ff;">(</span><span style="color: #6ae4b9;">(</span>dir <span style="color: #79a8ff;">"~/sum19/ising/Temps/100x100/"</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span>
-  <span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">dolist</span> <span style="color: #6ae4b9;">(</span>F <span style="color: #f0ce43;">(</span>f-glob <span style="color: #79a8ff;">"~/Downloads/T*ising*"</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span>
-    <span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>full-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string F <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>only-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>split-string full-temp <span style="color: #79a8ff;">"_"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-dir <span style="color: #80d200;">(</span>concat dir only-temp <span style="color: #79a8ff;">"/"</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>mkdir temp-dir t<span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>rename-file F temp-dir<span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
+	    <div class="org-src-container">
+	      <pre class="src src-emacs-lisp" id="org1c30fe9"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">let</span> <span style="color: #b6a0ff;">(</span><span style="color: #6ae4b9;">(</span>dir <span style="color: #79a8ff;">"~/sum19/ising/Temps/100x100/"</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span>
+		<span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">dolist</span> <span style="color: #6ae4b9;">(</span>F <span style="color: #f0ce43;">(</span>f-glob <span style="color: #79a8ff;">"~/Downloads/T*ising*"</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span>
+		<span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>full-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string F <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
+		<span style="color: #00bcff;">(</span>only-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>split-string full-temp <span style="color: #79a8ff;">"_"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
+		<span style="color: #00bcff;">(</span>temp-dir <span style="color: #80d200;">(</span>concat dir only-temp <span style="color: #79a8ff;">"/"</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
+		<span style="color: #f0ce43;">(</span>mkdir temp-dir t<span style="color: #f0ce43;">)</span>
+		<span style="color: #f0ce43;">(</span>rename-file F temp-dir<span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
 
-</pre>
-</div>
+	      </pre>
+	    </div>
 
-<p>
-Then we get the file size of each <code>png</code> file and average over the
-temperature. In the process, we also output an <code>org</code> table that we
-can easily feed into <code>gnuplot</code>. It's not the best Elisp ever written,
-but it gets the job done.
-</p>
+	    <p>
+	      Then we get the file size of each <code>png</code> file and average over the
+	      temperature. In the process, we also output an <code>org</code> table that we
+	      can easily feed into <code>gnuplot</code>. It's not the best Elisp ever written,
+	      but it gets the job done.
+	    </p>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org073ae46"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">defun</span> <span style="color: #feacd0;">traverse-temperatures</span> <span style="color: #b6a0ff;">(</span>temp-list output<span style="color: #b6a0ff;">)</span>
-  <span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">Traverse through the temperature directories to find out the</span>
-  <span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">average file size obtained. Tail recursive!</span>
-  <span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">if</span> <span style="color: #6ae4b9;">(</span>= <span style="color: #f0ce43;">(</span>length temp-list<span style="color: #f0ce43;">)</span> 0<span style="color: #6ae4b9;">)</span>
+	    <div class="org-src-container">
+	      <pre class="src src-emacs-lisp" id="org073ae46"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">defun</span> <span style="color: #feacd0;">traverse-temperatures</span> <span style="color: #b6a0ff;">(</span>temp-list output<span style="color: #b6a0ff;">)</span>
+		<span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">Traverse through the temperature directories to find out the</span>
+		<span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">average file size obtained. Tail recursive!</span>
+		<span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">if</span> <span style="color: #6ae4b9;">(</span>= <span style="color: #f0ce43;">(</span>length temp-list<span style="color: #f0ce43;">)</span> 0<span style="color: #6ae4b9;">)</span>
       output
-    <span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>dirname <span style="color: #80d200;">(</span>car temp-list<span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-string <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string dirname <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-value <span style="color: #80d200;">(</span>substring temp-string 1 <span style="color: #f78fe7;">(</span>length temp-string<span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>filesizes <span style="color: #80d200;">(</span>mapcar #'<span style="color: #f78fe7;">(</span>lambda<span style="color: #4ae8fc;">(</span>x<span style="color: #4ae8fc;">)</span>
-                                  <span style="color: #4ae8fc;">(</span>file-attribute-size <span style="color: #cfdf30;">(</span>file-attributes x<span style="color: #cfdf30;">)</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span>
-                              <span style="color: #f78fe7;">(</span>directory-files dirname t <span style="color: #79a8ff;">".*png"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>traverse-temperatures <span style="color: #00bcff;">(</span>cdr temp-list<span style="color: #00bcff;">)</span>
-                             <span style="color: #00bcff;">(</span>concat output
-                                     <span style="color: #80d200;">(</span>format <span style="color: #79a8ff;">"|%s |%d|\n"</span>
-                                             <span style="color: #f78fe7;">(</span>replace-regexp-in-string <span style="color: #79a8ff;">"p"</span> <span style="color: #79a8ff;">"."</span> temp-value<span style="color: #f78fe7;">)</span>
-                                             <span style="color: #f78fe7;">(</span>/ <span style="color: #4ae8fc;">(</span>reduce #'+ filesizes<span style="color: #4ae8fc;">)</span> <span style="color: #4ae8fc;">(</span>length filesizes<span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
+		<span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>dirname <span style="color: #80d200;">(</span>car temp-list<span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
+		<span style="color: #00bcff;">(</span>temp-string <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string dirname <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
+		<span style="color: #00bcff;">(</span>temp-value <span style="color: #80d200;">(</span>substring temp-string 1 <span style="color: #f78fe7;">(</span>length temp-string<span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
+		<span style="color: #00bcff;">(</span>filesizes <span style="color: #80d200;">(</span>mapcar #'<span style="color: #f78fe7;">(</span>lambda<span style="color: #4ae8fc;">(</span>x<span style="color: #4ae8fc;">)</span>
+                <span style="color: #4ae8fc;">(</span>file-attribute-size <span style="color: #cfdf30;">(</span>file-attributes x<span style="color: #cfdf30;">)</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span>
+                <span style="color: #f78fe7;">(</span>directory-files dirname t <span style="color: #79a8ff;">".*png"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
+		<span style="color: #f0ce43;">(</span>traverse-temperatures <span style="color: #00bcff;">(</span>cdr temp-list<span style="color: #00bcff;">)</span>
+                <span style="color: #00bcff;">(</span>concat output
+                <span style="color: #80d200;">(</span>format <span style="color: #79a8ff;">"|%s |%d|\n"</span>
+                <span style="color: #f78fe7;">(</span>replace-regexp-in-string <span style="color: #79a8ff;">"p"</span> <span style="color: #79a8ff;">"."</span> temp-value<span style="color: #f78fe7;">)</span>
+                <span style="color: #f78fe7;">(</span>/ <span style="color: #4ae8fc;">(</span>reduce #'+ filesizes<span style="color: #4ae8fc;">)</span> <span style="color: #4ae8fc;">(</span>length filesizes<span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
 
-<span style="color: #00cd68;">(</span>traverse-temperatures <span style="color: #b6a0ff;">(</span>directory-files <span style="color: #79a8ff;">"~/sum19/ising/Temps/uniform_init"</span> t <span style="color: #79a8ff;">"T.*"</span><span style="color: #b6a0ff;">)</span>
-                       <span style="color: #79a8ff;">"#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n"</span><span style="color: #00cd68;">)</span>
-</pre>
-</div>
+		<span style="color: #00cd68;">(</span>traverse-temperatures <span style="color: #b6a0ff;">(</span>directory-files <span style="color: #79a8ff;">"~/sum19/ising/Temps/uniform_init"</span> t <span style="color: #79a8ff;">"T.*"</span><span style="color: #b6a0ff;">)</span>
+                <span style="color: #79a8ff;">"#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n"</span><span style="color: #00cd68;">)</span>
+	      </pre>
+	    </div>
 
-<p>
-Now all we have to do is plot the data that we grabbed from system
-statistics. To do this, we feed the above table into the amazing
-<code>gnuplot</code> and make a simple graph of points in a region of interest
-(\(T∈[0,5]\)).
-</p>
+	    <p>
+	      Now all we have to do is plot the data that we grabbed from system
+	      statistics. To do this, we feed the above table into the amazing
+	      <code>gnuplot</code> and make a simple graph of points in a region of interest
+	      (\(T∈[0,5]\)).
+	    </p>
 
-<p>
-Maybe a second to talk about what we're going to expect here. At
-low temperatures, file size will be smallest since the system will
-stay roughly uniform. As we increase the temperature, there will be
-a corresponding increase in the background noise of other
-spins. Close to the critical point, we would expect islands and
-blobs to start forming. After the critical point, things will
-become very noisy and there will be some upper-bound on the
-compressed file-size, corresponding to a maximally "random"
-configuration. Then qualitatively, we may expect the critical point
-to be the inflection point of information content. Who knows.
-</p>
-
-
-<div class="figure">
-<p><img src="../img/TvsS.png" alt="TvsS.png" />
-</p>
-</div>
-
-<p>
-So that's cool. We can probe the critical points of some order parameter (in
-this case, an approximation of information entropy)! It turns out<sup>tm</sup> that this
-<i>is</i> the critical point of the Ising model where a phase transition occurs.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd3188d4" class="outline-2">
-<h2 id="orgd3188d4">anything more? well sure</h2>
-<div class="outline-text-2" id="text-orgd3188d4">
-<p>
-So that's great and all but it could be faster and less hack-y, and I need an excuse
-to get back to <code>C</code>.
-</p>
-
-<p>
-But how will we make nice looking videos and graphics with <code>C</code>? I'm
-glad you asked thank you. There are these amazing file formats known
-as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file formats</a>. A stream of these can be piped to a good
-video encoder (like <code>x264</code>) to an mp4 which you can view to your own
-pleasure. You can find the code
-<a href="https://github.com/Lucrio/c_ising">on github</a> (nothing to write
-home about, short at around ~\(90\) lines).
-</p>
-
-<p>
-Usage:
-</p>
-<div class="org-src-container">
-<pre class="src src-bash">./ising | x264 --fps 60 -o video.mp4 /dev/stdin
-</pre>
-</div>
-
-<p>
-If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code>ffmpeg</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash">ffmpeg -i video.mp4 -r 30 -vf <span style="color: #00d3d0;">scale</span>=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
-</pre>
-</div>
-
-<p>
-So the following is really just an implementation of Schroeder's algorithm in
-<code>C</code>.
-</p>
+	    <p>
+	      Maybe a second to talk about what we're going to expect here. At
+	      low temperatures, file size will be smallest since the system will
+	      stay roughly uniform. As we increase the temperature, there will be
+	      a corresponding increase in the background noise of other
+	      spins. Close to the critical point, we would expect islands and
+	      blobs to start forming. After the critical point, things will
+	      become very noisy and there will be some upper-bound on the
+	      compressed file-size, corresponding to a maximally "random"
+	      configuration. Then qualitatively, we may expect the critical point
+	      to be the inflection point of information content. Who knows.
+	    </p>
 
 
-<div class="figure">
-<p><img src="../img/video.gif" alt="video.gif" />
-</p>
-<p><span class="figure-number">Figure 2: </span>N=500, 1k sweeps at T=2.2691 (close to critical point)</p>
-</div>
+	    <div class="figure">
+	      <p><img src="../img/TvsS.png" alt="TvsS.png" />
+	      </p>
+	    </div>
 
-<p>
-It's bigger faster better stronger. Might do some correlation length
-analysis with this code sometime in the future. tune in for more shenaingans I guess.
-</p>
-</div>
-</div>
+	    <p>
+	      So that's cool. We can probe the critical points of some order parameter (in
+	      this case, an approximation of information entropy)! It turns out<sup>tm</sup> that this
+	      <i>is</i> the critical point of the Ising model where a phase transition occurs.
+	    </p>
+	  </div>
+	</div>
+      </div>
 
-<div id="outline-container-org86f40c8" class="outline-2">
-<h2 id="org86f40c8">FAQs that no one asked for</h2>
-<div class="outline-text-2" id="text-org86f40c8">
-</div>
-<div id="outline-container-org071cc6d" class="outline-3">
-<h3 id="org071cc6d">why do this when u already have an analytic expression for entropy</h3>
-<div class="outline-text-3" id="text-org071cc6d">
-<p>
-well first of all its cool and that's all the explanation i need.
-</p>
+      <div id="outline-container-orgd3188d4" class="outline-2">
+	<h2 id="orgd3188d4">anything more? well sure</h2>
+	<div class="outline-text-2" id="text-orgd3188d4">
+	  <p>
+	    So that's great and all but it could be faster and less hack-y, and I need an excuse
+	    to get back to <code>C</code>.
+	  </p>
 
-<p>
-But other than that, this is more of a proof-of-the-concept that
-more complicated systems with more subtle order-disorder phase
-transitions could possibly be probed by the information content of
-the system. Even for non-equilibrium systems! Amazing! (See <sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup>)
-</p>
-</div>
-</div>
+	  <p>
+	    But how will we make nice looking videos and graphics with <code>C</code>? I'm
+	    glad you asked thank you. There are these amazing file formats known
+	    as the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Netpbm file formats</a>. A stream of these can be piped to a good
+	    video encoder (like <code>x264</code>) to an mp4 which you can view to your own
+	    pleasure. You can find the code
+	    <a href="https://github.com/Lucrio/c_ising">on github</a> (nothing to write
+	    home about, short at around ~\(90\) lines).
+	  </p>
 
-<div id="outline-container-org7a50140" class="outline-3">
-<h3 id="org7a50140">why lisp</h3>
-<div class="outline-text-3" id="text-org7a50140">
-<p>
-i reserve the right to withhold a response to this
-</p>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
+	  <p>
+	    Usage:
+	  </p>
+	  <div class="org-src-container">
+	    <pre class="src src-bash">./ising | x264 --fps 60 -o video.mp4 /dev/stdin
+	    </pre>
+	  </div>
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-An amazing paper by Dov Levine and his group on the usage of information
-entropy to detect order-disorder phase transitions:
-<a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031">https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031</a>
-</p></div></div>
+	  <p>
+	    If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code>ffmpeg</code>:
+	  </p>
+
+	  <div class="org-src-container">
+	    <pre class="src src-bash">ffmpeg -i video.mp4 -r 30 -vf <span style="color: #00d3d0;">scale</span>=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
+	    </pre>
+	  </div>
+
+	  <p>
+	    So the following is really just an implementation of Schroeder's algorithm in
+	    <code>C</code>.
+	  </p>
 
 
-</div>
-</div></div>
-<div id="postamble" class="status">
-<div id="archive"><a href="archive.html">Other posts</a></div>
-</div>
-</body>
+	  <div class="figure">
+	    <p><img src="../img/video.gif" alt="video.gif" />
+	    </p>
+	    <p><span class="figure-number">Figure 2: </span>N=500, 1k sweeps at T=2.2691 (close to critical point)</p>
+	  </div>
+
+	  <p>
+	    It's bigger faster better stronger. Might do some correlation length
+	    analysis with this code sometime in the future. tune in for more shenaingans I guess.
+	  </p>
+	</div>
+      </div>
+
+      <div id="outline-container-org86f40c8" class="outline-2">
+	<h2 id="org86f40c8">FAQs that no one asked for</h2>
+	<div class="outline-text-2" id="text-org86f40c8">
+	</div>
+	<div id="outline-container-org071cc6d" class="outline-3">
+	  <h3 id="org071cc6d">why do this when u already have an analytic expression for entropy</h3>
+	  <div class="outline-text-3" id="text-org071cc6d">
+	    <p>
+	      well first of all its cool and that's all the explanation i need.
+	    </p>
+
+	    <p>
+	      But other than that, this is more of a proof-of-the-concept that
+	      more complicated systems with more subtle order-disorder phase
+	      transitions could possibly be probed by the information content of
+	      the system. Even for non-equilibrium systems! Amazing! (See <sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup>)
+	    </p>
+	  </div>
+	</div>
+
+	<div id="outline-container-org7a50140" class="outline-3">
+	  <h3 id="org7a50140">why lisp</h3>
+	  <div class="outline-text-3" id="text-org7a50140">
+	    <p>
+	      i reserve the right to withhold a response to this
+	    </p>
+	  </div>
+	</div>
+      </div>
+      <div id="footnotes">
+	<h2 class="footnotes">Footnotes: </h2>
+	<div id="text-footnotes">
+
+	  <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+	    An amazing paper by Dov Levine and his group on the usage of information
+	    entropy to detect order-disorder phase transitions:
+	    <a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031">https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031</a>
+	  </p></div></div>
+
+
+	</div>
+      </div></div>
+      <div id="postamble" class="status">
+	<div id="archive"><a href="archive.html">Other posts</a></div>
+      </div>
+  </body>
 </html>
