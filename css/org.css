@@ -1,6 +1,6 @@
 body{font-size:12pt; max-width:43em; padding:0.5em 0.5em 10em 0.5em; margin:0 auto;
     line-height:1.5em; color:black; background-color:white; font-family:Sans-Serif;}
-li{margin: 1em;}
+li{margin: 1em; line-height: 1em;}
 code{white-space: pre;}
 p{text-align:justify; text-justify:inter-word;}
 .displaymath{display: block; margin-left: auto; margin-right: auto;}
