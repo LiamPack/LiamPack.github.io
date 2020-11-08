@@ -1,10 +1,20 @@
-body{font-size:12pt; max-width:43em; padding:0.5em 0.5em 10em 0.5em; margin:0 auto;
-    line-height:1.5em; color:black; background-color:white; font-family:Sans-Serif;}
+body {
+    font-family: freight-text,Iowan Old Style,Georgia,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    font-size: 12pt;
+    max-width: 43em;
+    padding: 0.5em 0.5em 10em 0.5em;
+    width: 92%;
+    max-width: 1024px;
+    margin: 0 auto;
+    line-height: 1.5em;
+    background-color: #f5f2f0;
+}
+
 li{margin: 1em; line-height: 1em;}
 code{white-space: pre;}
 p{text-align:justify; text-justify:inter-word;}
 .displaymath{display: block; margin-left: auto; margin-right: auto;}
-.header{margin-top:1cm; margin-bottom:1cm;}
+.title{margin-top:4rem; margin-bottom:4rem;}
 .navleft{display:inline-block; width:30%; text-align:left;}
 .navcenter{display:inline-block; width:35%; text-align:center;}
 .navright{display:inline-block; width:30%; text-align:right;}
@@ -19,8 +29,33 @@ p{text-align:justify; text-justify:inter-word;}
 a.choice{color:#000000; text-decoration: none;}
 blockquote{border-left: 0.25em solid #c0c0c0; padding: 0em 1em; margin: 0em; color: #303030;}
 @media (prefers-color-scheme: dark) {
-    body{color:white; background-color:black;}
+    body{color:#f5f2f0; background-color:black;}
     .math{filter: invert(1);}
+}
+
+
+.header{
+    margin-top:1cm;
+    margin-bottom:1cm;
+    background-image: url("");
+    background-size: cover;
+    background-position: right top;
+    //height: 15rem;
+    transform-origin: center bottom;
+}
+
+.page-nav ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    font-family: freight-sans,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    opacity: .3;
+    transition: opacity .25s ease-out;
+}
+
+.page-nav ul li {
+    list-style-type: none;
+    margin: 1em;
+    line-height: 0em;
 }
 
 /* a nice pink selection :) */
@@ -44,9 +79,33 @@ hr {
 *,
 *:before,
 *:after {
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: inherit;
+    vertical-align: initial;
+
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+/* a:-webkit-any-link { */
+/*     color: inherit; */
+/*     //color: -webkit-link; */
+/*     cursor: pointer; */
+/*     text-decoration: underline; */
+/* } */
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+nav a {
+    color:inherit;
+    cursor:pointer;
+    text-decoration: none;
 }
 
 pre {
@@ -96,14 +155,5 @@ pre.src-javascript:before {
 
 /* this gives the background to the code blocks */
 .outline-tex-2 code, pre {
-    background-color: #EEE;
-}
-
-
-body {
-    font-family: Lora, Palatino, Georgia, serif;
-    width: 92%;
-    max-width: 1024px;
-    margin: 0 auto;
-    background-color: #FFF;
+    background-color: #F5F2F0;
 }
