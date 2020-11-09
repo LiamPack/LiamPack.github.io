@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-08 Sun 14:43 -->
+<!-- 2020-11-08 Sun 18:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compression and the ising model</title>
@@ -44,9 +44,9 @@
                   <ul>
 <li><a href="/">home</a>  </li>
 <li><a href="http://github.com/liampack">Github</a> </li>
-<li><a href="/archive.html">Other posts</a> </li>
+<li><a href="/archive.html">Other-Posts</a> </li>
+<li><a href="/notes/index.html">Notes</a> </li>
 <li><a href="/posts/favorites.html">favorites</a> </li>
-<li><a href="/posts/least-favorites.html">least favorites</a></li>
                   </ul>
               </nav>
           </div>
@@ -325,22 +325,22 @@ prompt many, many (many) download requests, so don't forget to mark
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript" id="orga45e488"><span style="color: #a8a8a8;">/* </span><span style="color: #a8a8a8;">Download a single img</span><span style="color: #a8a8a8;"> */</span>
-<span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">download</span>(<span style="color: #00d3d0;">T</span>,<span style="color: #00d3d0;">i</span>) {
-    <span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">link</span> = document.createElement(<span style="color: #79a8ff;">"a"</span>);
-    link.href = canvas.toDataURL(<span style="color: #79a8ff;">"image/png"</span>);
-    link.download =  <span style="color: #79a8ff;">"T"</span>+ T.toString().replace(<span style="color: #79a8ff;">/\./</span>g, <span style="color: #79a8ff;">'p'</span>) + <span style="color: #79a8ff;">"/"</span> + <span style="color: #79a8ff;">"ising"</span> + i + <span style="color: #79a8ff;">".png"</span>;
-    link.style.display = <span style="color: #79a8ff;">"none"</span>;
-    <span style="color: #b6a0ff;">var</span> <span style="color: #00d3d0;">evt</span> = <span style="color: #b6a0ff;">new</span> <span style="color: #f78fe7;">MouseEvent</span>(<span style="color: #79a8ff;">"click"</span>, {
-        <span style="color: #79a8ff;">"view"</span>: window,
-        <span style="color: #79a8ff;">"bubbles"</span>: <span style="color: #00bcff;">true</span>,
-        <span style="color: #79a8ff;">"cancelable"</span>: <span style="color: #00bcff;">true</span>
+<pre class="src src-javascript" id="orga45e488"><span style="color: #767676; font-style: italic;">/* </span><span style="color: #767676; font-style: italic;">Download a single img</span><span style="color: #767676; font-style: italic;"> */</span>
+<span style="color: #D83441;">function</span> <span style="color: #D8B941;">download</span>(<span style="color: #86e7d7;">T</span>,<span style="color: #86e7d7;">i</span>) {
+    <span style="color: #D83441;">var</span> <span style="color: #86e7d7;">link</span> = document.createElement(<span style="color: #79D836;">"a"</span>);
+    link.href = canvas.toDataURL(<span style="color: #79D836;">"image/png"</span>);
+    link.download =  <span style="color: #79D836;">"T"</span>+ T.toString().replace(<span style="color: #79D836;">/\./</span>g, <span style="color: #79D836;">'p'</span>) + <span style="color: #79D836;">"/"</span> + <span style="color: #79D836;">"ising"</span> + i + <span style="color: #79D836;">".png"</span>;
+    link.style.display = <span style="color: #79D836;">"none"</span>;
+    <span style="color: #D83441;">var</span> <span style="color: #86e7d7;">evt</span> = <span style="color: #D83441;">new</span> <span style="color: #3679D8;">MouseEvent</span>(<span style="color: #79D836;">"click"</span>, {
+        <span style="color: #79D836;">"view"</span>: window,
+        <span style="color: #79D836;">"bubbles"</span>: <span style="color: #8041D8;">true</span>,
+        <span style="color: #79D836;">"cancelable"</span>: <span style="color: #8041D8;">true</span>
     });
 
     document.body.appendChild(link);
     link.dispatchEvent(evt);
     document.body.removeChild(link);
-    console.log(<span style="color: #79a8ff;">"Downloading..."</span>);
+    console.log(<span style="color: #79D836;">"Downloading..."</span>);
 }
 </pre>
 </div>
@@ -353,9 +353,9 @@ the "remember for next time" box. For your own safety.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript" id="org15fc306"><span style="color: #b6a0ff;">function</span> <span style="color: #feacd0;">simulate</span>() {
-    <span style="color: #b6a0ff;">if</span> (running) {
-        <span style="color: #a8a8a8;">// </span><span style="color: #a8a8a8;">Execute a bunch of Monte Carlo steps:</span>
+<pre class="src src-javascript" id="org15fc306"><span style="color: #D83441;">function</span> <span style="color: #D8B941;">simulate</span>() {
+    <span style="color: #D83441;">if</span> (running) {
+        <span style="color: #767676; font-style: italic;">// </span><span style="color: #767676; font-style: italic;">Execute a bunch of Monte Carlo steps:</span>
 
         ...
             download(T,i);
@@ -383,13 +383,13 @@ all sorted to make some graphs probably.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org1c30fe9"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">let</span> <span style="color: #b6a0ff;">(</span><span style="color: #6ae4b9;">(</span>dir <span style="color: #79a8ff;">"~/sum19/ising/Temps/100x100/"</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span>
-  <span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">dolist</span> <span style="color: #6ae4b9;">(</span>F <span style="color: #f0ce43;">(</span>f-glob <span style="color: #79a8ff;">"~/Downloads/T*ising*"</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span>
-    <span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>full-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string F <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>only-temp <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>split-string full-temp <span style="color: #79a8ff;">"_"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-dir <span style="color: #80d200;">(</span>concat dir only-temp <span style="color: #79a8ff;">"/"</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>mkdir temp-dir t<span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>rename-file F temp-dir<span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
+<pre class="src src-emacs-lisp" id="org1c30fe9"><span style="color: #3679D8;">(</span><span style="color: #D83441;">let</span> <span style="color: #8041D8;">(</span><span style="color: #79D836;">(</span>dir <span style="color: #79D836;">"~/sum19/ising/Temps/100x100/"</span><span style="color: #79D836;">)</span><span style="color: #8041D8;">)</span>
+  <span style="color: #8041D8;">(</span><span style="color: #D83441;">dolist</span> <span style="color: #79D836;">(</span>F <span style="color: #D85F00;">(</span>f-glob <span style="color: #79D836;">"~/Downloads/T*ising*"</span><span style="color: #D85F00;">)</span><span style="color: #79D836;">)</span>
+    <span style="color: #79D836;">(</span><span style="color: #D83441;">let*</span> <span style="color: #D85F00;">(</span><span style="color: #AB11D8;">(</span>full-temp <span style="color: #D8B941;">(</span>first <span style="color: #2D9574;">(</span>last <span style="color: #a2b6da;">(</span>split-string F <span style="color: #79D836;">"/"</span><span style="color: #a2b6da;">)</span><span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span>
+           <span style="color: #AB11D8;">(</span>only-temp <span style="color: #D8B941;">(</span>first <span style="color: #2D9574;">(</span>split-string full-temp <span style="color: #79D836;">"_"</span><span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span>
+           <span style="color: #AB11D8;">(</span>temp-dir <span style="color: #D8B941;">(</span>concat dir only-temp <span style="color: #79D836;">"/"</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span><span style="color: #D85F00;">)</span>
+      <span style="color: #D85F00;">(</span>mkdir temp-dir t<span style="color: #D85F00;">)</span>
+      <span style="color: #D85F00;">(</span>rename-file F temp-dir<span style="color: #D85F00;">)</span><span style="color: #79D836;">)</span><span style="color: #8041D8;">)</span><span style="color: #3679D8;">)</span>
 
 </pre>
 </div>
@@ -402,25 +402,25 @@ but it gets the job done.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org073ae46"><span style="color: #00cd68;">(</span><span style="color: #b6a0ff;">defun</span> <span style="color: #feacd0;">traverse-temperatures</span> <span style="color: #b6a0ff;">(</span>temp-list output<span style="color: #b6a0ff;">)</span>
-  <span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">Traverse through the temperature directories to find out the</span>
-  <span style="color: #a8a8a8;">;; </span><span style="color: #a8a8a8;">average file size obtained. Tail recursive!</span>
-  <span style="color: #b6a0ff;">(</span><span style="color: #b6a0ff;">if</span> <span style="color: #6ae4b9;">(</span>= <span style="color: #f0ce43;">(</span>length temp-list<span style="color: #f0ce43;">)</span> 0<span style="color: #6ae4b9;">)</span>
+<pre class="src src-emacs-lisp" id="org073ae46"><span style="color: #3679D8;">(</span><span style="color: #D83441;">defun</span> <span style="color: #D8B941;">traverse-temperatures</span> <span style="color: #8041D8;">(</span>temp-list output<span style="color: #8041D8;">)</span>
+  <span style="color: #767676; font-style: italic;">;; </span><span style="color: #767676; font-style: italic;">Traverse through the temperature directories to find out the</span>
+  <span style="color: #767676; font-style: italic;">;; </span><span style="color: #767676; font-style: italic;">average file size obtained. Tail recursive!</span>
+  <span style="color: #8041D8;">(</span><span style="color: #D83441;">if</span> <span style="color: #79D836;">(</span>= <span style="color: #D85F00;">(</span>length temp-list<span style="color: #D85F00;">)</span> 0<span style="color: #79D836;">)</span>
       output
-    <span style="color: #6ae4b9;">(</span><span style="color: #b6a0ff;">let*</span> <span style="color: #f0ce43;">(</span><span style="color: #00bcff;">(</span>dirname <span style="color: #80d200;">(</span>car temp-list<span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-string <span style="color: #80d200;">(</span>first <span style="color: #f78fe7;">(</span>last <span style="color: #4ae8fc;">(</span>split-string dirname <span style="color: #79a8ff;">"/"</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>temp-value <span style="color: #80d200;">(</span>substring temp-string 1 <span style="color: #f78fe7;">(</span>length temp-string<span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span>
-           <span style="color: #00bcff;">(</span>filesizes <span style="color: #80d200;">(</span>mapcar #'<span style="color: #f78fe7;">(</span>lambda<span style="color: #4ae8fc;">(</span>x<span style="color: #4ae8fc;">)</span>
-                                  <span style="color: #4ae8fc;">(</span>file-attribute-size <span style="color: #cfdf30;">(</span>file-attributes x<span style="color: #cfdf30;">)</span><span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span>
-                              <span style="color: #f78fe7;">(</span>directory-files dirname t <span style="color: #79a8ff;">".*png"</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span>
-      <span style="color: #f0ce43;">(</span>traverse-temperatures <span style="color: #00bcff;">(</span>cdr temp-list<span style="color: #00bcff;">)</span>
-                             <span style="color: #00bcff;">(</span>concat output
-                                     <span style="color: #80d200;">(</span>format <span style="color: #79a8ff;">"|%s |%d|\n"</span>
-                                             <span style="color: #f78fe7;">(</span>replace-regexp-in-string <span style="color: #79a8ff;">"p"</span> <span style="color: #79a8ff;">"."</span> temp-value<span style="color: #f78fe7;">)</span>
-                                             <span style="color: #f78fe7;">(</span>/ <span style="color: #4ae8fc;">(</span>reduce #'+ filesizes<span style="color: #4ae8fc;">)</span> <span style="color: #4ae8fc;">(</span>length filesizes<span style="color: #4ae8fc;">)</span><span style="color: #f78fe7;">)</span><span style="color: #80d200;">)</span><span style="color: #00bcff;">)</span><span style="color: #f0ce43;">)</span><span style="color: #6ae4b9;">)</span><span style="color: #b6a0ff;">)</span><span style="color: #00cd68;">)</span>
+    <span style="color: #79D836;">(</span><span style="color: #D83441;">let*</span> <span style="color: #D85F00;">(</span><span style="color: #AB11D8;">(</span>dirname <span style="color: #D8B941;">(</span>car temp-list<span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span>
+           <span style="color: #AB11D8;">(</span>temp-string <span style="color: #D8B941;">(</span>first <span style="color: #2D9574;">(</span>last <span style="color: #a2b6da;">(</span>split-string dirname <span style="color: #79D836;">"/"</span><span style="color: #a2b6da;">)</span><span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span>
+           <span style="color: #AB11D8;">(</span>temp-value <span style="color: #D8B941;">(</span>substring temp-string 1 <span style="color: #2D9574;">(</span>length temp-string<span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span>
+           <span style="color: #AB11D8;">(</span>filesizes <span style="color: #D8B941;">(</span>mapcar #'<span style="color: #2D9574;">(</span>lambda<span style="color: #a2b6da;">(</span>x<span style="color: #a2b6da;">)</span>
+                                  <span style="color: #a2b6da;">(</span>file-attribute-size <span style="color: #9cb6ad;">(</span>file-attributes x<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #2D9574;">)</span>
+                              <span style="color: #2D9574;">(</span>directory-files dirname t <span style="color: #79D836;">".*png"</span><span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span><span style="color: #D85F00;">)</span>
+      <span style="color: #D85F00;">(</span>traverse-temperatures <span style="color: #AB11D8;">(</span>cdr temp-list<span style="color: #AB11D8;">)</span>
+                             <span style="color: #AB11D8;">(</span>concat output
+                                     <span style="color: #D8B941;">(</span>format <span style="color: #79D836;">"|%s |%d|\n"</span>
+                                             <span style="color: #2D9574;">(</span>replace-regexp-in-string <span style="color: #79D836;">"p"</span> <span style="color: #79D836;">"."</span> temp-value<span style="color: #2D9574;">)</span>
+                                             <span style="color: #2D9574;">(</span>/ <span style="color: #a2b6da;">(</span>reduce #'+ filesizes<span style="color: #a2b6da;">)</span> <span style="color: #a2b6da;">(</span>length filesizes<span style="color: #a2b6da;">)</span><span style="color: #2D9574;">)</span><span style="color: #D8B941;">)</span><span style="color: #AB11D8;">)</span><span style="color: #D85F00;">)</span><span style="color: #79D836;">)</span><span style="color: #8041D8;">)</span><span style="color: #3679D8;">)</span>
 
-<span style="color: #00cd68;">(</span>traverse-temperatures <span style="color: #b6a0ff;">(</span>directory-files <span style="color: #79a8ff;">"~/sum19/ising/Temps/uniform_init"</span> t <span style="color: #79a8ff;">"T.*"</span><span style="color: #b6a0ff;">)</span>
-                       <span style="color: #79a8ff;">"#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n"</span><span style="color: #00cd68;">)</span>
+<span style="color: #3679D8;">(</span>traverse-temperatures <span style="color: #8041D8;">(</span>directory-files <span style="color: #79D836;">"~/sum19/ising/Temps/uniform_init"</span> t <span style="color: #79D836;">"T.*"</span><span style="color: #8041D8;">)</span>
+                       <span style="color: #79D836;">"#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n"</span><span style="color: #3679D8;">)</span>
 </pre>
 </div>
 
@@ -489,7 +489,7 @@ If you'd like a gif to use (say, at 30fps for 3 seconds), you can also run <code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">ffmpeg -i video.mp4 -r 30 -vf <span style="color: #00d3d0;">scale</span>=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
+<pre class="src src-bash">ffmpeg -i video.mp4 -r 30 -vf <span style="color: #86e7d7;">scale</span>=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
 </pre>
 </div>
 

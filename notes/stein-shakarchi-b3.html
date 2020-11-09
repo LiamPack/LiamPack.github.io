@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-08 Sun 20:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stein &amp; Shakarchi Book 3: Measure Theory, Integration, &amp; Hilbert Spaces</title>
+<meta name="generator" content="Org mode" />
+
+          <title>LPac's Pages</title>
+          <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<link rel="stylesheet" type="text/css" href="css/org.css"/>
+           <link rel="stylesheet" type="text/css" href="../css/org.css"/>
+            <div class="header">
+              <div class="site-title"><a href="/">LPac's Pages</a></div>
+              <nav class="page-nav">
+                  <ul>
+<li><a href="/">home</a>  </li>
+<li><a href="http://github.com/liampack">Github</a> </li>
+<li><a href="/archive.html">Other-Posts</a> </li>
+<li><a href="/notes/index.html">Notes</a> </li>
+<li><a href="/posts/favorites.html">favorites</a> </li>
+                  </ul>
+              </nav>
+          </div>
+</div>
+<div id="content">
+<h1 class="title">Stein &amp; Shakarchi Book 3: Measure Theory, Integration, &amp; Hilbert Spaces</h1>
+<p>
+For the honors exam I took back in my senior year of college, we were
+supposed to have learned up to the end of chapter 2 of this book. Yet
+no questions were asked on Lebesgue theory! So I'm going to try to
+plow through a little more of this book. My main question-marks
+walking into this are:
+</p>
+<ol class="org-ol">
+<li>Where does the notion of measure come into play with respect to differentiation?</li>
+<li>Will the fundamental theorem of calculus still hold in this more
+abstract setting?</li>
+<li>How will the Lebesuge measure guide us to formulating a more
+abstract notion of "volume"? (thinking towards these abstract
+measure spaces)</li>
+<li>What's a fractal lmao.</li>
+</ol>
+
+<div id="outline-container-org250fdf2" class="outline-2">
+<h2 id="org250fdf2">Some Chapter 1 Problems</h2>
+<div class="outline-text-2" id="text-org250fdf2">
+</div>
+<div id="outline-container-orgc9fbcc7" class="outline-3">
+<h3 id="orgc9fbcc7">1.3 &#x2013; Cantor Sets of Constant Dissection</h3>
+<div class="outline-text-3" id="text-orgc9fbcc7">
+</div>
+<div id="outline-container-org4adba71" class="outline-4">
+<h4 id="org4adba71">Problem Statement</h4>
+<div class="outline-text-4" id="text-org4adba71">
+<p>
+Consider the unit interval \([0,1]\) and let \(0 < \xi < 1\). (\(\xi =
+    \frac{1}{3}\) will give the cantor set).
+</p>
+
+<p>
+In stage 1 of the construction, remove the centrally situated open
+interval in \([0,1]\) of length \(\xi\). In stage 2, remove <i>two</i>
+central intervals each of relative length \(\xi\), one in each of the
+remaining intervals after stage 1, and so on.
+</p>
+
+<p>
+Let  \(\mathcal{C}_{\xi}\) denote teh set which remains after applying
+the above indefinitely.
+</p>
+
+<ul class="org-ul">
+<li>1. Prove that the complement of \(C_{\xi}\) is the union of open
+intervals of total length equal to 1.</li>
+<li>2. Show directly that \(m_{*}(C_{\xi}) = 0\).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org989d2ea" class="outline-4">
+<h4 id="org989d2ea">Maybe a solution</h4>
+<div class="outline-text-4" id="text-org989d2ea">
+</div>
+<div id="outline-container-org8eeea7c" class="outline-5">
+<h5 id="org8eeea7c">1.</h5>
+<div class="outline-text-5" id="text-org8eeea7c">
+<p>
+First, \(C_{\xi}\) is closed since it is the (arbitrary)
+intersection of closed sets: \(C_{\xi} = \cap_{0}^{\infty}C_{k}\), where \(C_{k}\)
+denotes the remaining points of \([0,1]\) after the \(k^{th}\)
+iteration of our algorithm. To see that each \(C_{k}\) is closed:
+</p>
+<ul class="org-ul">
+<li>\(C_{0}\) is closed (\([0,1]\)).</li>
+<li>Let \(C_{k-1}\) be closed with remaining length \((1 -
+       \xi)^{k-1}\). First, \(C_{k} = C_{k-1} - \mathcal{O}\), where \(\mathcal{O}\)
+is the set of \(k-1\) central open intervals of \(C_{k-1}\) of
+relative length \(\xi\). Then \(C_{k}\) is closed as \(C_{k}^{c} = C_{k-1}^{c} \cup
+       \mathcal{O}\) is open. Unforunately induction saves the day.</li>
+</ul>
+
+
+<p>
+Now for the length issue. This seems like a grind to get the
+interval lengths adding up to the form of \((1-\xi)^{k}\). This seems
+reasonable right? On the first iteration, we have \(1-\xi\)
+length. In the next, we have \((1-\xi) - \xi\cdot(1 - \xi) = 1 - 2\xi + \xi^{2} =
+     (1-\xi)^{2}\). On the \((k+1)^{th}\) iteration we have \((1-\xi)^{k} - \xi\cdot(1 -
+     \xi)^{k}\). Doesn't that seem like \((1 - \xi)^{k+1}\)? Right? We'll say it
+does.
+</p>
+
+<p>
+Then as \(k \to \infty\), \((1 - \xi)^{k} \to 0\) if \(\xi < 1\). Therefore \(_{}C_{\xi}^{c}
+     \rightarrow 1\) as desired. We obtain this by applying Theorem 3.2
+(\(m_{*}(C_{\xi}) + m_{*}(C_{\xi}^{c}) = 1\)), which is allowed since open and
+closed sets are measurable.
+</p>
+</div>
+</div>
+<div id="outline-container-org3f7c2d2" class="outline-5">
+<h5 id="org3f7c2d2">2.</h5>
+<div class="outline-text-5" id="text-org3f7c2d2">
+<p>
+First note, as before that \(C_{\xi} = \cap_{k=0}^{\infty}C_{k}\), where we
+have that \(C_{k} \subset C_{k-1}\) for all \(k\). Then by monotonicity,
+\(m_{*}(C_{\xi}) \leq m_{*}(C_{k})\) for all \(k\). But we know from the
+previous problem that \(m_{*}(C_{k}) = (1 - \xi)^{k}\) since \(C_{k}\)
+is exactly the union of disjoint closed cubes, and therefore
+\(m_{*}(C_{k}) = \sum_{i=0}^{2^{k}}Q_{i} = (1-\xi)^{k}\). Then
+\(m_{*}(C_{\xi}) \leq (1-\xi)^{k}\) for all \(k\), and therefore \(m_{*}(C_{\xi}) =
+     0\).
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="archive"><a href="/archive.html">Other posts</a></div>
+</div>
+</body>
+</html>
