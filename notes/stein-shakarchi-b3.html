@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-08 Sun 20:11 -->
+<!-- 2020-11-08 Sun 23:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Stein &amp; Shakarchi Book 3: Measure Theory, Integration, &amp; Hilbert Spaces</title>
@@ -69,6 +69,16 @@ abstract notion of "volume"? (thinking towards these abstract
 measure spaces)</li>
 <li>What's a fractal lmao.</li>
 </ol>
+
+
+<p>
+If you've found this somehow and are using these notes as an aid,
+please <b>do not</b> look at any of my (potentially incorrect) problem
+solutions until you have made a strong attempt at solving the problem
+yourself!! You'll only learn and digest the material if you put in the
+time to think deeply and carefully about why the material is built the
+way it is. 
+</p>
 
 <div id="outline-container-org250fdf2" class="outline-2">
 <h2 id="org250fdf2">Some Chapter 1 Problems</h2>
@@ -161,6 +171,33 @@ is exactly the union of disjoint closed cubes, and therefore
      0\).
 </p>
 </div>
+</div>
+</div>
+<div id="outline-container-orgfb0db8b" class="outline-4">
+<h4 id="orgfb0db8b">The significance of this problem</h4>
+<div class="outline-text-4" id="text-orgfb0db8b">
+<p>
+This problem is actually (for me atleast) one of those
+intuition-breaking problems. Choose <i>any</i> \(\xi < 0\) then if you cut
+out intervals of relative length \(\xi\) from \([0,1]\), you'll end up
+with a measure zero set no matter what! Imagine choosing \(\xi =
+    0.000001\) and initially cutting out the subset \((0.4999995,
+    0.5000005)\). Would you think if you iterate on this you end up with
+"essentially nothing"? Dust? That's crazy, and that's the power of
+infinity at work here.
+</p>
+
+<p>
+In some way, this is telling us that the successive powers of two,
+cutting each sub-interval specifically <i>in half</i> is enough to kill
+the whole set, so long as this cut leaves some space between the
+slices. Eventually, each slice gets cut up enough so that it turns
+to dust. The intuition comes back if you look at the evolution of
+the first interval: \([0, (1-\xi)/2] \to [0, (1-\xi)^{2}/2^{2}] \to \cdots \to
+    [0, (1-\xi)^{k}/2^{k}]\). We can already see this set being crushed at the
+edge, not only because \((1-\xi)^{k}\) will crush itself, \(1/2^{k} \to 0\) as
+well! In the next problem, we see that you can balance this ratio 
+</p>
 </div>
 </div>
 </div>
