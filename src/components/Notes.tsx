@@ -27,7 +27,7 @@ may happen especially frequently on the math side!
 Math 
 ----
 
-### [Stein & Shakarchi Book 3: Measure Theory, Integration, & Hilbert Spaces](stein-shakarchi-b3) 
+### [Stein & Shakarchi Book 3: Measure Theory, Integration, & Hilbert Spaces](/notes/stein-shakarchi-b3) 
 
 [Other posts](/archive)
 
