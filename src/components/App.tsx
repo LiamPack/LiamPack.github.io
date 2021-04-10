@@ -3,9 +3,7 @@ import * as CSS from 'csstype';
 import { InteractiveLink } from './InteractiveLink';
 import { Switch, Route } from 'react-router-dom';
 import { Home } from './Home';
-import { ExampleComponent } from './ExampleComponent';
-import { ExampleTwoDeepComponent } from './ExampleTwoDeepComponent';
-import { SitemapLinkGenerator } from './SitemapLinkGenerator';
+import { Ising } from './Ising';
 import { PageNotFound } from './PageNotFound';
 import { Breadcrumbs } from './Breadcrumbs';
 
@@ -38,31 +36,14 @@ const breadcrumbsStyle: CSS.Properties = {
 
 export const App: React.VFC = () => (
   <div style={rootStyle}>
-    <h1 style={titleStyle}>Single Page Apps for GitHub Pages</h1>
-    <InteractiveLink
-      href="https://github.com/rafgraph/spa-github-pages"
-      style={repoLinkStyle}
-    >
-      https://github.com/rafgraph/spa-github-pages
-    </InteractiveLink>
-
+    <h1 style={titleStyle}>liampack.github.io</h1>
     <nav style={breadcrumbsStyle}>
       <Breadcrumbs />
     </nav>
 
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/example" component={ExampleComponent} />
-      <Route
-        exact
-        path="/example/two-deep"
-        component={ExampleTwoDeepComponent}
-      />
-      <Route
-        exact
-        path="/sitemap-link-generator"
-        component={SitemapLinkGenerator}
-      />
+      <Route exact path="/ising" component={Ising} />
       <Route component={PageNotFound} />
     </Switch>
   </div>
