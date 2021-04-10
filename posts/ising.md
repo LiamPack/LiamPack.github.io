@@ -1,9 +1,3 @@
-import React from 'react';
-import { MarkdownRender } from './MarkdownRender';
-import fs from 'fs';
-
-export const Ising: React.VFC = () => {
-  const post: string = `
 # Compression and the ising model
 #### *tags*: trash, physics, information-theory, simulation, cs
 #### *status: in-progress*
@@ -374,9 +368,3 @@ i reserve the right to withhold a response to this
 An amazing paper by Dov Levine and his group on the usage of information
 entropy to detect order-disorder phase transitions:
 <a href="https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031">https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.011031</a>
-
-
-    `;
-
-  return <MarkdownRender>{post}</MarkdownRender>;
-};
