@@ -1,8 +1,4 @@
-import React from 'react';
-import { MarkdownRender } from './MarkdownRender';
 
-export const Ising: React.VFC = () => {
-  const post: string = `
 
 
 [LPac\'s Pages](/)
@@ -18,7 +14,7 @@ export const Ising: React.VFC = () => {
 
 
 
-##### *tags*: trash, physics, information-theory, simulation, cs
+##### *tags*: trash, physics, information-theory, simulation, cs 
 
 
 *status: in-progress*
@@ -34,7 +30,7 @@ your own risk.
 
 
 
-some background if you need it
+some background if you need it 
 ------------------------------
 
 
@@ -57,7 +53,7 @@ can still make counting arguments about the distribution of states in a
 system even if thermal equilibrium isn\'t there. What we are
 \"counting\" is going to be what saves the day, and this is where some
 information theory comes into play. We can use a (non thermodynamic)
-entropy to probe the system $S = -\\sum p\_i \\ln p\_i$. Mr. Levine
+entropy to probe the system \\(S = -\\sum p\_i \\ln p\_i\\). Mr. Levine
 and company used an information-theoretic approach to the ising model
 and found some amazing results!
 
@@ -71,19 +67,23 @@ you just gotta mess around a bit.
 
 
 
-### Information
+### Information 
 
 
 We\'ll talk a little about information content first. If you\'ve taken a
 course in thermodynamics or statistical mechanics, you\'ve probably
 (hopefully (please)) seen some mathematical definition of entropy. It
 comes in a bunch of different looking equivalent forms, but the one
-I\'ll give to you here is $$ S(X) = -k\_{B} \\sum\_{i} p\_{i} \\ln\\, p\_{i} $$ where $p\_i$ is the probability of finding the system in state a
-$i$ and $k\_B$ is a scaling factor in units of
-$Joules/Kelvin$ so make the $SI$ unit system consistent. If
-you\'re in thermal equilibrium, $p\_i$ follows a boltzmann
-distribution in energies $E\_i$, a one-parameter family over
-$T$. The advantage of using this form will be soon-evident.
+I\'ll give to you here is
+
+\\\[ S(X) = -k\_{B} \\sum\_{i} p\_{i} \\ln\\, p\_{i} \\\]
+
+where \\(p\_i\\) is the probability of finding the system in state a
+\\(i\\) and \\(k\_B\\) is a scaling factor in units of
+\\(Joules/Kelvin\\) so make the \\(SI\\) unit system consistent. If
+you\'re in thermal equilibrium, \\(p\_i\\) follows a boltzmann
+distribution in energies \\(E\_i\\), a one-parameter family over
+\\(T\\). The advantage of using this form will be soon-evident.
 
 Either way, dang isn\'t that a good-looking equation. There\'s a lot of
 content in why each part of the expression is chosen. Sometimes the
@@ -91,46 +91,44 @@ entropy is explained to be how \"disordered\" a system is, which I
 don\'t quite like (e.g it\'s not clear water-oil phase separation is the
 result of \"disorder\"). This equation says something more specific.
 
-First of all, this quantity is never negative (saved by the $-$ sign
-out front) since $0 \\leq p\_i \\leq 1$ for all $i$, making
-$\\ln p\_i \< 0$.
+First of all, this quantity is never negative (saved by the \\(-\\) sign
+out front) since \\(0 \\leq p\_i \\leq 1\\) for all \\(i\\), making
+\\(\\ln p\_i \< 0\\).
 
-If we choose a different base for the logarithm (say, base $2$),
-then the sum is actually long-hand for $E\[-\\log\\,p\_{i}\]$, the
+If we choose a different base for the logarithm (say, base \\(2\\)),
+then the sum is actually long-hand for \\(E\[-\\log\\,p\_{i}\]\\), the
 expectation value of the negative log-probability. Lets riff on this.
 
-Since $0 \\leq p\_{i} \\leq 1$, in log base 2, this is giving us the
+Since \\(0 \\leq p\_{i} \\leq 1\\), in log base 2, this is giving us the
 expected number of [bits]{.underline} that we would need to encode the
 frequencies of states for our system. So it\'s giving us a \"best
 guess\" on the amount of information needed to completely describe our
 system in all of its probabilistic glory. This also tells us how much
 \"wasted\" space there is in the system
 
-The Shannon entropy is going to look familiar. If $X$ can take on
-the values $\\{x\_1,x\_2, \\cdots, x\_n\\}$:
+The Shannon entropy is going to look familiar. If \\(X\\) can take on
+the values \\(\\{x\_1,x\_2, \\cdots, x\_n\\}\\):
 
+\\\[H(X) = \\sum\_{i} p(x\_i) \\log\\, p(x\_i)\\\]
 
-$$H(X) = \\sum\_{i} p(x\_i) \\log\\, p(x\_i)$$
-
-
-where $p(x\_i)$ is the probability of the event $X=x\_i$
-occuring. As the stereotypical example, let\'s say $X$ can take on
-the value $heads$ or $tails$ with equal probability. The same
+where \\(p(x\_i)\\) is the probability of the event \\(X=x\_i\\)
+occuring. As the stereotypical example, let\'s say \\(X\\) can take on
+the value \\(heads\\) or \\(tails\\) with equal probability. The same
 analysis above holds here, we\'re just not caring about units (more or
 less) or the second law of thermodynamics anymore (scary, I know).
 
 Note that you need to know *a prior* the probability distribution
-$p(\\cdot)$ over the set of possible states of the system. In
+\\(p(\\cdot)\\) over the set of possible states of the system. In
 thermal equilibrium, we can approximate this distribution to incredible
 accuracy due to the regularity of the underlying mechanics of such a
 system. Without thermal equilibrium, we have no way of knowing, in
-general, $p(\\cdot)$ a prior! what a pain! We\'ll see how encodings
+general, \\(p(\\cdot)\\) a prior! what a pain! We\'ll see how encodings
 come to the rescue on this issue later.
 
 
 
 
-### statmech game of life (better known as the ising model)
+### statmech game of life (better known as the ising model) 
 
 
 Now what exactly is the [ising
@@ -138,21 +136,22 @@ model](https://en.wikipedia.org/wiki/Ising_model)? If you took CS31 at
 Swarthmore College^tm^ you\'ll note that some of the finite-sized
 simulations look a bit like a game of life model, but are in general
 more chaotic-looking depending on the temperature. Just like in GoL,
-we\'re given a discrete grid of dimensions $N \\times M$, where each
-cell of the grid $c_{i,j}$ can take on two possible values. In the
+we\'re given a discrete grid of dimensions \\(N \\times M\\), where each
+cell of the grid \\(c\[i,j\]\\) can take on two possible values. In the
 case of the ising model, we\'ll take the state space to be
-$\\mathcal{A} = \\{-1, 1\\}$. These states represent \"spin up\" and
+\\(\\mathcal{A} = \\{-1, 1\\}\\). These states represent \"spin up\" and
 \"spin down\" respectively, which corresponds physically to the magnetic
 dipole moments of the atomic spin of an atom (a good model for
 simulating the magnetics of some hot metals). We\'ll denote a microstate
-of length $n$ chosen from this alphabet as
-$\\mathcal{S}\_{n}\\equiv \\{s\^{1}, \\cdots, s\^{n}\\}$, where
-$s\^i \\in \\mathcal{A}$. As for the dynamics, we get the whole
+of length \\(n\\) chosen from this alphabet as
+\\(\\mathcal{S}\_{n}\\equiv \\{s\^{1}, \\cdots, s\^{n}\\}\\), where
+\\(s\^i \\in \\mathcal{A}\\). As for the dynamics, we get the whole
 picture just by looking at the Hamiltonian for a given state:
 
-$$H(\\mathcal{S}\_N) = -J\\sum\_{i, N(i)} s\^i s\^{N(i)} - \\mu \\sum\_i B s\^i. $$
+\\\[H(\\mathcal{S}\_N) = -J\\sum\_{i, N(i)} s\^i s\^{N(i)} - \\mu
+\\sum\_i B s\^i. \\\]
 
-Here I denoted the neighbors of cell $i$ as $N(i)$. Couldn\'t
+Here I denoted the neighbors of cell \\(i\\) as \\(N(i)\\). Couldn\'t
 think of any better notation, so we\'ll deal with it.
 
 Breaking this down, we can see that the first term represents the
@@ -167,47 +166,48 @@ You can keep it if you want. Feel free to voice your concerns. So, but
 what about the dynamics? Well hold your horses. Since we\'re in thermal
 equilibrium, the probability of a specific configuration being chosen is
 given by the classic Boltzmann distribution, which factors in the energy
-of any particular microstate ($\\mathcal{S}\_{n}$ from before):
+of any particular microstate (\\(\\mathcal{S}\_{n}\\) from before):
 
-$$ P\_{T}(\\mathcal{S}\_{n}) = \\frac{e\^{\\frac{-H(\\mathcal{S}\_{n})}{k\_B T}}}{Z\_{T}} $$
+\\\[ P\_{T}(\\mathcal{S}\_{n}) =
+\\frac{e\^{\\frac{-H(\\mathcal{S}\_{n})}{k\_B T}}}{Z\_{T}} \\\]
 
 Let\'s check some asymptotics first: If every cell is the same spin,
-then the energy simply $-J\\sum\_{i,N(i)}1$. If we apply periodic
+then the energy simply \\(-J\\sum\_{i,N(i)}1\\). If we apply periodic
 boundary conditions and allow every cell to have four neighbors, then we
-get something like $H = -4NJ$. This is a probability-maximum
-according to $P\_T$, so this is a pretty likely state, all things
+get something like \\(H = -4NJ\\). This is a probability-maximum
+according to \\(P\_T\\), so this is a pretty likely state, all things
 considered. Then in the extreme where every neighbor of a cell is the
-*opposing* magnetization, $H = 4NJ$ and its corresponding
+*opposing* magnetization, \\(H = 4NJ\\) and its corresponding
 probability is at a minimum. So by continuity or something, the system
 will favor confiugrations that are at least locally uniformly
 magnetized.
 
-But as we vary $T$, we would expect the system to be more disordered
+But as we vary \\(T\\), we would expect the system to be more disordered
 as the probability distribution smooths out due to the exponential
-argument tending towards $0$ (and therefore
-$P\_{\\infty}(\\mathcal{S}\_{n}) \\rightarrow 1/(\\\# total\\,\\,\\,
-microstates)$). Something to keep in mind!
+argument tending towards \\(0\\) (and therefore
+\\(P\_{\\infty}(\\mathcal{S}\_{n}) \\rightarrow 1/(\\\# total\\,\\,\\,
+microstates)\\)). Something to keep in mind!
 
 So how would we simulate something like this? Well, being the
 statistical mechanicians we are we\'re well prepared for this: for the
 not final time, we\'re in thermal equilibrium! This means that energy
 transfer is short-ranged and localized. Then, given a system state
-$\\mathcal{S}\_{n}$, we\'re justified in flipping *only one* atom
+\\(\\mathcal{S}\_{n}\\), we\'re justified in flipping *only one* atom
 from one magnetic state (quasi-static transition between states,
 reversible, words that mean something to some people). How do we choose
 this atom? We put on our computer scientist hat and say \"well, nothing
 Monte Carlo simulations can\'t solve,\" which is an annoying way of
 saying \"randomly choose values from a probability distribution one at a
-time\". So we say, given our state $\\mathcal{S}\_{n}$, flipping
-atom $i$ results in the new state $\\mathcal{S}\'\_{n}$. We
-choose a new state $\\mathcal{S}\'\_{n}$ with probability given by
-$P\_{T}(\\mathcal{S}\'\_{n})$. Not so bad on paper!
+time\". So we say, given our state \\(\\mathcal{S}\_{n}\\), flipping
+atom \\(i\\) results in the new state \\(\\mathcal{S}\'\_{n}\\). We
+choose a new state \\(\\mathcal{S}\'\_{n}\\) with probability given by
+\\(P\_{T}(\\mathcal{S}\'\_{n})\\). Not so bad on paper!
 
 
 
 
 
-ok ok i get it gimme the cs
+ok ok i get it gimme the cs 
 ---------------------------
 
 
@@ -215,87 +215,90 @@ So this is just nonsense that I was doing on a slow day over the summer.
 
 
 
-### grabbing some of those magnets
+### grabbing some of those magnets 
 
 
 Okay with that over, we can talk about Schroeder\'s simulation. If you
 do a little bit of snooping in the source, you\'ll find the javascript
-\`src\` block that implements this simulation procedure. It\'s pretty
+`src` block that implements this simulation procedure. It\'s pretty
 fast, considering its javascript! As you may have read from the preface
 of the simulation, he made this as a proof-of-concept, the concept being
 that javascript driven web-simulations can be fast enough to be useful
-as a pedagogical tool (compared to downloading some old \`jar\` file from
+as a pedagogical tool (compared to downloading some old `jar` file from
 PhET).
 
 But we\'re going to one-up PhET and instead of downloading the
 simulation, we\'ll just download every frame of the simulation. Take
 that!
 
-First we need to take snap-shots of the images that the \`<canvas>\`
+First we need to take snap-shots of the images that the `<canvas>`
 element is displaying on the web page. To do this, we can use the
-function \`toDataURL\` given by the \`canvas\` element and have that hold
-the image data. Then, we create a new hyperlink element \`<a>\` and
+function `toDataURL` given by the `canvas` element and have that hold
+the image data. Then, we create a new hyperlink element `<a>` and
 \"click\" on it. Wrap it up in a function and we have our guy. This will
 prompt many, many (many) download requests, so don\'t forget to mark
 \"Remember this option\" or whatever your computer calls it.
 
 
-\`\`\`
-    /* Download a single img */
-    function download(T,i) {
-        var link = document.createElement("a");
-        link.href = canvas.toDataURL("image/png");
-        link.download =  "T"+ T.toString().replace(/\./g, 'p') + "/" + "ising" + i + ".png";
-        link.style.display = "none";
-        var evt = new MouseEvent("click", {
-            "view": window,
-            "bubbles": true,
-            "cancelable": true
-        });
+``` 
+/* Download a single img */
+                function download(T,i) {
+                var link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download =  "T"+ T.toString().replace(/\./g, 'p') + "/" + "ising" + i + ".png";
+                link.style.display = "none";
+                var evt = new MouseEvent("click", {
+                "view": window,
+                "bubbles": true,
+                "cancelable": true
+                });
 
-        document.body.appendChild(link);
-        link.dispatchEvent(evt);
-        document.body.removeChild(link);
-        console.log("Downloading...");
-    }
+                document.body.appendChild(link);
+                link.dispatchEvent(evt);
+                document.body.removeChild(link);
+                console.log("Downloading...");
+                }
+              
+```
 
-\`\`\`
 
-
-Then, we download the \`png\` file image for this iteration step. Now, I
+Then, we download the `png` file image for this iteration step. Now, I
 don\'t know about you, but my browser is going to be very upset with the
 number of images being downloaded. So don\'t forget to check the
 \"remember for next time\" box. For your own safety.
 
 
-\`\`\`
-    function simulate() {
-        if (running) {
-            // Execute a bunch of Monte Carlo steps:
+``` 
+function simulate() {
+                if (running) {
+                // Execute a bunch of Monte Carlo steps:
 
-            ...
-             download(T,i);
-            ...
-        }
-    }
-
-\`\`\`
+                ...
+                download(T,i);
+                ...
+                }
+                }
+              
+```
 
 
 You can make some other modifications, such as randomizing the
-temperature to be within a range (e.g. for $$$1.8,3$$$ assign
-\`T = 1.8+Math.random()*1.2\`). Don\'t forget to round if you want. I\'m
+temperature to be within a range (e.g. for \\(\[1.8,3\]\\) assign
+`T = 1.8+Math.random()*1.2`). Don\'t forget to round if you want. I\'m
 not ur parent
 
-### dealing with all the files
+
+
+
+### dealing with all the files 
 
 
 All the files downloaded were given a name in the format
-\`T$(temp)_ising$(i)\`. Now all we need is to make a directory with name
-\`T$(temp)\` and we\'ll be all sorted to make some graphs probably.
+`T$(temp)_ising$(i)`. Now all we need is to make a directory with name
+`T$(temp)` and we\'ll be all sorted to make some graphs probably.
 
 
-\`\`\`
+``` 
 (let ((dir "~/sum19/ising/Temps/100x100/"))
                 (dolist (F (f-glob "~/Downloads/T*ising*"))
                 (let* ((full-temp (first (last (split-string F "/"))))
@@ -304,17 +307,17 @@ All the files downloaded were given a name in the format
                 (mkdir temp-dir t)
                 (rename-file F temp-dir))))
 
+              
+```
 
-\`\`\`
 
-
-Then we get the file size of each \`png\` file and average over the
-temperature. In the process, we also output an \`org\` table that we can
-easily feed into \`gnuplot\`. It\'s not the best Elisp ever written, but
+Then we get the file size of each `png` file and average over the
+temperature. In the process, we also output an `org` table that we can
+easily feed into `gnuplot`. It\'s not the best Elisp ever written, but
 it gets the job done.
 
 
-\`\`\`
+``` 
 (defun traverse-temperatures (temp-list output)
                 ;; Traverse through the temperature directories to find out the
                 ;; average file size obtained. Tail recursive!
@@ -334,14 +337,14 @@ it gets the job done.
 
                 (traverse-temperatures (directory-files "~/sum19/ising/Temps/uniform_init" t "T.*")
                 "#+TBLNAME: TvsS\n|T | filesize|\n|------+-----|\n")
-
-\`\`\`
+              
+```
 
 
 Now all we have to do is plot the data that we grabbed from system
 statistics. To do this, we feed the above table into the amazing
-\`gnuplot\` and make a simple graph of points in a region of interest
-($T\in \[0,5\]$).
+`gnuplot` and make a simple graph of points in a region of interest
+(\\(T∈\[0,5\]\\)).
 
 Maybe a second to talk about what we\'re going to expect here. At low
 temperatures, file size will be smallest since the system will stay
@@ -367,42 +370,42 @@ a phase transition occurs.
 
 
 
-anything more? well sure
+anything more? well sure 
 ------------------------
 
 
 So that\'s great and all but it could be faster and less hack-y, and I
-need an excuse to get back to \`C\`.
+need an excuse to get back to `C`.
 
-But how will we make nice looking videos and graphics with \`C\`? I\'m
+But how will we make nice looking videos and graphics with `C`? I\'m
 glad you asked thank you. There are these amazing file formats known as
 the [Netpbm file formats](https://en.wikipedia.org/wiki/Netpbm_format).
-A stream of these can be piped to a good video encoder (like \`x264\`) to
+A stream of these can be piped to a good video encoder (like `x264`) to
 an mp4 which you can view to your own pleasure. You can find the code
 [on github](https://github.com/Lucrio/c_ising) (nothing to write home
-about, short at around \~$90$ lines).
+about, short at around \~\\(90\\) lines).
 
 Usage:
 
 
-\`\`\` {.src .src-bash}
-    ./ising | x264 --fps 60 -o video.mp4 /dev/stdin
-
-\`\`\`
+``` {.src .src-bash}
+./ising | x264 --fps 60 -o video.mp4 /dev/stdin
+            
+```
 
 
 If you\'d like a gif to use (say, at 30fps for 3 seconds), you can also
-run \`ffmpeg\`:
+run `ffmpeg`:
 
 
-\`\`\` {.src .src-bash}
-    ffmpeg -i video.mp4 -r 30 -vf scale=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
-
-\`\`\`
+``` {.src .src-bash}
+ffmpeg -i video.mp4 -r 30 -vf scale=512:-1 -ss 00:00:01 -to 00:00:04 video.gif
+            
+```
 
 
 So the following is really just an implementation of Schroeder\'s
-algorithm in \`C\`. Which is an application of the MCMC
+algorithm in `C`. Which is an application of the MCMC
 Metropolis-Hastings algorithm.
 
 
@@ -419,14 +422,14 @@ shenaingans I guess.
 
 
 
-FAQs that no one asked for
+FAQs that no one asked for 
 --------------------------
 
 
 
 
 
-### why do this when u already have an analytic expression for entropy
+### why do this when u already have an analytic expression for entropy 
 
 
 well first of all its cool and that\'s all the explanation i need.
@@ -440,7 +443,7 @@ for non-equilibrium systems! Amazing! (See ^[1](#fn.1){#fnr.1.100
 
 
 
-### why lisp
+### why lisp 
 
 
 i reserve the right to withhold a response to this
@@ -449,7 +452,7 @@ i reserve the right to withhold a response to this
 
 
 
-Footnotes:
+Footnotes: 
 ----------
 
 
@@ -471,7 +474,3 @@ entropy to detect order-disorder phase transitions:
 [Other posts](/archive)
 
 
-    `;
-
-  return <MarkdownRender>{post}</MarkdownRender>;
-};

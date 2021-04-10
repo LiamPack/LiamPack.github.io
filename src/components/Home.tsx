@@ -25,5 +25,16 @@ export const Home: React.VFC = () => (
     <P>
       <InteractiveLink to="/ising">Ising Model</InteractiveLink>
     </P>
+    <P>
+      <InteractiveLink to="/notes">My Notes</InteractiveLink>
+    </P>
+    <P>
+      <InteractiveLink to="/favorites">Things I Like</InteractiveLink>
+    </P>
+    <P>
+      <InteractiveLink to="/least-favorites">
+        Things I Don't Like
+      </InteractiveLink>
+    </P>
   </div>
 );
