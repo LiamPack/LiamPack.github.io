@@ -13,7 +13,7 @@ export const Favorites: React.VFC = () => {
 -   [Github](http://github.com/liampack)
 -   [Other-Posts](/archive)
 -   [Notes](/notes)
--   [favorites](/posts/favorites)
+-   [favorites](/favorites)
 
 
 

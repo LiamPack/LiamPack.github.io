@@ -8,7 +8,7 @@
 -   [Github](http://github.com/liampack)
 -   [Other-Posts](/archive)
 -   [Notes](/notes)
--   [favorites](/posts/favorites)
+-   [favorites](/favorites)
 
 
 Welcome to the page with all the textbooks in it. I\'ll be putting my

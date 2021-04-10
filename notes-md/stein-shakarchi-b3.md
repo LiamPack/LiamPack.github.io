@@ -8,7 +8,7 @@
 -   [Github](http://github.com/liampack)
 -   [Other-Posts](/archive)
 -   [Notes](/notes)
--   [favorites](/posts/favorites)
+-   [favorites](/favorites)
 
 
 For the honors exam I took back in my senior year of college, we were
