@@ -76,7 +76,7 @@ music artists / composers
 -   Kimbra
 -   Yerin Baek
 -   Mizuki Ohira
--   Nobuo Uematsu (Final Fantasy)
+-   Nobuo Uematsu
 -   Yanaginagi
 -   the peggies
 -   Aimer

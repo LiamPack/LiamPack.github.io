@@ -7,6 +7,7 @@ import { Home } from './Home';
 import { Ising } from './Ising';
 import { Notes } from './Notes';
 import { SteinShakarchiB3 } from './SteinShakarchiB3';
+import { QuantumLight } from './QuantumLight';
 import { Favorites } from './Favorites';
 import { LeastFavorites } from './LeastFavorites';
 import { PageNotFound } from './PageNotFound';
@@ -53,6 +54,12 @@ export const App: React.VFC = () => (
         path="/notes/stein-shakarchi-b3"
         component={SteinShakarchiB3}
       />
+      <Route
+        exact
+        path="/notes/quantum-theory-of-light"
+        component={QuantumLight}
+      />
+
       <Route component={PageNotFound} />
     </Switch>
   </div>

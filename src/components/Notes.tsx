@@ -28,6 +28,7 @@ Math
 ----
 
 ### [Stein & Shakarchi Book 3: Measure Theory, Integration, & Hilbert Spaces](/notes/stein-shakarchi-b3) 
+### [Rodney Loudon - The Quantum Theory of Light (3rd ed)](/notes/quantum-theory-of-light) 
 
 [Other posts](/archive)
 
