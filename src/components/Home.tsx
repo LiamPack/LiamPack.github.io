@@ -11,12 +11,21 @@ const RepoReadmeLink: React.VFC = () => (
 
 export const Home: React.VFC = () => (
   <div>
+    <P>this site serves some purposes.</P>
     <P>
-      This is an example single page app built with React and React&nbsp;Router
-      using <Code>BrowserRouter</Code>. Navigate with the links below and
-      refresh the page or copy/paste the url to test out the redirect
-      functionality deployed to overcome GitHub&nbsp;Pages incompatibility with
-      single page apps (like this one).
+      first, i'm trying to use it as an archiving area for notes i found
+      enjoyable to write, thoughts i felt were important to remember, and the
+      like.
+    </P>
+    <P>
+      second, i'm using it as an active-learning space. you can only say you
+      understand something if you can communicate it well! this is kind of the
+      idea.
+    </P>
+    <P>
+      third, i'm hoping some of the things found on this area of the internet
+      can be helpful or of use to someone. how that help or use is manifested, i
+      have no clue, that's up to you probably.
     </P>
     <h1>
       {' '}

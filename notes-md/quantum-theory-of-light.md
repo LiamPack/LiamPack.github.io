@@ -87,6 +87,6 @@ Putting it all together, the average energy density is then
 $$\\langle W_T(\\omega) \\rangle d\\omega = \\langle n \\rangle \\hbar \\omega \\rho(\\omega)d\\omega = \\frac{\\omega^3}{\\pi^2 c^3} \\frac{d\\omega}{\\exp(\\hbar\\omega/k_B T) - 1}.$$
 
 ### Einstein's A and B coefficients
-Here's where the magic is gonna happen, and its no surprise this was
-Einstein's idea. 
+todo notes and maybe a lil animation of the linear equation dictating
+absorption/emission based on heat/multiplicity/frequency
     
