@@ -3,7 +3,7 @@ import { MarkdownRender } from './MarkdownRender';
 
 export const Notes: React.VFC = () => {
   const post: string = `
-[LPac\'s Pages](/)
+[liampack.github.io](/)
 
 
 -   [home](/)

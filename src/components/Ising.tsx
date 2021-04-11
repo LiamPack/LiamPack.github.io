@@ -5,7 +5,7 @@ export const Ising: React.VFC = () => {
   const post: string = `
 
 
-[LPac\'s Pages](/)
+[liampack.github.io](/)
 
 
 -   [home](/)

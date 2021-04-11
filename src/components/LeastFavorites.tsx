@@ -6,7 +6,7 @@ export const LeastFavorites: React.VFC = () => {
   const post: string = `
 
 
-[LPac\'s Pages](/)
+[liampack.github.io](/)
 
 
 -   [home](/)

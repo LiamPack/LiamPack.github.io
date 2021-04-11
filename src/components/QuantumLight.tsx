@@ -3,7 +3,7 @@ import { MarkdownRender } from './MarkdownRender';
 
 export const QuantumLight: React.VFC = () => {
   const post: string = `
-[LPac\'s Pages](/)
+[liampack.github.io](/)
 
 
 -   [home](/)
@@ -51,8 +51,7 @@ given frequency
 distribution to get the average "number of photons" present in the
 cavity $\\langle n \\rangle$
 4. Get the average energy density of the electromagnetic field by
-counting up the average photon energy: $\\langle n \\rangle \\hbar
-\\omega \\rho(\\omega)d\omega$
+counting up the average photon energy: $\\langle n \\rangle \\hbar \\omega \\rho(\\omega)d\\omega$
 5. Integrate over the density of energy to get the total energy
 density in the cavity.
 
@@ -76,24 +75,20 @@ Thus our density of modes is proportional to $k^2$, or
 $\\omega^2/c^3$.
 
 We then quantize the field energies to be the discrete values $E_n =
-(n + \\frac{1}{2})\\hbar\\omega \\, \\, n \\in \\mathbb{Z}^{\\geq
-0}$. In thermal equilibrium at temperature $T$, we apply the Boltzmann
+(n + \\frac{1}{2})\\hbar\\omega \\, \\, n \\in \\mathbb{Z}^{\\geq 0}$. In thermal equilibrium at temperature $T$, we apply the Boltzmann
 distribution to obtain the probability that the modes of oscillation
 are *thermally* excited to the $n$ th excited state:
 
 $$P(n) = \\exp(-E_n/k_B T) / \\sum_n\\exp(-E_n/k_B T).$$
 
-After a geometric series, we get that $P(n) = (1 - U)U^n$ where $U =
-\\exp(-\\hbar\\omega/k_B T)$. Taking an expected value, we have
-$\\langle n \\rangle = \\frac{1}{\\exp(\\hbar \omega / k_B T) - 1}$$,
+After a geometric series, we get that $P(n) = (1 - U)U^n$ where $U = \\exp(-\\hbar\\omega/k_B T)$. Taking an expected value, we have
+$$\\langle n \\rangle = \\frac{1}{\\exp(\\hbar \\omega / k_B T) - 1}$$,
 the Bose-Einstein distribution for an ensemble of bosons in thermal
 equilibrium (which is what photons are so this checks out).
 
 Putting it all together, the average energy density is then
 
-$$\\langle W_T(\\omega) \\rangle d\\omega = \\langle n \\rangle \\hbar
-\\omega \\rho(\\omega)d\\omega = \\frac{\\omega^3}{\\pi^2 c^3}
-\\frac{d\\omega}{\\exp(\\hbar\\omega/k_B T) - 1$$.
+$$\\langle W_T(\\omega) \\rangle d\\omega = \\langle n \\rangle \\hbar \\omega \\rho(\\omega)d\\omega = \\frac{\\omega^3}{\\pi^2 c^3} \\frac{d\\omega}{\\exp(\\hbar\\omega/k_B T) - 1}.$$
 
 ### Einstein's A and B coefficients
 Here's where the magic is gonna happen, and its no surprise this was

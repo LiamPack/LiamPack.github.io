@@ -5,7 +5,7 @@ export const SteinShakarchiB3: React.VFC = () => {
   const post: string = `
 
 
-[LPac\'s Pages](/)
+[liampack.github.io](/)
 
 
 -   [home](/)
