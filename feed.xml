@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Liam Packer  ]]>
+    </title>
+    <link> https://liampack.github.io/ </link>
+    <description>
+      <![CDATA[  Liam Packer&#39;s Feed  ]]>
+    </description>
+    <atom:link
+      href="https://liampack.github.io/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  Posts  ]]>
+  </title>
+  <link>  </link>
+  <guid>  </guid>
+  <description>
+    <![CDATA[  Pack Posts  ]]>
+  </description>  
+    
+  <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Liam Packer</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>
