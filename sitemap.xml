@@ -2,19 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://liampack.github.io/coursework/index.html</loc>
-    <lastmod>2022-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://liampack.github.io/posts/chaos_in_optics/index.html</loc>
-    <lastmod>2022-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://liampack.github.io/to-read-things/index.html</loc>
     <lastmod>2022-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -44,12 +32,6 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://liampack.github.io/cv/index.html</loc>
-    <lastmod>2022-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://liampack.github.io/tag/index.html</loc>
     <lastmod>2022-11-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -63,6 +45,12 @@
 </url>
 <url>
     <loc>https://liampack.github.io/notes/stein-shakarchi-b3/index.html</loc>
+    <lastmod>2022-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://liampack.github.io/notes/coursework/index.html</loc>
     <lastmod>2022-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
