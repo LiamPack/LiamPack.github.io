@@ -1,7 +1,7 @@
 +++
-title = "Posts"
+title = "Posts from the Pack"
 hascode = true
-date = Date(2019, 3, 22)
+date = Date(2022, 3, 22)
 rss = "Pack Posts"
 +++
 
