@@ -38,7 +38,8 @@ Probably not exhaustive.
 
 ## Textbooks and Resources 
 Books marked with a "*" I have not read in full, but felt the impact it
-had on my understanding and growth still significant enough to include.
+had on my understanding and growth still significant enough to include
+the book.
 
 ### Math 
 - *Analysis on Manifolds*; Munkres, James (1st ed.)

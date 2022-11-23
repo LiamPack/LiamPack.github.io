@@ -19,7 +19,7 @@ powerful [Plot](https://docs.racket-lang.org/plot/) library.
 
 I'll be building [Franklin](https://franklinjl.org/) macros to
 accommodate this kind of post, which will help the development of future
-posts in a similar style.
+posts of a similar style.
 
 # Abstract
 
@@ -156,18 +156,17 @@ component with the original frequency $\omega$ which gives rise to an
 intensity-dependent index of refraction. This intensity-dependent effect
 is exactly what we needed. Writing the index of refraction as a function
 of frequency, $n(\omega)$ is a known function of $\chi$ when
-magnetization can be neglected:
-$n(\omega) = \sqrt{1 + \chi_{eff}(\omega)}$, where $\chi_{eff}(\omega)$
-is the proportionality between $E(\omega)$ and $P(\omega)$. For our
-case, $E$ has a single frequency component $\omega$ and $P$ has two
-frequency components, $3\omega$ and $\omega$. As a result, since
-$P(\omega) = \epsilon_0[\chi^{(1)}E(\omega) + 3 \chi^{(3)}|E(\omega)|^2 E(\omega)]$,
+magnetization can be neglected: $n(\omega) = \sqrt{1 +
+\chi_{eff}(\omega)}$, where $\chi_{eff}(\omega)$ is the proportionality
+between $E(\omega)$ and $P(\omega)$. For our case, $E$ has a single
+frequency component $\omega$ and $P$ has two frequency components,
+$3\omega$ and $\omega$. As a result, since $P(\omega) =
+\epsilon_0[\chi^{(1)}E(\omega) + 3 \chi^{(3)}|E(\omega)|^2 E(\omega)]$,
 we can see that $\chi_{eff} = \chi^{(1)} + 3\chi^{(3)}|E(\omega)|^2$.
 Since the intensity $I(\omega)$ is proportional to the squared magnitude
-of the electric field $|E(\omega)|^2$, we can see that
-$n(\omega) = n_0 + n_2I(\omega)$ when we neglect higher order terms than
-$|E(\omega)|^2$, where $n_2$ is a constant determined by the above
-factors [@boyd].
+of the electric field $|E(\omega)|^2$, we can see that $n(\omega) = n_0
++ n_2I(\omega)$ when we neglect higher order terms than $|E(\omega)|^2$,
+where $n_2$ is a constant determined by the above factors [@boyd].
 
 A Simple System and Some Intuition
 ----------------------------------
