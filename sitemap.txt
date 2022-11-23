@@ -1,3 +1,0 @@
-https://spa-github-pages.rafgraph.dev/
-https://spa-github-pages.rafgraph.dev/?/example
-https://spa-github-pages.rafgraph.dev/?/sitemap-link-generator
