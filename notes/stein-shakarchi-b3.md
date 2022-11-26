@@ -23,24 +23,13 @@ this are:
 3.  How will the Lebesuge measure guide us to formulating a more
     abstract notion of "volume"? (thinking towards these abstract
     measure spaces)
-4.  What's a fractal lmao.
+4.  What's a fractal, and how could you detect one.
 
+\toc 
 
-Some Chapter 1 Problems 
------------------------
-
-
-
-
-
+## Chapter 1
 ### 1.3 -- Cantor Sets of Constant Dissection 
-
-
-
-
-
-#### Problem Statement 
-
+*Problem Statement*
 
 Consider the unit interval $[0,1]$ and let $0 < \xi < 1$.
 ($\xi = \frac{1}{3}$ will give the cantor set).
@@ -57,17 +46,12 @@ applying the above indefinitely.
     intervals of total length equal to 1.
 2. Show directly that $m_{*}(C_{\xi}) = 0$.
 
+*Solution Attempt*
 
-
-
-#### Maybe a solution 
-
-##### 1. 
-First, $C_{\xi}$ is closed since it is the (arbitrary)
-intersection of closed sets: $C_{\xi} =
-\cap_{0}^{\infty}C_{k}$, where $C_{k}$ denotes the remaining
-points of $[0,1]$ after the $k^{th}$ iteration of our
-algorithm. To see that each $C_{k}$ is closed:
+**(1.)**  First, $C_{\xi}$ is closed since it is the (arbitrary)
+intersection of closed sets: $C_{\xi} = \cap_{0}^{\infty}C_{k}$, where
+$C_{k}$ denotes the remaining points of $[0,1]$ after the $k^{th}$
+iteration of our algorithm. To see that each $C_{k}$ is closed:
 
 -   $C_{0}$ is closed ($[0,1]$).
 -   Let $C_{k-1}$ be closed with remaining length $(1 -
@@ -91,25 +75,14 @@ obtain this by applying Theorem 3.2 ($m_{*}(C_{\xi}) +
 m_{*}(C_{\xi}^{c}) = 1$), which is allowed since open and closed
 sets are measurable.
 
+**(2.)** First note, as before that $C_{\xi} =
+\cap_{k=0}^{\infty}C_{k}$, where we have that $C_{k} \subset C_{k-1}$
+for all $k$. Then by monotonicity, $m_{*}(C_{\xi}) \leq m_{*}(C_{k})$
+for all $k$. But we know from the previous part that $m_{*}(C_{k}) =
+(1 - \xi)^{k}$. Therefore $m_{*}(C_{\xi}) \leq (1-\xi)^{k}$ for all $k,$
+and therefore $m_{*}(C_{\xi}) = 0$.
 
-
-
-##### 2. 
-
-
-First note, as before that $C_{\xi} = \cap_{k=0}^{\infty}C_{k}$, where
-we have that $C_{k} \subset C_{k-1}$ for all $k$. Then by monotonicity,
-$m_{*}(C_{\xi}) \leq m_{*}(C_{k})$ for all $k$. But we know from the
-previous part that $m_{*}(C_{k}) = (1 - \xi)^{k}$. Therefore
-$m_{*}(C_{\xi}) \leq (1-\xi)^{k}$ for all $k,$ and therefore
-$m_{*}(C_{\xi}) = 0$.
-
-
-
-
-
-#### The significance of this problem 
-
+*Problem Significance*
 
 This problem is actually (for me) one of those
 intuition-breaking problems. Choose *any* $\xi < 0$ then if you

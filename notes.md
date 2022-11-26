@@ -7,8 +7,6 @@ status = "in-progress"
 
 # {{ title }} 
 
-\toc
-
 A page with notes and thoughts I find and discover in the process of
 reading anything and everything. The purpose of this page is primarily
 for self-accountability, since *taking notes help understanding*!
@@ -22,6 +20,8 @@ time to think deeply and carefully about why the material is built the
 way it is.
 
 If any of my notes or thoughts are inaccurate, please let me know!
+
+\toc
 
 # On the choice of problems
 Doing problems and work "on the ground," "getting your hands dirty" is
