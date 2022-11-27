@@ -20,6 +20,8 @@ future. The parsing construct is actually more general than just string
 parsing -- it generalizes to generic stream parsing, so long as the data
 type is known ahead of time.
 
+\toc
+
 # What is a Parser?
 A parser is a lambda with three arguments:
 

@@ -21,6 +21,8 @@ I'll be building [Franklin](https://franklinjl.org/) macros to
 accommodate this kind of post, which will help the development of future
 posts of a similar style.
 
+\toc
+
 # Abstract
 
 A particularly illuminating application of analysis in dynamical systems
