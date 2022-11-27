@@ -23,7 +23,7 @@ If any of my notes or thoughts are inaccurate, please let me know!
 
 \toc
 
-# On the choice of problems
+## On the choice of problems
 Doing problems and work "on the ground," "getting your hands dirty" is
 absolutely fundamental to the learning process, especially with
 difficult and abstract definitions and concepts. Problems involving both

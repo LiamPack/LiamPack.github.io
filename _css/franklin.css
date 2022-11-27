@@ -2,13 +2,13 @@
     VARIABLES
 ================================================================== */
 
-:root {
-  --block-background: hsl(0, 0%, 94%);
-  --output-background: hsl(0, 0%, 98%);
-  --small: 14px;
-  --normal: 19px;
-  --text-color: hsv(0, 0%, 20%);
-}
+/* :root { */
+/*   --block-background: hsl(0, 0%, 94%); */
+/*   --output-background: hsl(0, 0%, 98%); */
+/*   --small: 14px; */
+/*   --normal: 19px; */
+/*   --text-color: hsv(0, 0%, 20%); */
+/* } */
 
 /* ==================================================================
     DEFAULT FONT AND LAYOUT
@@ -73,6 +73,11 @@ html {
 /* ==================================================================
     TEXT GEOMETRY
 ================================================================== */
+
+.franklin-toc {
+    background: var(--block-background);
+    border: 1px solid var(--horizontal-rule-color);
+}
 
 .franklin-toc li {
   /* Avoid clickable elements being too close together. */

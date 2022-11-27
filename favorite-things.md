@@ -23,11 +23,13 @@ Probably not exhaustive.
 - *Snö*, *L'été*; Snail's House (2019)
 - *One*; C418 (2013)
 - *My Favorite Things*; Coltrane (1961)
+- *Danse de la Chèvre*; Arthur Honegger (1921)
 
 ## Games
 - Cavestory (2004 original release)
 - Animal Crossing: Wild World
 - Dwarf Fortress
+- Super Smash Bros. Melee (2001) (on a good day)
 
 ## Programming Languages 
 - Scheme (Chez)
@@ -37,9 +39,12 @@ Probably not exhaustive.
 - C
 
 ## Textbooks and Resources 
-Books marked with a "*" I have not read in full, but felt the impact it
-had on my understanding and growth still significant enough to include
-the book.
+*(Note that this isn't *all* things I've read on the subject, only my
+favorites.)*
+
+Books marked with a "*" I have not read in full, but felt the impact
+they had on my understanding and growth is significant enough to include
+them.
 
 ### Math 
 - *Analysis on Manifolds*; Munkres, James (1st ed.)
@@ -61,7 +66,6 @@ the book.
 
 ### Programming Language Theory 
 - *Types and Programming Languages*; Pierce, Benjamin (2002)
-<!-- - *Foundations of Logic Programming*; Lloyd, J.W. -->
 
 ### Algorithms 
 - *Algorithm Design*; Kleinberg & Tardos
@@ -74,5 +78,6 @@ the book.
 - *Cuba's Academic Advantage*; Carnoy
 
 ## Websites 
+- Prot's [protesialos.com](https://protesilaos.com/)
 - Gwern's [gwern.net](https://www.gwern.net/index)
 - Eryk's [planetbanatt.net](https://planetbanatt.net/)
