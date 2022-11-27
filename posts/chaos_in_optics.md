@@ -23,7 +23,7 @@ posts of a similar style.
 
 \toc
 
-# Abstract
+## Abstract
 
 A particularly illuminating application of analysis in dynamical systems
 is to that of (nonlinear) optical systems. These systems are
@@ -72,11 +72,9 @@ akin to the logistic map's road to chaos, followed by sets of chaotic
 regimes [@harrison_chaos_1986], along with other surprises which we will
 discover for the first time below.
 
-A Brief Introduction to Nonlinear Optics
-========================================
+## A Brief Introduction to Nonlinear Optics
 
-Nonlinear Polarization
-----------------------
+### Nonlinear Polarization
 
 First, we will get at taste of how higher-order dependence of a
 dielectric medium on an electric field can produce interesting effects,
@@ -170,8 +168,7 @@ of the electric field $|E(\omega)|^2$, we can see that $n(\omega) = n_0
 + n_2I(\omega)$ when we neglect higher order terms than $|E(\omega)|^2$,
 where $n_2$ is a constant determined by the above factors [@boyd].
 
-A Simple System and Some Intuition
-----------------------------------
+## A Simple System and Some Intuition
 
 The simple system we wish to analyze is the well-known ring resonator
 with a single gain medium along one branch of the ring, see figure
@@ -201,8 +198,7 @@ modify this phase shift to $\phi = (2\pi/\lambda) L \cdot n(I) =
 a schematic of the ring-resonator used to demonstrate chaotic behavior
 in a simple optical system.](/assets/chaos-optics/ring-resonator.png)
 
-Analysis
-========
+## Analysis
 
 We'll be following and expanding upon some of the analysis of the above
 system in [@harrison_chaos_1986] and [@ikeda_optical_1980]. We'll also
@@ -309,8 +305,7 @@ empirically to be $\lambda \approx
     -0.3205$, indicating nearby neighborhoods shrinking towards it
 throughout any starting trajectory](/assets/chaos-optics/map-stable.png)
 
-The Journey to Chaos
---------------------
+### The Journey to Chaos
 
 We can see qualitatively, as we increase $C$ from $1.0$, a series of
 period doubling occurs, examples of which are shown in figure
@@ -350,8 +345,7 @@ indicating these cycles are, in fact, stable
 ($\Pi_if'(x_i) = 0.64491, 0.45558, 0.50001$ for the 2-cycle, 4-cycle,
 and 8-cycle respectively).](/assets/chaos-optics/map-8cycle.png "fig:")
 
-Chaos
------
+## Chaos
 
 The sequence of period doubling roughly continues until chaos occurs at
 some threshold $C$ value. We can see from figure
@@ -372,8 +366,7 @@ value. The Liapunov exponent was calculated empirically to be $\lambda
 $f'(x) > 1$, reinforcing the fact that this is a chaotic
 regime.](/assets/chaos-optics/map-chaos.png)
 
-Orbit Diagram Analysis
-----------------------
+## Orbit Diagram Analysis
 
 A number of very surprising results appear in the orbit diagram
 calculation and analysis, see figure
@@ -582,8 +575,7 @@ universality theorems for finite difference maps on unimodal
 distributions then apply, yielding qualitatively similar orbit
 diagrams.](/assets/chaos-optics/finite-map-orbit-plot-small-n2.png "fig:")
 
-(Complex) Chaos
----------------
+## (Complex) Chaos
 
 We now return to the complex map. To turn the difference-differential
 equation pair into a difference map, we return to the adiabatic case of
@@ -729,8 +721,7 @@ that of [fig:paper-chaos](#fig:paper-chaos){reference-type="ref"
 reference="fig:paper-chaos"} at around
 $1.41$.](/assets/chaos-optics/10.0_0.4_1_correlation.png)
 
-Conclusions
-===========
+## Conclusions
 
 We started by introducing a simple nonlinear effect in a dielectric
 medium in the ring resonator system. From this, clear chaos emerges at a

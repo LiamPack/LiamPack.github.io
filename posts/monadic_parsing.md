@@ -22,7 +22,7 @@ type is known ahead of time.
 
 \toc
 
-# What is a Parser?
+## What is a Parser?
 A parser is a lambda with three arguments:
 
 ```
@@ -59,7 +59,7 @@ s) c))`, then we can call our success function on `(car s)` and `(cdr
 s)`. Otherwise, we the parse failed.
 
 
-# Demonstrating the Monadic structure
+## Demonstrating the Monadic structure
 
 We can impose monadic rules on the structure by defining the
 prototypical `return`, `fail`, and `bind` operators:
@@ -98,7 +98,7 @@ x))`. In this case, instead of `f` being of type `f: t -> t parser`, we have
   (bind a (lambda (x) (return (f x)))))
 ```
 
-# Combinators
+## Combinators
 
 We can write an `(either/p a b)`, which first tries parser `a`
 on the input, then parser `b`, and uses the first which succeeds, as

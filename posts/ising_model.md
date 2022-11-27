@@ -24,6 +24,8 @@ lastupdate = Date(2022, 11, 22)
 I'll leave it up for posterity. might do a redux on this later. read at
 your own risk.
 
+\toc
+
 # some background if you need it 
 
 Back in 2019 as I was doing some reading[^1]
