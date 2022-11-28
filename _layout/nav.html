@@ -1,11 +1,25 @@
 <div id="layout">
-  <div id="menu">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/posts/">Posts</a></li>
-      <li><a href="/notes/">Notes</a></li>
-      <li><a href="/favorite-things/">Favorites</a></li>
-      <li><a href="/assets/resume.pdf">Resume</a></li>
-    </ul>
+  <div id="ui-elements-container">
+    <div id="menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/notes/">Notes</a></li>
+        <li><a href="/favorite-things/">Favorites</a></li>
+        <li><a href="/assets/resume.pdf">Resume</a></li>
+        <li>
+          <div class="mode-selector">
+            <button class="theme-button-light" onclick="setTheme('light')"
+                    title="Light" type="button">
+              [light theme]
+            </button>
+            <button class="theme-button-dark" onclick="setTheme('dark')"
+                    title="Dark">
+              [dark theme]
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
   <div id="main">
