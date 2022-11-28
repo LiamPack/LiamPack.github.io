@@ -23,7 +23,7 @@ this are:
 3.  How will the Lebesuge measure guide us to formulating a more
     abstract notion of "volume"? (thinking towards these abstract
     measure spaces)
-4.  What's a fractal, and how could you detect one.
+4.  What's a fractal, and how do you mathematically detect one?
 
 \toc 
 
