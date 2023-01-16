@@ -33,7 +33,10 @@ probability. I haven't learned probability formally, but in the
 process of working through Mackay's *Information Theory, Inference,
 and Learning Algorithms*, I've built up many unanswered questions. How
 is mutual information defined on more abstract measure spaces? Or
-KL-Divergence? I've heard of information geometry -- is 
+KL-Divergence? Even seemingly benign issues like "defining a
+conditional probability" is not so simple.  Presumably this all
+underpins statistical manifolds and information geometry, which sounds
+like a lot of fun.
 
 \toc 
 
@@ -55,10 +58,7 @@ applying the above indefinitely.
 1. Prove that the complement of $C_{\xi}$ is the union of open
     intervals of total length equal to 1.
 2. Show directly that $m_{*}(C_{\xi}) = 0$.}{
-**(1.)**  First, $C_{\xi}$ is closed since it is the (arbitrary)
-intersection of closed sets: $C_{\xi} = \cap_{0}^{\infty}C_{k}$, where
-$C_{k}$ denotes the remaining points of $[0,1]$ after the $k^{th}$
-iteration of our algorithm. To see that each $C_{k}$ is closed:
+1.  First, $C_{\xi}$ is closed since it is the (arbitrary) intersection of closed sets: $C_{\xi} = \cap_{0}^{\infty}C_{k}$, where $C_{k}$ denotes the remaining points of $[0,1]$ after the $k^{th}$ iteration of our algorithm. To see that each $C_{k}$ is closed:
 
 -   $C_{0}$ is closed ($[0,1]$).
 -   Let $C_{k-1}$ be closed with remaining length $(1 -
@@ -69,46 +69,40 @@ iteration of our algorithm. To see that each $C_{k}$ is closed:
     \mathcal{O}$ is open. Unforunately induction saves the day.
 
 Now for the length issue. This seems like a grind to get the interval
-lengths adding up to the form of $(1-\xi)^{k}$. This seems
-reasonable right? On the first iteration, we have $1-\xi$ length.
-In the next, we have $(1-\xi) - \xi\cdot(1 - \xi) = 1 - 2\xi +
-\xi^{2} = (1-\xi)^{2}$. On the $(k+1)^{th}$ iteration we have
-$(1-\xi)^{k} - \xi\cdot(1 - \xi)^{k}$. Doesn't that seem like
-$(1 - \xi)^{k+1}$? Right? We'll say it does.
+lengths adding up to the form of $(1-\xi)^{k}$. This seems reasonable,
+right? On the first iteration, we have $1-\xi$ length.  On the next,
+we have $(1-\xi) - \xi\cdot(1 - \xi) = 1 - 2\xi + \xi^{2} =
+(1-\xi)^{2}$. On the $(k+1)^{th}$ iteration we have $(1-\xi)^{k} -
+\xi\cdot(1 - \xi)^{k} = (1-\xi)(1 - \xi)^{k} = (1-\xi)^{k+1}$. Very convenient.
 
-Then as $k \to \infty$, $(1 - \xi)^{k} \to 0$ if $\xi <
-1$. Therefore $_{}C_{\xi}^{c} \rightarrow 1$ as desired. We
-obtain this by applying Theorem 3.2 ($m_{*}(C_{\xi}) +
-m_{*}(C_{\xi}^{c}) = 1$), which is allowed since open and closed
-sets are measurable.
+Then as $k \to \infty$, $(1 - \xi)^{k} \to 0$ if $\xi < 1$. Therefore
+$_{}C_{\xi}^{c} \rightarrow 1$ as desired. We obtain this by applying
+Theorem 3.2 ($m_{*}(C_{\xi}) + m_{*}(C_{\xi}^{c}) = 1$), which is
+allowed since open and closed sets are measurable.
 
-**(2.)** First note, as before that $C_{\xi} =
-\cap_{k=0}^{\infty}C_{k}$, where we have that $C_{k} \subset C_{k-1}$
-for all $k$. Then by monotonicity, $m_{*}(C_{\xi}) \leq m_{*}(C_{k})$
-for all $k$. But we know from the previous part that $m_{*}(C_{k}) =
-(1 - \xi)^{k}$. Therefore $m_{*}(C_{\xi}) \leq (1-\xi)^{k}$ for all $k,$
-and therefore $m_{*}(C_{\xi}) = 0$.
-}
+2. First note, as before, that $C_{\xi} = \cap_{k=0}^{\infty}C_{k}$,
+   where we have that $C_{k} \subset C_{k-1}$ for all $k$. Then by
+   monotonicity, $m_{*}(C_{\xi}) \leq m_{*}(C_{k})$ for all $k$. But
+   from the previous part, $m_{*}(C_{k}) = (1 - \xi)^{k}$. Therefore
+   $m_{*}(C_{\xi}) \leq (1-\xi)^{k}$ for all $k,$ and so
+   $m_{*}(C_{\xi}) = 0$.}
 
-*Problem Significance*
-
-This problem is actually (for me) one of those
-intuition-breaking problems. Choose *any* $\xi < 0$ then if you
-cut out intervals of relative length $\xi$ from $[0,1]$,
-you'll end up with a measure zero set no matter what! Imagine choosing
-$\xi = 0.000001$ and initially cutting out the subset
-$(0.4999995, 0.5000005)$. Would you think if you iterate on this you
-end up with "essentially nothing"? Dust? Infinity is powerful.
+*Commentary*: This problem is actually (for me) one of those
+intuition-breaking problems. Choose *any* $\xi < 0$ then if you cut
+out intervals of relative length $\xi$ from $[0,1]$, you'll end up
+with a measure zero set no matter what! Imagine choosing $\xi =
+0.000001$ and initially cutting out the subset $(0.4999995,
+0.5000005)$. Would you think if you iterate on this you end up with
+"essentially nothing"? Dust? Infinity is powerful.
 
 In some way, this is telling us that the successive powers of two,
-cutting each sub-interval specifically *in half* is enough to kill the
+cutting each sub-interval into *two* pieces is enough to kill the
 whole set, so long as this cut leaves some space between the slices.
-Eventually, each slice gets cut up enough so that it turns to dust. The
-intuition comes back if you look at the evolution of the first interval:
-$[0, (1-\xi)/2] \to [0, (1-\xi)^{2}/2^{2}] \to \cdots \to
-[0, (1-\xi)^{k}/2^{k}]$. We can already see this set being
-crushed at the edge, not only because $(1-\xi)^{k}$ will crush
-itself, $1/2^{k} \to 0$ as well! In the next problem, we see that
-you can balance this ratio to end up with a "fat" cantor set,
-$\hat{C}_{\xi}$ with $m_*(\hat{C}_{\xi}) > 0$.
-
+Eventually, each slice gets cut up enough so that it turns to
+dust. The intuition comes back if you look at the evolution of the
+first interval: $[0, (1-\xi)/2] \to [0, (1-\xi)^{2}/2^{2}] \to \cdots
+\to [0, (1-\xi)^{k}/2^{k}]$. We can already see this set being crushed
+at the edge, not only because $(1-\xi)^{k}$ will crush itself, but
+$1/2^{k} \to 0$ as well! There may be a way to balance this ratio
+$(1-\xi)^k/2^k$ to get a non-zero measure at the edges. I think these
+are known as "fat Cantor sets", which are detailed in the next problem. 
