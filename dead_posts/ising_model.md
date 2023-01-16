@@ -13,8 +13,7 @@ lastupdate = Date(2022, 11, 22)
 
 {{ page_tags }}
 
-{{ page_status }}
-*status: in-progress*
+*status: {{ status }}*
 
 *first draft: Jul 10th, 2019*
 

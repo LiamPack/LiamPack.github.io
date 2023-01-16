@@ -3,6 +3,8 @@ title = "Stein & Shakarchi Book 3: Measure Theory, Integration, &
 Hilbert Spaces"
 tags = ["notes", "math", "analysis"]
 date = Date(2022, 11, 13)
+firstdraft = Date(2022, 11, 13)
+lastupdate = Date(2022, 11, 13)
 +++
 
 # {{ title }}
@@ -25,12 +27,20 @@ this are:
     measure spaces)
 4.  What's a fractal, and how do you mathematically detect one?
 
+
+Recently (2023-01-16), I've taken an interest in measure-theoretic
+probability. I haven't learned probability formally, but in the
+process of working through Mackay's *Information Theory, Inference,
+and Learning Algorithms*, I've built up many unanswered questions. How
+is mutual information defined on more abstract measure spaces? Or
+KL-Divergence? I've heard of information geometry -- is 
+
 \toc 
 
 ## Chapter 1
 ### 1.3 -- Cantor Sets of Constant Dissection 
-*Problem Statement*
 
+\problem{
 Consider the unit interval $[0,1]$ and let $0 < \xi < 1$.
 ($\xi = \frac{1}{3}$ will give the cantor set).
 
@@ -44,10 +54,7 @@ applying the above indefinitely.
 
 1. Prove that the complement of $C_{\xi}$ is the union of open
     intervals of total length equal to 1.
-2. Show directly that $m_{*}(C_{\xi}) = 0$.
-
-*Solution Attempt*
-
+2. Show directly that $m_{*}(C_{\xi}) = 0$.}{
 **(1.)**  First, $C_{\xi}$ is closed since it is the (arbitrary)
 intersection of closed sets: $C_{\xi} = \cap_{0}^{\infty}C_{k}$, where
 $C_{k}$ denotes the remaining points of $[0,1]$ after the $k^{th}$
@@ -81,6 +88,7 @@ for all $k$. Then by monotonicity, $m_{*}(C_{\xi}) \leq m_{*}(C_{k})$
 for all $k$. But we know from the previous part that $m_{*}(C_{k}) =
 (1 - \xi)^{k}$. Therefore $m_{*}(C_{\xi}) \leq (1-\xi)^{k}$ for all $k,$
 and therefore $m_{*}(C_{\xi}) = 0$.
+}
 
 *Problem Significance*
 
@@ -103,3 +111,4 @@ crushed at the edge, not only because $(1-\xi)^{k}$ will crush
 itself, $1/2^{k} \to 0$ as well! In the next problem, we see that
 you can balance this ratio to end up with a "fat" cantor set,
 $\hat{C}_{\xi}$ with $m_*(\hat{C}_{\xi}) > 0$.
+

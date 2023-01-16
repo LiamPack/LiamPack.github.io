@@ -25,7 +25,7 @@ type is known ahead of time.
 ## What is a Parser?
 A parser is a lambda with three arguments:
 
-```
+```scheme
 (define some-parser/p (lambda (s ks kf) ...))
 ```
 
@@ -44,7 +44,7 @@ The lambda structure lends naturally to some simple parsers. For
 example, the a parser which checks that the head of `s` matches a
 predicate:
 
-```
+```scheme
 (define (psym pred)
   (lambda (s ks kf)
     (if (null? s)
@@ -64,7 +64,7 @@ s)`. Otherwise, we the parse failed.
 We can impose monadic rules on the structure by defining the
 prototypical `return`, `fail`, and `bind` operators:
 
-```
+```scheme
 (define (return v) (lambda (s ks kf) (ks v s)))
 (define fail (lambda (s ks kf) (kf)))
 (define empty/p (return '()))
@@ -93,7 +93,7 @@ naming, to represent the operation of `compose a with (return (f
 x))`. In this case, instead of `f` being of type `f: t -> t parser`, we have
 `f: t -> t` and need to lift its result with `return`:
 
-```
+```scheme
 (define (lift a f)
   (bind a (lambda (x) (return (f x)))))
 ```
@@ -105,7 +105,7 @@ on the input, then parser `b`, and uses the first which succeeds, as
 well as `(and/p a b)`, which runs `a`, then `b`, and combines their
 results into a list:
 
-```
+```scheme
 (define (either/p a b)
   (lambda (s ks kf)
     (a s ks
@@ -125,7 +125,7 @@ results into a list:
 write combinators. For example, to run a list of parsers `as`, we can
 create the combinator `all-of/p` by folding with `and/p`:
 
-```
+```scheme
 (define (all-of/p . as)
   (fold-right and/p empty/p as))
 ```
@@ -135,7 +135,7 @@ it will allow on the input. In type terms, if `p` is a `t` parser, we
 can create a combinator `many/p` which allows you to lift `p` to become
 a `t list` parser `(many/p p)`:
 
-```
+```scheme
 (define (many/p p)
   (either/p
    (bind
@@ -147,7 +147,7 @@ a `t list` parser `(many/p p)`:
 Finally, we can write the `(repeat n p)` combinator, which runs `p` `n`
 successive times on the input and produces a list of results:
 
-```
+```scheme
 (define (repeat n p)
   (define (helper n1)
     (either/p

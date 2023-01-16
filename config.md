@@ -31,3 +31,14 @@ Add here global latex commands to use throughout your pages.
   #2
   @@
 }
+
+\newcommand{\problem}[2]{
+@@problem
+**Problem**:
+#1
+@@
+
+*Solution Attempt*:
+
+#2
+}

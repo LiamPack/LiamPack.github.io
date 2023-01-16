@@ -48,17 +48,18 @@ them.
 
 ### Math 
 - *Analysis on Manifolds*; Munkres, James (1st ed.)
+- \**Algebra: Chapter 0*; Aluffi, Paolo (2009)
 - \**Topology*; Dugundji, James
 - *Topology*; Munkres, James (2nd ed.) [first half]
-- \**Algebra: Chapter 0*; Aluffi, Paolo (2009)
 - \**Real Analysis*; Carothers, N.L.
-- *Analysis II*; Tao, Terrance
+
 ### Applied Mathematics
 - \**Foundations of Machine Learning*; Mohri, Rostanizadeh, Talwalkar
   (2018)
 - \**Nonlinear Programming*; Bertsekas
 
 ### Physics 
+- *Principles of Mechanics*; Synge & Griffith (1949)
 - *Electricity and Magnetism*; Purcell E. M. (2013)
 - *Thermodynamics*; Enrico Fermi (Dover ed.)
 - \* *Introduction to Modern Statistical Mechanics*; Chandler, David (all

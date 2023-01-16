@@ -1,3 +1,15 @@
 <script type="text/javascript">
-  const setTheme = theme => document.documentElement.className = theme;
+  const setTheme = theme => {
+      document.documentElement.className = theme;
+      localStorage.setItem("theme", theme)
+  };
+
+  const currentTheme = localStorage.getItem("theme");
+
+  // If the current theme in localStorage is "dark"...
+  if (currentTheme == "dark") {
+      // ...then use the .dark-theme class
+      document.documentElement.className = currentTheme;
+  }
+
 </script>

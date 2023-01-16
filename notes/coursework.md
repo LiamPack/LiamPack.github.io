@@ -1,6 +1,7 @@
 +++
 title = "Coursework"
 date = Date(2022, 11, 22)
+lastupdate = Date(2022, 11, 22)
 +++
 
 Some of the stuff I've apparently learned
@@ -44,7 +45,7 @@ transformations, Hamilton-Jacobi theory, canonical perturbations.
 
 *Textbooks:* Goldstein
 
-# **Swarthmore College (Honors Math & Physics B.A.)**
+# Swarthmore College (High Honors Math & Physics B.A.)
 ## **Honors Exams**
 The honors exams were a culminating set of examinations to test deep
 understanding of graduate-level course topics. These exams are meant to
@@ -62,7 +63,7 @@ Borsuk-Ulam, Van Kampen, groups of covering transformations, fiber
 bundles, classification of surfaces. Triangulations, surfaces,
 simplicial homology.
 
-*Textbooks:* Munkres's *Topology , Armstrong's *Basic Topology* ,
+*Textbooks:* Munkres's *Topology*, Armstrong's *Basic Topology* ,
 Hatcher's *Algebraic Topology chapters 1, 2*
 
 ## **Math 101** *Analysis on Manifolds & Measure Theory*

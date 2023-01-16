@@ -9,7 +9,10 @@ status = "in-progress"
 
 A page with notes and thoughts I find and discover in the process of
 reading anything and everything. The purpose of this page is primarily
-for self-accountability, since *taking notes help understanding*!
+for self-accountability, since *writing is thinking*. Often times I
+read a textbook just for fun, but more often I'm trying to learn
+something. Learning is best done through doing, and passive reading
+isn't really "doing".
 
 
 If you've found this somehow and are using these notes as an aid,
@@ -20,6 +23,9 @@ time to think deeply and carefully about why the material is built the
 way it is.
 
 If any of my notes or thoughts are inaccurate, please let me know!
+
+Recent notes (date indicates last updated time):
+{{recent_notes}}
 
 \toc
 
@@ -40,5 +46,15 @@ Again, this isn't to discount or discredit problems of a computational
 type: they're incredibly important. They just take longer to write up in
 Latex.
 
+## Past Coursework
+[I've studied a bunch of things in the past](/notes/coursework/). I
+haven't kept the best notes, and, at the time of studying, I didn't
+always have a good system to account for knowledge retention (anki,
+spaced problems, etc.). Sometimes, I even crammed. Tough times.
+
+I hope to go back through some of the texts I studied from and add
+some notes with commentary on interesting problems or topics. Someday.
+
 ## Math
+### [Algebra; Artin](/notes/artin/)
 ### [Stein & Shakarchi Book 3: Measure Theory, Integration, & Hilbert Spaces](/notes/stein-shakarchi-b3/)

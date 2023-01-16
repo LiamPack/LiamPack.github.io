@@ -405,3 +405,10 @@ div.mode-selector button::before, span.mode-selector button::before {
   margin: 0 0 0 calc( var(--mode-selector-button-base-left-margin) + var(--mode-selector-button-left-adjust));
 }
 
+.problem {
+  background-color: var(--block-background);
+  border-left: 5px solid var(--horizontal-rule-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 1em;
+}

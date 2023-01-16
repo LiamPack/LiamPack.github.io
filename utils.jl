@@ -8,14 +8,6 @@ function hfun_m1fill(vname)
   return pagevar("index", var)
 end
 
-function lx_baz(com, _)
-  # keep this first line
-  brace_content = Franklin.content(com.braces[1]) # input string
-  # do whatever you want here
-  return uppercase(brace_content)
-end
-
-
 @delay function hfun_list_tags()
     tagpages = globvar("fd_tag_pages")
     if tagpages === nothing
@@ -36,7 +28,8 @@ end
     return String(take!(io))
 end
 
-# doesn't need to be delayed because it's generated at tag generation, after everything else
+# doesn't need to be delayed because it's generated at tag generation,
+# after everything else
 function hfun_tag_list()
     tag = locvar(:fd_tag)::String
     items = Dict{Date,String}()
@@ -78,8 +71,7 @@ end
     pagetags === nothing && return ""
     io = IOBuffer()
     tags = pagetags[splitext(locvar("fd_rpath"))[1]] |> collect |> sort
-    several = length(tags) > 1
-    write(io, """<div class="tags">""")
+    write(io, """<div class="tags"> <em>tags: </em>""")
     for tag in tags[1:end-1]
         t = replace(tag, "_" => " ")
         write(io, """<a href="/tag/$tag/">$t</a>, """)
@@ -90,3 +82,28 @@ end
     return String(take!(io))
 end
 
+
+function recent_in_dir(dir::String, date_var::String)
+    list = readdir(dir)
+    filter!(f -> endswith(f, ".md"), list)
+
+    dates = [pagevar(joinpath(dir, f), date_var) for f in list]
+    perm = sortperm(dates, rev=true)
+    idxs = perm[1:min(3, length(perm))]
+    io = IOBuffer()
+    write(io, "<ul>")
+    for i in idxs
+        fi = joinpath("/"*dir, splitext(list[i]) |> first, "")
+        fn = joinpath(dir, list[i])
+        title = pagevar(fn, "title")
+        date = dates[i]
+        write(io, """<li> $date <a href="$fi">$title</a></li>\n""")
+    end
+    write(io, "</ul>")
+    return String(take!(io))
+
+end
+
+hfun_recent_posts() = recent_in_dir("posts", "date")
+
+hfun_recent_notes() = recent_in_dir("notes", "lastupdate")
