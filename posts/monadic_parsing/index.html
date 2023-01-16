@@ -1,80 +1,79 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <script type="text/javascript" src="/js/highlight-lisp/highlight-lisp.js"></script> <link rel=stylesheet  href="/js/highlight-lisp/themes/github.css"> <script> const setTheme = theme => document.documentElement.className = theme; </script> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <title>Monadic Parsing in Scheme</title> <div id=layout > <div id=ui-elements-container > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/posts/">Posts</a> <li><a href="/notes/">Notes</a> <li><a href="/favorite-things/">Favorites</a> <li><a href="/assets/resume.pdf">Resume</a> <li> <div class=mode-selector > <button class=theme-button-light  onclick="setTheme('light')" title=Light  type=button > [light theme] </button> <button class=theme-button-dark  onclick="setTheme('dark')" title=Dark > [dark theme] </button> </div> </ul> </div> </div> <div id=main > <div class=franklin-content > <h1 id=title ><a href="#title" class=header-anchor >Monadic Parsing in Scheme</a></h1> <div class=tags ><a href="/tag/cs/">cs</a>, <a href="/tag/lisp/">lisp</a></div> <p>The below is a formulation of monadic parsing in a lisp-like programming environment, where function composition and recursion are especially accommodated. To see a barebones implementation of such a monadic parsing library in scheme, check out my library: <a href="https://github.com/LiamPack/parmesan">parmesan</a>.</p> <p><strong>2022-11-22</strong>: For now, the below post is directly from the README of parmesan, but I plan to add more context and intuition in the future. The parsing construct is actually more general than just string parsing – it generalizes to generic stream parsing, so long as the data type is known ahead of time.</p> <div class=franklin-toc ><ol><li><a href="#what_is_a_parser">What is a Parser?</a><li><a href="#demonstrating_the_monadic_structure">Demonstrating the Monadic structure</a><li><a href="#combinators">Combinators</a></ol></div> <h2 id=what_is_a_parser ><a href="#what_is_a_parser" class=header-anchor >What is a Parser?</a></h2> <p>A parser is a lambda with three arguments:</p> <pre><code class="julia hljs">(define some-parser/p (lambda (s ks kf) ...))</code></pre>
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight2/styles/github.min.css"> <script> const setTheme = theme => { document.documentElement.className = theme; localStorage.setItem("theme", theme) }; const currentTheme = localStorage.getItem("theme"); // If the current theme in localStorage is "dark"... if (currentTheme == "dark") { // ...then use the .dark-theme class document.documentElement.className = currentTheme; } </script> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/tufte.css"> <link rel=stylesheet  href="/css/latex.css"> <link rel=stylesheet  href="/css/adjust.css"> <title>Monadic Parsing in Scheme</title> <div id=layout > <div id=ui-elements-container > <div id=menu > <ul> <li><a href="/">Home</a> <li><a href="/posts/">Posts</a> <li><a href="/notes/">Notes</a> <li><a href="/favorite-things/">Favorites</a> <li><a href="/assets/resume.pdf">Resume</a> <li> <div class=mode-selector > <button class=theme-button-light  onclick="setTheme('light')" title=Light  type=button > [light theme] </button> <button class=theme-button-dark  onclick="setTheme('dark')" title=Dark > [dark theme] </button> </div> </ul> </div> </div> <div id=main > <div class=franklin-content > <h1 id=title ><a href="#title" class=header-anchor >Monadic Parsing in Scheme</a></h1> <div class=tags > <em>tags: </em><a href="/tag/cs/">cs</a>, <a href="/tag/lisp/">lisp</a></div> <p>The below is a formulation of monadic parsing in a lisp-like programming environment, where function composition and recursion are especially accommodated. To see a barebones implementation of such a monadic parsing library in scheme, check out my library: <a href="https://github.com/LiamPack/parmesan">parmesan</a>.</p> <p><strong>2022-11-22</strong>: For now, the below post is directly from the README of parmesan, but I plan to add more context and intuition in the future. The parsing construct is actually more general than just string parsing – it generalizes to generic stream parsing, so long as the data type is known ahead of time.</p> <div class=franklin-toc ><ol><li><a href="#what_is_a_parser">What is a Parser?</a><li><a href="#demonstrating_the_monadic_structure">Demonstrating the Monadic structure</a><li><a href="#combinators">Combinators</a></ol></div> <h2 id=what_is_a_parser ><a href="#what_is_a_parser" class=header-anchor >What is a Parser?</a></h2> <p>A parser is a lambda with three arguments:</p> <pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> some-parser/p (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf) ...))</code></pre>
 <p>Where <code>s</code> is the current string to parse, <code>ks</code> is a function to call on successfully parsing <code>s</code>, and <code>kf</code> is a function to call if parsing fails. <code>ks</code> is assumed to be a lambda of two arguments; a function of the parsed value and the rest of the string to parse <code>ks :&#61; &#40;lambda &#40;v
 s2&#41; ...&#41;</code>. Note that <code>ks</code> has no other restrictions. It can be interpreted as a parser that is parameterized by <code>v</code> and the captured <code>kf</code> in the enclosing scope if its declared inline. If its passed, then it can itself have a captured parser to operate on <code>s1</code>. <code>kf</code> is assumed to be a thunk <code>&#40;lambda &#40;&#41; ...&#41;</code>. It can itself contain captured information, so the type is less restrictive than it initially seems.</p>
 <p>The lambda structure lends naturally to some simple parsers. For example, the a parser which checks that the head of <code>s</code> matches a predicate:</p>
-<pre><code class="julia hljs">(define (psym pred)
-  (lambda (s ks kf)
-    (<span class=hljs-keyword >if</span> (null? s)
-        (kf)
-        (<span class=hljs-keyword >if</span> (pred (car s))
-            (ks (car s) (cdr s))
-            (kf)))))</code></pre>
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >psym</span> pred)
+  (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf)
+    (<span class=hljs-name ><span class=hljs-built_in >if</span></span> (<span class=hljs-name ><span class=hljs-built_in >null?</span></span> s)
+        (<span class=hljs-name >kf</span>)
+        (<span class=hljs-name ><span class=hljs-built_in >if</span></span> (<span class=hljs-name >pred</span> (<span class=hljs-name ><span class=hljs-built_in >car</span></span> s))
+            (<span class=hljs-name >ks</span> (<span class=hljs-name ><span class=hljs-built_in >car</span></span> s) (<span class=hljs-name ><span class=hljs-built_in >cdr</span></span> s))
+            (<span class=hljs-name >kf</span>)))))</code></pre>
 <p>In words: If <code>car s</code> matches our predicate, say <code>&#40;lambda &#40;c&#41; &#40;eq? &#40;car
 s&#41; c&#41;&#41;</code>, then we can call our success function on <code>&#40;car s&#41;</code> and <code>&#40;cdr
 s&#41;</code>. Otherwise, we the parse failed.</p>
 <h2 id=demonstrating_the_monadic_structure ><a href="#demonstrating_the_monadic_structure" class=header-anchor >Demonstrating the Monadic structure</a></h2>
 <p>We can impose monadic rules on the structure by defining the prototypical <code>return</code>, <code>fail</code>, and <code>bind</code> operators:</p>
-<pre><code class="julia hljs">(define (<span class=hljs-keyword >return</span> v) (lambda (s ks kf) (ks v s)))
-(define fail (lambda (s ks kf) (kf)))
-(define empty/p (<span class=hljs-keyword >return</span> &#x27;()))
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >return</span> v) (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf) (<span class=hljs-name >ks</span> v s)))
+(<span class=hljs-name ><span class=hljs-built_in >define</span></span> fail (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf) (<span class=hljs-name >kf</span>)))
+(<span class=hljs-name ><span class=hljs-built_in >define</span></span> empty/p (<span class=hljs-name >return</span> &#x27;()))
 
-;; &gt;&gt;=
-(define (bind a f)
-  (lambda (s ks kf)
-    (a s
-       (lambda (av s1) ((f av) s1 ks kf))
+<span class=hljs-comment >;; &gt;&gt;=</span>
+(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >bind</span> a f)
+  (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf)
+    (<span class=hljs-name >a</span> s
+       (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (av s1) ((<span class=hljs-name >f</span> av) s1 ks kf))
        kf)))</code></pre>
 <p><code>return</code> is clear: immediately succeed on the passed value <code>v</code> with the success function while not parsing any of <code>s</code>. A &quot;no-op&quot; parser, or an empty parser <code>empty/p</code>, is represented by <code>&#40;return &#39;&#40;&#41;&#41;</code>. <code>fail</code> immediately calls the failure function.</p>
 <p><code>bind</code> fits naturally into the schema: Use <code>a</code> as a parser, and then lift its return value <code>av</code> with <code>&#40;f av&#41;</code>, producing another parser, and then parse the remaining string <code>s1</code>: <code>&#40;&#40;f av&#41; s1 ks kf&#41;</code>. In this case, <code>f</code> is assumed to be a <code>&#40;lambda &#40;v&#41; &#40;lambda &#40;s ks kf&#41; ...&#41;&#41;</code>, i.e a parser parameterized by <code>v</code>.</p>
 <p>I&#39;ll also throw in a <code>&#40;lift a f&#41;</code>, which is probably non-standard naming, to represent the operation of <code>compose a with &#40;return &#40;f
 x&#41;&#41;</code>. In this case, instead of <code>f</code> being of type <code>f: t -&gt; t parser</code>, we have <code>f: t -&gt; t</code> and need to lift its result with <code>return</code>:</p>
-<pre><code class="julia hljs">(define (lift a f)
-  (bind a (lambda (x) (<span class=hljs-keyword >return</span> (f x)))))</code></pre>
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >lift</span> a f)
+  (<span class=hljs-name >bind</span> a (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (x) (<span class=hljs-name >return</span> (<span class=hljs-name >f</span> x)))))</code></pre>
 <h2 id=combinators ><a href="#combinators" class=header-anchor >Combinators</a></h2>
 <p>We can write an <code>&#40;either/p a b&#41;</code>, which first tries parser <code>a</code> on the input, then parser <code>b</code>, and uses the first which succeeds, as well as <code>&#40;and/p a b&#41;</code>, which runs <code>a</code>, then <code>b</code>, and combines their results into a list:</p>
-<pre><code class="julia hljs">(define (either/p a b)
-  (lambda (s ks kf)
-    (a s ks
-       (lambda () (b s ks kf)))))
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >either/p</span> a b)
+  (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf)
+    (<span class=hljs-name >a</span> s ks
+       (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> () (<span class=hljs-name >b</span> s ks kf)))))
 
-(define (and/p a b)
-  (lambda (s ks kf)
-    (a s
-       (lambda (av s1)
-         (b s1
-            (lambda (bv s2) (ks (cons av bv) s2))
+(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >and/p</span> a b)
+  (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (s ks kf)
+    (<span class=hljs-name >a</span> s
+       (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (av s1)
+         (<span class=hljs-name >b</span> s1
+            (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (bv s2) (<span class=hljs-name >ks</span> (<span class=hljs-name ><span class=hljs-built_in >cons</span></span> av bv) s2))
             kf))
        kf)))</code></pre>
 <p><code>bind</code>, <code>either/p</code>, and <code>and/p</code> give us the composability we need to write combinators. For example, to run a list of parsers <code>as</code>, we can create the combinator <code>all-of/p</code> by folding with <code>and/p</code>:</p>
-<pre><code class="julia hljs">(define (all-of/p . as)
-  (fold-right and/p empty/p as))</code></pre>
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >all-of/p</span> . as)
+  (<span class=hljs-name >fold-right</span> and/p empty/p as))</code></pre>
 <p>Likewise, we can also lift a parser <code>p</code> by running it as many times as it will allow on the input. In type terms, if <code>p</code> is a <code>t</code> parser, we can create a combinator <code>many/p</code> which allows you to lift <code>p</code> to become a <code>t list</code> parser <code>&#40;many/p p&#41;</code>:</p>
-<pre><code class="julia hljs">(define (many/p p)
-  (either/p
-   (bind
-    p (lambda (pv)
-        (lift (many/p p) (lambda (pvs) (cons pv pvs)))))
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >many/p</span> p)
+  (<span class=hljs-name >either/p</span>
+   (<span class=hljs-name >bind</span>
+    p (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (pv)
+        (<span class=hljs-name >lift</span> (<span class=hljs-name >many/p</span> p) (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (pvs) (<span class=hljs-name ><span class=hljs-built_in >cons</span></span> pv pvs)))))
    empty/p))</code></pre>
 <p>Finally, we can write the <code>&#40;repeat n p&#41;</code> combinator, which runs <code>p</code> <code>n</code> successive times on the input and produces a list of results:</p>
-<pre><code class="julia hljs">(define (repeat n p)
-  (define (helper n1)
-    (either/p
-     (bind
-      p (lambda (pv)
-          (<span class=hljs-keyword >if</span> (&lt;= n1 <span class=hljs-number >0</span>)
+<pre><code class="scheme hljs">(<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >repeat</span> n p)
+  (<span class=hljs-name ><span class=hljs-built_in >define</span></span> (<span class=hljs-name >helper</span> n1)
+    (<span class=hljs-name >either/p</span>
+     (<span class=hljs-name >bind</span>
+      p (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (pv)
+          (<span class=hljs-name ><span class=hljs-built_in >if</span></span> (<span class=hljs-name ><span class=hljs-built_in >&lt;=</span></span> n1 <span class=hljs-number >0</span>)
               fail
-              (lift (helper (- n1 <span class=hljs-number >1</span>))
-                    (lambda (pvs) (cons pv pvs))))))
+              (<span class=hljs-name >lift</span> (<span class=hljs-name >helper</span> (<span class=hljs-name ><span class=hljs-built_in >-</span></span> n1 <span class=hljs-number >1</span>))
+                    (<span class=hljs-name ><span class=hljs-built_in >lambda</span></span> (pvs) (<span class=hljs-name ><span class=hljs-built_in >cons</span></span> pv pvs))))))
      empty/p))
-  (helper n))</code></pre>
+  (<span class=hljs-name >helper</span> n))</code></pre>
 <div class=page-foot >
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Liam Packer. Last modified: November 28, 2022.
-    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Liam Packer. Last modified: January 16, 2023.
 </div>
 </div>
         </div> 
     </div> 
     
     
-        <script src="/libs/highlight/highlight.min.js"></script>
+        <script src="/libs/highlight2/highlight.min.js"></script>
 <script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
