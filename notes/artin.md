@@ -106,8 +106,8 @@ taking a formal power series:
 
 note that I have made no attempt to define what equals sign $=$ means
 in this case, but I'm sure things will work out well; if we find an
-inverse that works, we don't have to justify the convergence of the
-series!
+inverse that works which is a finite sum, we don't have to justify the
+convergence of the infinite series.
 
 So we calculate. Since $A^k = 0$ for some $k>0$, then $A^n = 0$ for
 all $ n \geq k$. Therefore we can heuristically see that \[(I+A)^{-1}
