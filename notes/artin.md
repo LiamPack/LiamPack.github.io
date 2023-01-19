@@ -131,14 +131,14 @@ inverse and we're done.
 *Commentary*: From what I can glean without looking into the future,
 Artin put this problem here to give an appreciation for nilpotent
 matrices (duh) since they'll come up later (oh! hey thats fun). In the
-context of differential equations, a linear differential equation 
-\[x' = Ax\] 
-admits very different structures depending on the structure of
+context of differential equations, a linear differential equation \[x'
+= Ax\] admits very different structures depending on the structure of
 $A$. The formal solution to such a differential equation takes the
-form of $x(t) = C\exp(At)$, where $\exp(A)$ is defined as a formal power
-series in $A$. How do you know if it converges? Well the naiive thing
-to do is to declare the power series convergent if all entries of the
-matrix $\exp(A)$ converge point-wise. 
+form of $x(t) = \exp(At)x$, where $\exp(A)$ is defined as a formal
+power series in $A$ and $x$ a vector of initial conditions. How do you
+know if it converges? Well the naiive thing to do is to declare the
+power series convergent if all entries of the matrix $\exp(A)$
+converge point-wise.
 
 When you plug in a nilpotent matrix into the power series, you end up
 with a truncated series with all terms above $k$ dying off. There are
