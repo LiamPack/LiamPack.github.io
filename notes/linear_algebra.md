@@ -1,5 +1,5 @@
 +++
-title = "Algebra; Artin"
+title = "Linear Algebra; Finite-Dimensional Vector Spaces"
 tags = ["notes", "math", "algebra"]
 date = Date(2023, 01, 16)
 firstdraft = Date(2023, 01, 16)
@@ -22,9 +22,9 @@ Problems and commentary will be pulling from:
 - Halmos's *Finite-Dimensional Vector Spaces*
 
 While Artin prioritizes computations and intuition from choosing a
-basis (an isomorphism to a column vector space \(F^n\)), Halmos
+basis (an isomorphism to a column vector space $F^n$), Halmos
 focuses on remaining in the abstract language of linear maps (no
-choice of isomorphism to coordinates in \(F^n\)). 
+choice of isomorphism to coordinates in $F^n$). 
 
 Both approaches have advantages: Artin's computational approach pays
 dividends in later chapters when the matrix exponential comes to the
@@ -53,12 +53,12 @@ and intersections of measurable sets; and so forth.
 What's important about a basis is that, once you've chosen a
 particular basis (some call this "using up your degree of freedom," or
 "expending your choice"), you can start computing in a more natural
-way: If you write your basis of a vector space \(V\) as a tuple of
-vectors, \((v_1, \cdots, v_n)\), there is a natural map \(\mathbf{B}:
-F^n -> V\) which sends \(X \to \mathbf{B}X\) , where \(\mathbf{B}\) is
-the matrix whose columns consist of the basis elements \(v_1 \cdots
-v_n\). Now you can do whatever computation you'd like "row-wise" with
-the field \(F\), and since the basis defines an isomorphism, any
+way: If you write your basis of a vector space $V$ as a tuple of
+vectors, $(v_1, \cdots, v_n)$, there is a natural map $\mathbf{B}:
+F^n -> V$ which sends $X \to \mathbf{B}X$ , where $\mathbf{B}$ is
+the matrix whose columns consist of the basis elements $v_1 \cdots
+v_n$. Now you can do whatever computation you'd like "row-wise" with
+the field $F$, and since the basis defines an isomorphism, any
 results you find will hold in the general case.
 
 This operation is especially powerful (and very frequent!) in
@@ -68,8 +68,8 @@ equations in their famous form (not including cosmological constant):
 \[R_{\mu\nu} - \frac12 R g_{\mu\nu} \propto T_{\mu\nu}\]
 
 This is great: you can compute the evolution of mass and gravity so
-long as you know some initial conditions on the metric \(g_{\mu\nu}\)
-and the stress-energy tensor \(T_{\mu\nu}\). A less commonly taught
+long as you know some initial conditions on the metric $g_{\mu\nu}$
+and the stress-energy tensor $T_{\mu\nu}$. A less commonly taught
 form of the field equations (if you're in undergrad, or taking a first
 grad course) is in "coordinate free" form:
 
@@ -78,7 +78,7 @@ grad course) is in "coordinate free" form:
 This form has advantages: there is a clarity in withholding a choice
 of coordinates, since the meaning of indices isn't required to
 understand the statement. So long as you're clear on the definition of
-a tensor being a multilinear map on copies of \(V\) and \(V^*\), its a
+a tensor being a multilinear map on copies of $V$ and $V^*$, its a
 difficult equation to forget (as opposed to index juggling). The
 downside is, of course, you'll have a hard time calculating anything
 until you pick a basis.
@@ -199,7 +199,7 @@ differential equation defined through a nilpotent matrix, so dusting
 off some of this algebra was fun. To get a complete understanding of
 their importance, we'll have to wait until Jordan forms, where pieces
 of some "typical" nilpotent matrices are associated to generalized
-eigenspaces with dimension \(\geq 2\), i.e., your linear operator has
+eigenspaces with dimension $\geq 2$, i.e., your linear operator has
 non-distinct eigenvalues.
 
 I first learned about this stuff in Hirsch and Smale's *Differential
@@ -207,7 +207,7 @@ Equations, Dynamical Systems, and Linear Algebra*, which is a much
 older version of a book under a [very similar
 name](https://www.amazon.com/Differential-Equations-Dynamical-Systems-Introduction/dp/0123820103). The
 study of linear differential equations is central to the theory of
-differential equations, since, as usual, a nonlinear equation \(x' =
-f(x)\) reduces to a linear-type equation \(x' = Df(x_0)x\), so long as
-you stay in a tight neighborhood of \(x_0\).
+differential equations, since, as usual, a nonlinear equation $x' =
+f(x)$ reduces to a linear-type equation $x' = Df(x_0)x$, so long as
+you stay in a tight neighborhood of $x_0$.
 
