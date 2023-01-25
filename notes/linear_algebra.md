@@ -17,6 +17,24 @@ Algebra is the backbone of mathematical description, and
 tool in the tool-belt: whats better than turning a complicated problem
 into a problem of counting dimension?
 
+Vector spaces are a marriage of a field and a set, $F$ and $V$, where
+we have an operation "addition" on $V$, $v_1 +_V v_2 \in V$. These
+objects are connected through *distributivity*, $(a +_F b)v = av +_V
+bc$ and $a(v_1 +_V v_2) = av_1 +_V av_2$. Once we have this, we can
+drop the subscripts on $+$ without harm. Once you define the
+connection, the rest follows by taking all possible linear
+combinations and throwing them into a bag ($V$). A common theme is
+that we start with a smaller bag, $V'$ and then enlarge it by taking
+formal linear combinations $av_1 + bv_2$ and "add it" to $V'$. Then
+the total accumulation of these new elements will be called $V$, and
+by construction satisfies the properties of a vector space (similar in
+spirit to a *sub-basis* or *pre-basis* in topology, *pre-Hilbert
+space*, etc.)
+
+By taking specifically a *field* $F$ to be our coefficients, we get a
+surprising amount of structure for free since every non-zero element
+of $F$ is a unit (has a multiplicative inverse).
+
 Problems and commentary will be pulling from:
 - Artin's *Algebra*
 - Halmos's *Finite-Dimensional Vector Spaces*
@@ -30,7 +48,8 @@ Both approaches have advantages: Artin's computational approach pays
 dividends in later chapters when the matrix exponential comes to the
 forefront, allowing e.g. Jordan canonical forms to shine, which then
 comes back in the discussion of compact topological groups, Lie
-algebras, and Lie groups. Also concrete symmetries of the plane.
+algebras, and Lie groups. Also concrete symmetries of the plane which
+are related and fun.
 
 Halmos's approach has the advantage of using language and techniques
 consistent with the fields of functional analysis and Hilbert space
@@ -38,6 +57,9 @@ theory, where the primary difference is that your underlying vector
 space may be infinite-dimensional.
 
 \toc
+<!-- ## The Necessity of a Field -->
+<!-- here I want to go into what theorems get weakened when you go to -->
+<!-- ring coefficients, theorems for free modules, etc. -->
 
 ## Some Thoughts on Coordinates and Bases
 ### What is a Basis
@@ -55,11 +77,11 @@ particular basis (some call this "using up your degree of freedom," or
 "expending your choice"), you can start computing in a more natural
 way: If you write your basis of a vector space $V$ as a tuple of
 vectors, $(v_1, \cdots, v_n)$, there is a natural map $\mathbf{B}:
-F^n -> V$ which sends $X \to \mathbf{B}X$ , where $\mathbf{B}$ is
-the matrix whose columns consist of the basis elements $v_1 \cdots
+F^n -> V$ which sends $X \to \mathbf{B}X$ , where $\mathbf{B}$ is the
+matrix whose columns consist of the basis elements $v_1 \cdots
 v_n$. Now you can do whatever computation you'd like "row-wise" with
-the field $F$, and since the basis defines an isomorphism, any
-results you find will hold in the general case.
+the field $F$, and since the basis defines an isomorphism, any results
+you find will hold in the general case.
 
 This operation is especially powerful (and very frequent!) in
 something like general relativity. You may have seen Einstein's field
@@ -69,11 +91,11 @@ equations in their famous form (not including cosmological constant):
 
 This is great: you can compute the evolution of mass and gravity so
 long as you know some initial conditions on the metric $g_{\mu\nu}$
-and the stress-energy tensor $T_{\mu\nu}$. A less commonly taught
-form of the field equations (if you're in undergrad, or taking a first
-grad course) is in "coordinate free" form:
+and the stress-energy tensor $T_{\mu\nu}$. A less commonly taught form
+of the field equations (if you're in undergrad, or taking a first grad
+course) is in "coordinate free" form:
 
-\[\mathbf{G} \propto T\]
+\[\mathbf{G} \propto \mathbf{T}\]
 
 This form has advantages: there is a clarity in withholding a choice
 of coordinates, since the meaning of indices isn't required to
@@ -82,6 +104,15 @@ a tensor being a multilinear map on copies of $V$ and $V^*$, its a
 difficult equation to forget (as opposed to index juggling). The
 downside is, of course, you'll have a hard time calculating anything
 until you pick a basis.
+
+(*TODO*: I kind of cheated by baking the component version of the
+equation into the definition of the Einstein tensor $\mathbf{G}$. This
+exposition would be more clear if I just started with a quick intro to
+what a tensor does and look at the component version of a base change
+or something. relativity is just too nice of an example for "choice of
+basis")
+
+### Change of Basis
 
 ### An aside on the determinant
 I've always found it interesting that Artin's *Algebra* starts off
@@ -123,11 +154,12 @@ inputted vectors.
 Why would you care? For fun, suppose we're working in $\R^n$ and we
 have an alternating $k$-tensor at every point in space, i.e. a family
 $\{\psi_p\}_{p\in \R^n}$. Taking $n=3$ and $k=2$, this is analagous to
-having a very *very* tiny parallelogram at every point in space marking
-how much "k-volume" is being occupied. Why could this be useful?
-Imagine you have a two-dimensional surface in $\R^3$ and you'd like to
-know the surface area of the volume. In multivariable calculus, you
-learn to take a funny integral that looks something like 
+having a very *very* tiny parallelogram at every point in space
+marking how much "k-volume" is being occupied in a particular
+orientation. Why could this be useful?  Imagine you have a
+two-dimensional surface in $\R^3$ and you'd like to know the surface
+area of the volume. In multivariable calculus, you learn to take a
+funny integral that looks something like
 
 \[\int_S || \frac{\partial f}{\partial u} \times \frac{\partial
 f}{\partial v}||du dv\]
@@ -189,8 +221,11 @@ matrices (duh) since they'll come up later (oh! hey thats fun). In the
 context of differential equations, a linear differential equation \[x'
 = Ax\] admits very different structures depending on the structure of
 $A$. The formal solution to such a differential equation takes the
-form of $x(t) = \exp(At)x$, where $\exp(A)$ is defined as a formal
-power series in $A$ and $x$ a vector of initial conditions.
+form of $x(t) = \exp(At)x$, where $\exp(A)$ is first defined as a
+formal power series in $A$ and $x$ a vector of initial conditions. You
+need some elbow grease to make sure the power series $\exp(A)$
+"converges" to something, but for that you need a nice topology on
+$F$, so I digress.
 
 When you plug in a nilpotent matrix into the power series, you end up
 with a truncated series with all terms above $k$ dying off. There are
@@ -199,8 +234,8 @@ differential equation defined through a nilpotent matrix, so dusting
 off some of this algebra was fun. To get a complete understanding of
 their importance, we'll have to wait until Jordan forms, where pieces
 of some "typical" nilpotent matrices are associated to generalized
-eigenspaces with dimension $\geq 2$, i.e., your linear operator has
-non-distinct eigenvalues.
+eigenspaces with dimension $\geq 2$, i.e., pieces of your linear
+operator that have non-distinct eigenvalues.
 
 I first learned about this stuff in Hirsch and Smale's *Differential
 Equations, Dynamical Systems, and Linear Algebra*, which is a much
