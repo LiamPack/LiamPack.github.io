@@ -32,7 +32,7 @@ Probably not exhaustive.
 - Super Smash Bros. Melee (2001) (on a good day)
 
 ## Programming Languages 
-- Scheme (Chez)
+- Scheme
 - Julia
 - SML
 - Emacs Lisp
@@ -54,6 +54,7 @@ them.
 - \**Real Analysis*; Carothers, N.L.
 
 ### Applied Mathematics
+- \**Information Theory, Inference, and Learning Algorithms*; Mackay
 - \**Foundations of Machine Learning*; Mohri, Rostanizadeh, Talwalkar
   (2018)
 - \**Nonlinear Programming*; Bertsekas
@@ -70,8 +71,7 @@ them.
 
 ### Algorithms 
 - *Algorithm Design*; Kleinberg & Tardos
-- *Introduction to Algorithms*; CLRS (3rd ed.) [haven't read all of it
-  but i'm legally required to put this here]
+- *Introduction to Algorithms*; CLRS (3rd ed.) [legally required to put this here]
 
 ### Education 
 - *Experience and Education*; John Dewey

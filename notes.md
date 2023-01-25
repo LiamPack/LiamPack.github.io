@@ -56,5 +56,5 @@ I hope to go back through some of the texts I studied from and add
 some notes with commentary on interesting problems or topics. Someday.
 
 ## Math
-### [Algebra; Artin](/notes/artin/)
-### [Stein & Shakarchi Book 3: Measure Theory, Integration, & Hilbert Spaces](/notes/stein-shakarchi-b3/)
+### [Linear Algebra](/notes/linear_algebra/)
+### [Measure Theory](/notes/measure_theory/)

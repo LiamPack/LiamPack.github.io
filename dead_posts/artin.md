@@ -87,7 +87,7 @@ All that to say: I think starting with matrices, understanding their
 algebra, and building a geometric intuition for $\R^n$ is good. There
 are other approaches to the material which are also good, but given
 that this book will eventually turn to matrix groups like $SU(n)$,
-and to be poetic, this seems like a good ideaN.
+and to be poetic, this seems like a good idea.
 
 <!-- The determinant is a very tidy function which has a peculiar property: -->
 <!-- Given a matrix $A$ and the elementary row operation $E_{ij}$ which -->
@@ -136,7 +136,7 @@ context of differential equations, a linear differential equation \[x'
 $A$. The formal solution to such a differential equation takes the
 form of $x(t) = \exp(At)x$, where $\exp(A)$ is defined as a formal
 power series in $A$ and $x$ a vector of initial conditions. How do you
-know if it converges? Well the naiive thing to do is to declare the
+know if it converges? Well the naïve thing to do is to declare the
 power series convergent if all entries of the matrix $\exp(A)$
 converge point-wise.
 
