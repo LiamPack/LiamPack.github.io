@@ -19,7 +19,7 @@ into a problem of counting dimension?
 
 Vector spaces are a marriage of a field and an abelian group, $F$ and
 $V$. These objects are connected through *distributivity*, $(a +_F b)v =
-av +_V bc$ and $a(v_1 +_V v_2) = av_1 +_V av_2$. Once we have this, we
+av +_V bv$ and $a(v_1 +_V v_2) = av_1 +_V av_2$. Once we have this, we
 can drop the subscripts on $+$ without harm. Once you define the
 connection, the rest follows by taking all possible linear
 combinations and throwing them into a bag ($V$). A common theme is
