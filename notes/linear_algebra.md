@@ -17,11 +17,10 @@ Algebra is the backbone of mathematical description, and
 tool in the tool-belt: whats better than turning a complicated problem
 into a problem of counting dimension?
 
-Vector spaces are a marriage of a field and a set, $F$ and $V$, where
-we have an operation "addition" on $V$, $v_1 +_V v_2 \in V$. These
-objects are connected through *distributivity*, $(a +_F b)v = av +_V
-bc$ and $a(v_1 +_V v_2) = av_1 +_V av_2$. Once we have this, we can
-drop the subscripts on $+$ without harm. Once you define the
+Vector spaces are a marriage of a field and an abelian group, $F$ and
+$V$. These objects are connected through *distributivity*, $(a +_F b)v =
+av +_V bc$ and $a(v_1 +_V v_2) = av_1 +_V av_2$. Once we have this, we
+can drop the subscripts on $+$ without harm. Once you define the
 connection, the rest follows by taking all possible linear
 combinations and throwing them into a bag ($V$). A common theme is
 that we start with a smaller bag, $V'$ and then enlarge it by taking
@@ -62,15 +61,17 @@ space may be infinite-dimensional.
 <!-- ring coefficients, theorems for free modules, etc. -->
 
 ## Some Thoughts on Coordinates and Bases
+
 ### What is a Basis
 *Basis* is a term that actually pops up relatively frequently in
 mathematics. The least committal description I can come up with is:
-a *basis* is a bag of elements which, when you mix them according to
-some operation, you can generate any element you want. In linear
-algebra, this means taking linear combinations of vectors; in
-topology, this means taking countable unions and finite intersections
-of open sets; in measure theory, this means taking countable unions
-and intersections of measurable sets; and so forth.
+a *basis* is a "minimal" bag of elements which, when you mix them
+according to some operation, you can generate any element you want. In
+linear algebra, this means taking linear combinations of vectors which
+are linearly independent; in topology, this means taking countable
+unions and finite intersections of open sets; in measure theory, this
+means taking countable unions and intersections of measurable sets;
+and so forth.
 
 What's important about a basis is that, once you've chosen a
 particular basis (some call this "using up your degree of freedom," or
@@ -83,36 +84,29 @@ v_n$. Now you can do whatever computation you'd like "row-wise" with
 the field $F$, and since the basis defines an isomorphism, any results
 you find will hold in the general case.
 
-This operation is especially powerful (and very frequent!) in
-something like general relativity. You may have seen Einstein's field
-equations in their famous form (not including cosmological constant):
+<!-- ### A quick connection between a basis and kernels -->
+<!-- Because a basis is a linearly independent set of vectors, any vector -->
+<!-- $x$ is a linear combination of the basis in only one way: $x = \sum_i -->
+<!-- a_i v_i$ where $a_i$ are unique. If we were given another -->
+<!-- representation $x = \sum_i b_i v_i, then we'd have $\sum_i a_iv_i = -->
+<!-- \sum_i b_i v_i$, which means $\sum_i (a_i - b_i)v_i = 0$, hence $a_i = -->
+<!-- b_i$ for each $i$ by linear independence. -->
 
-\[R_{\mu\nu} - \frac12 R g_{\mu\nu} \propto T_{\mu\nu}\]
+<!-- This uniqueness property is huge! If we had to deal with a set of -->
+<!-- vectors which are linearly dependent, we'd have to worry about all the -->
+<!-- possible ways to write $x$ as a linear combination.  -->
 
-This is great: you can compute the evolution of mass and gravity so
-long as you know some initial conditions on the metric $g_{\mu\nu}$
-and the stress-energy tensor $T_{\mu\nu}$. A less commonly taught form
-of the field equations (if you're in undergrad, or taking a first grad
-course) is in "coordinate free" form:
 
-\[\mathbf{G} \propto \mathbf{T}\]
 
-This form has advantages: there is a clarity in withholding a choice
-of coordinates, since the meaning of indices isn't required to
-understand the statement. So long as you're clear on the definition of
-a tensor being a multilinear map on copies of $V$ and $V^*$, its a
-difficult equation to forget (as opposed to index juggling). The
-downside is, of course, you'll have a hard time calculating anything
-until you pick a basis.
 
-(*TODO*: I kind of cheated by baking the component version of the
-equation into the definition of the Einstein tensor $\mathbf{G}$. This
-exposition would be more clear if I just started with a quick intro to
-what a tensor does and look at the component version of a base change
-or something. relativity is just too nice of an example for "choice of
-basis")
-
-### Change of Basis
+<!-- 
+ blah blah (*TODO*: I kind of cheated by baking the component version
+ of the -->
+<!-- equation into the definition of the Einstein tensor $\mathbf{G}$. This -->
+<!-- exposition would be more clear if I just started with a quick intro to -->
+<!-- what a tensor does and look at the component version of a base change -->
+<!-- or something. relativity is just too nice of an example for "choice of -->
+<!-- basis") -->
 
 ### An aside on the determinant
 I've always found it interesting that Artin's *Algebra* starts off

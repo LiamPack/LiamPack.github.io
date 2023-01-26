@@ -12,11 +12,12 @@ date = Date(2022, 11, 23)
 **NOTE 2022-11-22**: Below is a markdown version of a
 [kind-of-paper](/assets/chaos-optics/packer_paper.pdf) written in the
 application of modern technology to older papers in optical systems,
-where the computational resources. The figures are largely broken, the
-references aren't filled out, and the subtitles aren't formatted
-properly at all. For some reason, I wrote all the code to generate the
-figures in [Racket](https://racket-lang.org/), which has the very
-powerful [Plot](https://docs.racket-lang.org/plot/) library.
+where computation was much more difficult to wield. The figures are
+largely broken, the references aren't filled out, and the figure
+captions aren't formatted properly at all. For some reason, I wrote
+all the code to generate the figures in
+[Racket](https://racket-lang.org/), which has the very powerful
+[Plot](https://docs.racket-lang.org/plot/) library.
 
 I'll be building [Franklin](https://franklinjl.org/) macros to
 accommodate this kind of post, which will help the development of future
