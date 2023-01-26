@@ -51,7 +51,7 @@ algebras, and Lie groups. Also concrete symmetries of the plane which
 are related and fun.
 
 Halmos's approach has the advantage of using language and techniques
-consistent with the fields of functional analysis and Hilbert space
+consistent with the field of functional analysis / Hilbert space
 theory, where the primary difference is that your underlying vector
 space may be infinite-dimensional.
 
@@ -78,7 +78,7 @@ particular basis (some call this "using up your degree of freedom," or
 "expending your choice"), you can start computing in a more natural
 way: If you write your basis of a vector space $V$ as a tuple of
 vectors, $(v_1, \cdots, v_n)$, there is a natural map $\mathbf{B}:
-F^n -> V$ which sends $X \to \mathbf{B}X$ , where $\mathbf{B}$ is the
+F^n \to V$ which sends $X \to \mathbf{B}X$ , where $\mathbf{B}$ is the
 matrix whose columns consist of the basis elements $v_1 \cdots
 v_n$. Now you can do whatever computation you'd like "row-wise" with
 the field $F$, and since the basis defines an isomorphism, any results
