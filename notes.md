@@ -47,10 +47,10 @@ type: they're incredibly important. They just take longer to write up in
 Latex.
 
 ## Past Coursework
-[I've studied a bunch of things in the past](/notes/coursework/). I
-haven't kept the best notes, and, at the time of studying, I didn't
-always have a good system to account for knowledge retention (anki,
-spaced problems, etc.). Sometimes, I even crammed. Tough times.
+I've studied a bunch of things in the past. I haven't kept the best
+notes, and, at the time of studying, I didn't always have a good
+system to account for knowledge retention (anki, spaced problems,
+etc.). Sometimes, I even crammed. Tough times.
 
 I hope to go back through some of the texts I studied from and add
 some notes with commentary on interesting problems or topics. Someday.
