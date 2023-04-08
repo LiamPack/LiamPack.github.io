@@ -7,15 +7,14 @@ title = "Some of my Favorite Things"
 Just some of my [Favorite
 Things](https://www.youtube.com/watch?v=UlFNy9iWrpE). This is a very
 difficult list to procure due to the "*All-Time*" restriction. I don't
-believe this list *can* be, in any way, static, since I continue to
-change and evolve. Still a good exercise, since I often forget the
-things I like!
+believe this list *can* be, in any way, static. Still, its a good
+exercise to keep track of the things I appreciate.
 
 Nothing in any particular order.
 
 Probably not exhaustive.
 
-*Very* not finished.
+By definition, perpetually outdated.
 
 \toc 
 
@@ -39,44 +38,36 @@ Probably not exhaustive.
 - C
 
 ## Textbooks and Resources 
-*(Note that this isn't *all* things I've read on the subject, only my
-favorites.)*
-
 Books marked with a "*" I have not read in full, but felt the impact
 they had on my understanding and growth is significant enough to include
 them.
 
+*2023-04-07 update:* This list used to be longer. After reflecting,
+I'm being more selective due to "rose-tinted glasses" on the texts --
+more often than not, I liked the class and the people, not necessarily
+the textbook.
+
 ### Math 
-- *Analysis on Manifolds*; Munkres, James (1st ed.)
+- *Finite-dimensional Vector Spaces*; Halmos, James (the edition with
+  problems)
 - \**Algebra: Chapter 0*; Aluffi, Paolo (2009)
-- \**Topology*; Dugundji, James
 - *Topology*; Munkres, James (2nd ed.) [first half]
-- \**Real Analysis*; Carothers, N.L.
 
 ### Applied Mathematics
 - \**Information Theory, Inference, and Learning Algorithms*; Mackay
-- \**Foundations of Machine Learning*; Mohri, Rostanizadeh, Talwalkar
-  (2018)
-- \**Nonlinear Programming*; Bertsekas
 
 ### Physics 
 - *Principles of Mechanics*; Synge & Griffith (1949)
 - *Electricity and Magnetism*; Purcell E. M. (2013)
 - *Thermodynamics*; Enrico Fermi (Dover ed.)
-- \* *Introduction to Modern Statistical Mechanics*; Chandler, David (all
-    ed.)
+- \**Introduction to Modern Statistical Mechanics*; Chandler, David
 
 ### Programming Language Theory 
 - *Types and Programming Languages*; Pierce, Benjamin (2002)
 
-### Algorithms 
-- *Algorithm Design*; Kleinberg & Tardos
-- *Introduction to Algorithms*; CLRS (3rd ed.) [legally required to put this here]
-
 ### Education 
 - *Experience and Education*; John Dewey
 - *The Process of Education*; Bruner
-- *Cuba's Academic Advantage*; Carnoy
 
 ## Websites 
 - Prot's [protesialos.com](https://protesilaos.com/)
