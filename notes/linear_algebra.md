@@ -183,7 +183,7 @@ equivalent).
 ### Artin 1.1.13; Nilpotent Matrices
 \problem{A square matrix $A$ is *nilpotent* if $A^k = 0$ for some $k >
 0$. Prove that if $A$ is nilpotent, then $I+A$ is invertible. Do this
-by finding its inverse.}{}
+by finding its inverse.}
 <!-- We're looking for the inverse, $(I + A)^{-1}$. Being very tricky and -->
 <!-- taking a formal power series: -->
 

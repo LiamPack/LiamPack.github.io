@@ -32,13 +32,8 @@ Add here global latex commands to use throughout your pages.
   @@
 }
 
-\newcommand{\problem}[2]{
+\newcommand{\problem}[1]{
 @@problem
 **Problem**:
 #1
-@@
-
-*Solution Attempt*:
-
-#2
-}
+@@}

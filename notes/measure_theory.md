@@ -70,7 +70,7 @@ applying the above indefinitely.
 
 1. Prove that the complement of $C_{\xi}$ is the union of open
     intervals of total length equal to 1.
-2. Show directly that $m_{*}(C_{\xi}) = 0$.}{}
+2. Show directly that $m_{*}(C_{\xi}) = 0$.}
 <!-- {
 1.  First, $C_{\xi}$ is closed since it is the (arbitrary) intersection of closed sets: $C_{\xi} = \cap_{0}^{\infty}C_{k}$, where $C_{k}$ denotes the remaining points of $[0,1]$ after the $k^{th}$ iteration of our algorithm. To see that each $C_{k}$ is closed: -->
 
