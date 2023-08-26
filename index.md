@@ -5,14 +5,11 @@ title = "Liam Packer's Place"
 
 # {{ title }}
 
-Hey, I'm Liam. Currently I do data science and machine learning, but at
-heart I'm drawn to describing things with mathematics (specific, I
-know). 
-
-<!-- I'm particularly interested in the mathematical description of -->
-<!-- data. In more words: -->
-<!-- - implicit regularization in high-dimensional optimization problems -->
-<!-- - geometric and topological descriptions of data -->
+Hey, I'm Liam. I'm a first-year PhD Student at Cornell's Center for
+Applied Mathematics. From 2020-2023, I worked on government contracts
+and NASA projects related to uncertainty estimation, atmospheric
+modeling, imaging, radar, and other fun stuff. I received my B.A.(s) in
+Mathematics and Physics from Swarthmore College in 2020.
 
 If you need a wider character profile, check out some of my [Favorite
 Things](/favorite-things/). If you want to see what I'm studying these
