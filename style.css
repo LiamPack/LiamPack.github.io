@@ -1,0 +1,432 @@
+/* Root Variables */
+:root {
+    --background: #f8f8f8;
+    --foreground: #333;
+    --header-bg: #eaeaea;
+    --header-fg: #444;
+    --link: #620f2a;
+    --link-hover: #004e70;
+    --accent: #666;
+}
+
+/* General Styles */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--foreground);
+    background-color: var(--background);
+    text-align: left;
+}
+
+/* Header */
+header.infobar {
+    background: var(--header-bg);
+    padding: 1em 0;
+    border-bottom: 1px solid var(--accent);
+    text-align: center;
+}
+
+.infobar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.header-text {
+    text-align: left;
+    flex: 1;
+    margin-right: 2em;
+}
+
+.header-text a {
+    color: var(--header-fg);
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.header-text small {
+    display: block;
+    color: var(--accent);
+    font-size: 1em;
+}
+
+.infobar-navigation {
+    flex: 2;
+}
+
+.infobar-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.infobar-navigation li {
+    margin-left: 1em;
+}
+
+.infobar-navigation a {
+    color: var(--header-fg);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.infobar-navigation a:hover {
+    color: var(--link-hover);
+}
+
+/* Main Content */
+.centered-container {
+    max-width: 750px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+h1, h2 {
+    color: var(--foreground);
+    text-align: left;
+    margin-bottom: 0em;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Links */
+a {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: none;
+}
+
+/* Footer */
+footer.footer {
+    background: var(--header-bg);
+    color: var(--header-fg);
+    text-align: center;
+    padding: 1em 0;
+    border-top: 1px solid var(--accent);
+}
+
+footer a {
+    color: var(--link);
+}
+
+footer a:hover {
+    color: var(--link-hover);
+}
+
+/* Float image to the left or right with padding */
+.img-left, .img-right {
+    max-width: 30%; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0.5em; /* Add spacing around the image */
+}
+
+.img-left {
+    float: left; /* Float image to the left */
+    margin-right: 1em; /* Add spacing to the right of the image */
+}
+
+.img-right {
+    float: right; /* Float image to the right */
+    margin-left: 1em; /* Add spacing to the left of the image */
+}
+
+.image-caption-container {
+    display: inline-flex; /* Keep image and caption together */
+    flex-direction: column;
+    max-width: 30%; /* Same as the image max-width */
+    text-align: left; /* Center-align the caption */
+    margin: 0.5em; /* Space around the container */
+}
+
+.image-caption-container img {
+    width: 100%; /* Ensure the image fits the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.image-caption {
+    font-size: 0.9em; /* Slightly smaller text for captions */
+    color: var(--accent); /* Use a subtle color for the caption */
+    margin-top: 0.5em; /* Space between image and caption */
+    text-align: left;
+}
+
+.clear {
+    clear: both;
+}
+
+p {
+    overflow: hidden; /* Ensures proper wrapping around floated images */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* align-items: flex start; */
+}
+
+
+/* /\* Root Variables *\/ */
+/* :root { */
+/*     --background: #f8f8f8; */
+/*     --foreground: #333; */
+/*     --header-bg: #eaeaea; /\* Softer gray for header and footer *\/ */
+/*     --header-fg: #444; */
+/*     --link: #005f87; */
+/*     --link-hover: #004e70; */
+/*     --accent: #666; /\* Subtle gray for secondary text *\/ */
+/* } */
+
+/* /\* Global Styles *\/ */
+/* body { */
+/*     font-family: 'Noto Sans', sans-serif; */
+/*     line-height: 1.6; */
+/*     margin: 0; */
+/*     color: var(--foreground); */
+/*     background-color: var(--background); */
+/*     text-align: justify; /\* Justify text for clean alignment *\/ */
+/* } */
+
+/* header.infobar { */
+/*     background: var(--header-bg); */
+/*     color: var(--header-fg); */
+/*     padding: 1em 0; */
+/*     text-align: center; /\* Ensure the header is well-centered *\/ */
+/*     border-bottom: 1px solid var(--accent); */
+/* } */
+
+/* .infobar-header a { */
+/*     color: var(--header-fg); */
+/*     text-decoration: none; */
+/*     font-size: 1.5em; */
+/*     font-weight: bold; */
+/* } */
+
+/* .infobar-header small { */
+/*     color: var(--accent); */
+/*     font-size: 1em; */
+/* } */
+
+/* /\* Centered Main Content *\/ */
+/* .centered-container { */
+/*     max-width: 750px; /\* Flexible width *\/ */
+/*     margin: 2em auto; */
+/*     padding: 0 1em; */
+/* } */
+
+/* /\* Headings *\/ */
+/* h1, h2 { */
+/*     color: var(--foreground); */
+/*     text-align: left; /\* Left-justified headings *\/ */
+/*     margin-bottom: 1em; */
+/*     font-weight: bold; */
+/* } */
+
+/* h1 { */
+/*     font-size: 2em; */
+/* } */
+
+/* h2 { */
+/*     font-size: 1.5em; */
+/* } */
+
+/* /\* Links *\/ */
+/* a { */
+/*     color: var(--link); */
+/*     text-decoration: underline; */
+/* } */
+
+/* a:hover { */
+/*     color: var(--link-hover); */
+/*     text-decoration: none; */
+/* } */
+
+/* /\* Footer *\/ */
+/* footer.footer { */
+/*     background: var(--header-bg); */
+/*     color: var(--header-fg); */
+/*     text-align: center; */
+/*     padding: 1em 0; */
+/*     border-top: 1px solid var(--accent); */
+/* } */
+
+/* footer a { */
+/*     color: var(--link); */
+/* } */
+
+/* footer a:hover { */
+/*     color: var(--link-hover); */
+/* } */
+
+/* ONCE MORE */
+/* Font Import */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap'); */
+
+/* /\* Global Styles *\/ */
+/* body { */
+/*     font-family: 'Source Serif Pro', serif; */
+/*     line-height: 1.6; */
+/*     color: #333; */
+/*     background-color: #f9f9f9; */
+/*     max-width: 750px; */
+/*     margin: 0 auto; */
+/*     padding: 20px; */
+/* } */
+
+/* /\* Header *\/ */
+/* header { */
+/*     text-align: center; */
+/*     margin-bottom: 2em; */
+/* } */
+
+/* header h1 { */
+/*     font-family: 'Source Sans Pro', sans-serif; */
+/*     font-size: 2rem; */
+/*     margin-bottom: 0.5em; */
+/* } */
+
+/* header nav { */
+/*     font-size: 1rem; */
+/* } */
+
+/* header nav a { */
+/*     color: #0066cc; */
+/*     text-decoration: none; */
+/*     margin: 0 10px; */
+/* } */
+
+/* header nav a:hover { */
+/*     text-decoration: underline; */
+/* } */
+
+/* /\* Main Content *\/ */
+/* main { */
+/*     margin-bottom: 3em; */
+/* } */
+
+/* /\* Footer *\/ */
+/* footer { */
+/*     text-align: center; */
+/*     font-size: 0.9rem; */
+/*     color: #666; */
+/*     margin-top: 3em; */
+/* } */
+
+/* footer blockquote { */
+/*     font-family: 'Source Code Pro', monospace; */
+/*     font-size: 0.9rem; */
+/*     color: #444; */
+/*     margin-bottom: 1.5em; */
+/* } */
+
+/* footer blockquote p { */
+/*     margin: 0.5em 0; */
+/* } */
+
+/* HERE*/
+
+/* body { */
+/*     font-family: 'Source Serif Pro', 'Helvetica', 'Arial', sans-serif; */
+/*     font-size: 18px; */
+/*     line-height: 1.6; */
+/*     max-width: 900px; */
+/*     margin: 0 auto; */
+/*     padding: 20px; */
+/*     background-color: #f9f9f9; */
+/*     color: #333; */
+/* } */
+
+/* header { */
+/*     text-align: center; */
+/*     margin-bottom: 2em; */
+/* } */
+
+/* header h1 { */
+/*     font-size: 2em; */
+/*     margin-bottom: 0.5em; */
+/* } */
+
+/* nav a { */
+/*     margin: 0 15px; */
+/*     text-decoration: none; */
+/*     color: #0066cc; */
+/* } */
+
+/* nav a:hover { */
+/*     text-decoration: underline; */
+/* } */
+
+/* main { */
+/*     margin-bottom: 2em; */
+/* } */
+
+/* footer { */
+/*     text-align: center; */
+/*     font-size: 0.9em; */
+/*     color: #666; */
+/* } */
+
+
+/* body { */
+/*     font-family: 'Source Serif Pro', 'Helvetica', 'Arial', sans-serif; */
+/*     font-size: 18px; */
+/*     line-height: 1.6; */
+/*     color: #000; */
+/*     background-color: #fff; */
+/*     margin: 0 auto; */
+/*     max-width: 900px; */
+/*     padding: 20px; */
+/* } */
+
+/* a { */
+/*     color: #0066cc; */
+/*     text-decoration: none; */
+/* } */
+
+/* a:hover { */
+/*     text-decoration: underline; */
+/* } */
+
+/* h1, h2, h3 { */
+/*     font-weight: 600; */
+/*     margin: 20px 0 10px; */
+/* } */
+
+/* p { */
+/*     margin: 10px 0; */
+/* } */
+
+/* img { */
+/*     max-width: 100%; */
+/*     height: auto; */
+/*     display: block; */
+/*     margin: 20px auto; */
+/* } */
+
+/* @media (prefers-color-scheme: dark) { */
+/*     body { */
+/*         background-color: #121212; */
+/*         color: #e0e0e0; */
+/*     } */
+
+/*     a { */
+/*         color: #bb86fc; */
+/*     } */
+/* } */
