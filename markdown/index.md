@@ -12,7 +12,7 @@ date: 2025-01-16
 I'm a PhD student in Cornell's [Center for Applied
 Mathematics](https://www.cam.cornell.edu/cam) advised by [Phil
 Sosoe](https://math.cornell.edu/philippe-sosoe). I'm interested in
-probability and it's connections to analysis and physics. I spend most
+probability and its connections to analysis and physics. I spend most
 of my time staring at measures of the form $d\mu = e^{-V(\phi)}d\phi$.
 
 
