@@ -3,6 +3,12 @@ title: About Me
 date: 2025-01-16
 ---
 
+::: {.image-caption-container .img-right}
+![me](assets/me.PNG)
+<span class="image-caption">Picture of me on the [Game Boy camera](https://en.wikipedia.org/wiki/Game_Boy_Camera) (thanks [Carson](https://www.instagram.com/bassmasterrush/) :)</span>
+:::
+
+
 I'm a PhD student in Cornell's [Center for Applied
 Mathematics](https://www.cam.cornell.edu/cam) advised by [Phil
 Sosoe](https://math.cornell.edu/philippe-sosoe). I'm interested in
@@ -23,13 +29,8 @@ College](https://www.swarthmore.edu/) in Math and Physics in 2020.
 Feel free to reach out via email (lp402 - at - cornell - dot - edu).
 
 ## a CV
-[here](assets/cv.pdf) (updated 2024-12-19).
+[here](assets/cv.pdf) (updated 2025-01-16).
 
 <!-- ## Recent [Posts](posts.html) -->
 <!-- - [Test Post](post1.html) - Dec 2024 -->
-
-<!-- ::: {.image-caption-container .img-right} -->
-<!-- ![T1018](assets/mars.png) -->
-<!-- <span class="image-caption">An iron mineralogy composite visualization of Mars (T1018).</span> -->
-<!-- ::: -->
 
