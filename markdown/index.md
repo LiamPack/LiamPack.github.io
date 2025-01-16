@@ -16,9 +16,9 @@ probability and its connections to analysis and physics. I spend most
 of my time staring at measures of the form $d\mu = e^{-V(\phi)}d\phi$.
 
 
-Prior to my PhD, I worked at the Johns Hopkins Applied Physics Lab
+Prior to Cornell, I worked at the Johns Hopkins Applied Physics Lab
 from 2020-2023. I worked in autonomous navigation, uncertainty
-estimation for neural networks, and atmospheric science. My work was largely under
+estimation for neural networks, and atmospheric science. My work was funded primarily by
 the [CDAO](https://www.ai.mil/) or
 [NASA](https://science.nasa.gov/mission/mars-reconnaissance-orbiter/).
 
