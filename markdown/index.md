@@ -20,7 +20,7 @@ of my time staring at measures of the form $d\mu = e^{-V(\phi)}d\phi$.
 Prior to Cornell, I worked at the Johns Hopkins Applied Physics Lab
 from 2020-2023. I worked in autonomous navigation, uncertainty
 estimation for neural networks, and atmospheric science. My work was funded primarily by
-the [CDAO](https://www.ai.mil/) or
+the [CDAO](https://www.ai.mil/) and
 [NASA](https://science.nasa.gov/mission/mars-reconnaissance-orbiter/).
 
 Before that, I completed my undergraduate studies at [Swarthmore
