@@ -5,7 +5,8 @@ date: 2025-01-16
 ## Notes
 Some notes I've written on various topics.
 
-+ Scale Decompositions for Euclidean Quantum Field Theory [(notes)](assets/scale-decompositions.pdf)
++ Scale Decompositions for Euclidean Quantum Field Theory
+  [(notes)](assets/scale-decompositions.pdf).
 + De Giorgi and Moser's approaches to Local Boundedness
   [(notes)](assets/degiorgi-moser.pdf).
 + A Geometric Interpretation of Kalman Filtering
@@ -26,4 +27,4 @@ library](https://github.com/LiamPack/chez-matrices) after being fed-up
 with the state of matrix utilities in OCaml. Despite being very white,
 in order to sway the tides of a political power struggle, I ended up
 co-running the Japanese culture group Kizuna at Swarthmore for a
-couple of years, which was very fun.
+couple of years which was very fun.
