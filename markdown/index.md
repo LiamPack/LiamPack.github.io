@@ -30,7 +30,9 @@ College](https://www.swarthmore.edu/) in Math and Physics in 2020.
 Feel free to reach out via email (lp402 - at - cornell - dot - edu).
 
 ## a CV
-[here](assets/cv.pdf) (updated 2025-01-16).
+[here](assets/cv.pdf) (updated 2025-01-16). For some of my past work,
+see my [google
+scholar](https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=1&gmla=AGd7smFzbHNuU1fyl4U0zlojJk7kv-MTQvBZ4sP4vIlF_mGQTOXoA0CfcXB0_96yvGpPUc3LjuuFGWwvlh-KUrDGxdGJgDVszwS_xjbPqFc&user=cRKA1lEAAAAJ).
 
 <!-- ## Recent [Posts](posts.html) -->
 <!-- - [Test Post](post1.html) - Dec 2024 -->
