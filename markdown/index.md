@@ -27,7 +27,7 @@ Before that, I completed my undergraduate studies with high honors in
 math and physics at Swarthmore College.
 
 ## Contact Me
-Feel free to reach out via email (lp402 - at - cornell - dot - edu).
+Feel free to reach out via email (lp492 - at - cornell - dot - edu).
 
 ## a CV
 [cv here](assets/cv.pdf) (updated 2025-01-16). For some of my past work,

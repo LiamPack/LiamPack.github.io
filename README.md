@@ -12,3 +12,4 @@ like my cv, and files linked in [misc.md](./misc.md), and
 
 ## todos
 - research statement
+- instead of local `make` of html, add to github actions
