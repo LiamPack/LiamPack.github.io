@@ -23,14 +23,14 @@ estimation for neural networks, and atmospheric science. My work was funded prim
 the [CDAO](https://www.ai.mil/) and
 [NASA](https://science.nasa.gov/mission/mars-reconnaissance-orbiter/).
 
-Before that, I completed my undergraduate studies at [Swarthmore
-College](https://www.swarthmore.edu/) in Math and Physics in 2020.
+Before that, I completed my undergraduate studies with high honors in
+math and physics at Swarthmore College.
 
 ## Contact Me
 Feel free to reach out via email (lp402 - at - cornell - dot - edu).
 
 ## a CV
-[here](assets/cv.pdf) (updated 2025-01-16). For some of my past work,
+[cv here](assets/cv.pdf) (updated 2025-01-16). For some of my past work,
 see my [google
 scholar](https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=1&gmla=AGd7smFzbHNuU1fyl4U0zlojJk7kv-MTQvBZ4sP4vIlF_mGQTOXoA0CfcXB0_96yvGpPUc3LjuuFGWwvlh-KUrDGxdGJgDVszwS_xjbPqFc&user=cRKA1lEAAAAJ).
 
