@@ -17,7 +17,7 @@ like donating previously collected used books after I realize I'll
 never read them. I've been playing the flute since 2004, which was a
 while ago. In undergrad and post-grad I played a disgusting amount of
 [Super Smash Brothers Melee for the Nintendo
-Gamecube](https://www.amazon.com/Super-Smash-Bros-Melee-Gamecube/dp/B00005Q8M0)
+Gamecube](https://www.youtube.com/watch?v=9YXd48W9pjQ)
 and ended up power-ranked in Philadelphia at some point. My favorite
 languages to program in are lisps and schemes; I wrote a [monadic
 parser](https://github.com/LiamPack/parmesan) after being fed-up with
