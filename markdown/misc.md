@@ -25,6 +25,6 @@ parser](https://github.com/LiamPack/parmesan) after being fed-up with
 the state of monadic parsers in OCaml, and a [matrix utilities
 library](https://github.com/LiamPack/chez-matrices) after being fed-up
 with the state of matrix utilities in OCaml. In order to sway the
-tides of a political power struggle, I ended up co-running the
-Japanese culture group Kizuna at Swarthmore for a couple of years
-which was very fun (despite being very white...).
+tides of a political power struggle, I ended up as a co-president of
+Swarthmore's Japanese culture group, Kizuna, for a couple of years
+which was very fun.
