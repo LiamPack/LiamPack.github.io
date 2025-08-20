@@ -5,7 +5,7 @@ date: 2025-08-19
 
 ::: {.image-caption-container .img-right}
 ![me](assets/me.PNG)
-<span class="image-caption">Picture of me on the [Game Boy camera](https://en.wikipedia.org/wiki/Game_Boy_Camera) ( thanks [Carson](https://www.instagram.com/bassmasterrush/) :) )</span>
+<span class="image-caption">Picture of me on the [Game Boy camera](https://en.wikipedia.org/wiki/Game_Boy_Camera) (thanks [Carson](https://www.instagram.com/bassmasterrush/) :))</span>
 :::
 
 
