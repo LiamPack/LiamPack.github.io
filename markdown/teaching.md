@@ -8,7 +8,7 @@ date: 2024
 
 ### Cornell
 + Math 6110: Real Analysis. (`fa 25`, [materials](./6110.html))
-+ UNILWYL 1407 (Instructor): Conversations at Keeton; Academic Communication. (`sp 25`, [syllabus](assets/teaching/lwyl-syllabus.pdf))
++ UNILWYL 1407 (Instructor): Conversations at Keeton. (`sp 25`, [syllabus](assets/teaching/lwyl-syllabus.pdf))
 + Math 1920: Multivariable Calculus for Engineers. (`sp 25`, `fa 23`)
 + Math 2240: Theoretical Linear Algebra and Calculus. (`sp 24`, [materials](./2240.html))
 + Math 4710: Basic Probability. (`fa 24`)
