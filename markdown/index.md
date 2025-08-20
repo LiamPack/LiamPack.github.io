@@ -1,20 +1,20 @@
 ---
 title: About Me
-date: 2025-01-16
+date: 2025-08-19
 ---
 
 ::: {.image-caption-container .img-right}
 ![me](assets/me.PNG)
-<span class="image-caption">Picture of me on the [Game Boy camera](https://en.wikipedia.org/wiki/Game_Boy_Camera) (thanks [Carson](https://www.instagram.com/bassmasterrush/) :)</span>
+<span class="image-caption">Picture of me on the [Game Boy camera](https://en.wikipedia.org/wiki/Game_Boy_Camera) ( thanks [Carson](https://www.instagram.com/bassmasterrush/) :) )</span>
 :::
 
 
 I'm a PhD student in Cornell's [Center for Applied
-Mathematics](https://www.cam.cornell.edu/cam) where I am fortunate to
-be advised by [Phil
-Sosoe](https://math.cornell.edu/philippe-sosoe). I'm interested in
-probability and its connections to analysis and physics. I spend most
-of my time staring at measures of the form $d\mu = e^{-V(\phi)}d\phi$.
+Mathematics](https://www.cam.cornell.edu/cam) working under the
+guidance of [Phil Sosoe](https://math.cornell.edu/philippe-sosoe). I'm
+interested in probability and its connections to analysis and
+physics. I spend most of my time staring at measures of the form $d\mu
+= e^{-V(\phi)}d\phi$.
 
 
 Prior to Cornell, I worked at the Johns Hopkins Applied Physics Lab
