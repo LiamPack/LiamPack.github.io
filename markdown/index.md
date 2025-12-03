@@ -9,12 +9,12 @@ date: 2025-08-19
 :::
 
 
-I'm a PhD student in Cornell's [Center for Applied
+I'm a PhD candidate in Cornell's [Center for Applied
 Mathematics](https://www.cam.cornell.edu/cam) working under the
 guidance of [Phil Sosoe](https://math.cornell.edu/philippe-sosoe). I'm
 interested in probability and its connections to analysis and
 physics. I spend most of my time staring at measures of the form $$d\mu
-= e^{-V(\phi)}d\phi$$
+= e^{-V(\phi)}d\phi$$.
 
 
 Prior to Cornell, I worked at the Johns Hopkins Applied Physics Lab
