@@ -7,6 +7,7 @@ date: 2024
 (`fa` = fall, `sp` = spring)
 
 ### Cornell
++ Math 1106: Modeling for Life Sciences. `sp 26`
 + Math 6110: Real Analysis. `fa 25`, [materials](./6110.html)
 + UNILWYL 1407 (Instructor): Conversations at Keeton. `sp 25`, [syllabus](assets/teaching/lwyl-syllabus.pdf)
 + Math 1920: Multivariable Calculus for Engineers. `sp 25`, `fa 23`
