@@ -1,7 +1,7 @@
 ---
 title: Teaching
 author: Liam Packer
-date: 2024
+date: 2026-07-21
 ---
 ## Courses
 (`fa` = fall, `sp` = spring)

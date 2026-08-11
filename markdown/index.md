@@ -1,6 +1,6 @@
 ---
 title: About Me
-date: 2025-08-19
+date: 2026-07-21
 ---
 
 ::: {.image-caption-container .img-right}
@@ -30,7 +30,7 @@ math and physics at Swarthmore College.
 Feel free to reach out via email (lp492 - at - cornell - dot - edu).
 
 ## a CV
-[cv here](assets/cv.pdf) (updated 2025-01-16). For pre-PhD work, see
+[cv here](assets/cv.pdf) (updated 2026-07-21). For pre-PhD work, see
 my [google
 scholar](https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=1&gmla=AGd7smFzbHNuU1fyl4U0zlojJk7kv-MTQvBZ4sP4vIlF_mGQTOXoA0CfcXB0_96yvGpPUc3LjuuFGWwvlh-KUrDGxdGJgDVszwS_xjbPqFc&user=cRKA1lEAAAAJ).
 
