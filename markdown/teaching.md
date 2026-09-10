@@ -7,6 +7,7 @@ date: 2026-07-21
 (`fa` = fall, `sp` = spring)
 
 ### Cornell
++ [John S. Knight](https://knight.as.cornell.edu/) institute’s Buttrick-Crippen fellow. `fa 26, sp 27`
 + Math 1106: Modeling for Life Sciences. `sp 26`
 + Math 6110: Real Analysis. `fa 25`, [materials](./6110.html)
 + UNILWYL 1407 (Instructor): Conversations at Keeton. `sp 25`, [syllabus](assets/teaching/lwyl-syllabus.pdf)
